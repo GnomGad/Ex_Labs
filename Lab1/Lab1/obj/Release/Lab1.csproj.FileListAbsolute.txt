@@ -1,0 +1,6 @@
+D:\Code\C#\Lab1\Lab1\bin\Release\Lab1.exe
+D:\Code\C#\Lab1\Lab1\bin\Release\Lab1.pdb
+D:\Code\C#\Lab1\Lab1\obj\Release\Lab1.csproj.CoreCompileInputs.cache
+D:\Code\C#\Lab1\Lab1\obj\Release\Lab1.exe
+D:\Code\C#\Lab1\Lab1\obj\Release\Lab1.pdb
+D:\Code\C#\Lab1\Lab1\obj\Release\Lab1.csprojResolveAssemblyReference.cache
