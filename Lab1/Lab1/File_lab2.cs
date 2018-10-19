@@ -75,7 +75,7 @@ namespace Labs
         public static void ex_4() // НЕ ГОТОВО
         {
 
-            Console.WriteLine("entet x,q < 17");
+            Console.WriteLine("enter x,q < 17");
             int x = int.Parse(Console.ReadLine());// градусы
             int q = int.Parse(Console.ReadLine()); //количество интераций
             double r = x*(Math.PI/180), cos=0; // нам нужны радианы r = радианы
@@ -86,9 +86,9 @@ namespace Labs
             {
                 cub = Math.Pow(r, pf);
                 fact = Factorial(pf);
-                sum = cub / fact;
-                temp = temp + (k * cub/ fact);
-                Console.WriteLine("cub({0})  fact({1})    sum({3})", cub,fact,temp,sum);
+                sum = r*cub / fact;
+                temp = temp + (k*sum);
+                Console.WriteLine("cub({0})  fact({1})    sum({2})", cub,fact,temp,sum);
                 k *= -1;
             }
             Console.WriteLine("cos({0})",cos);
@@ -105,14 +105,36 @@ namespace Labs
 
 
 
-        public static void ex_5() // НЕ ГОТОВО
+        public static void ex_5() // вроде работает
         {
-        
+            Console.WriteLine("enter N ");
+            int N = int.Parse(Console.ReadLine());
+            int x = 1, y = 1, z = 1;
+            bool q = false;
+
+            for (x = 1; x <= y; x++)
+            { 
+                for (y = 1; y <= z; y++)
+                { 
+                    for (z = 1; z <= N; z++)
+                    {
+                        if ((x * x * x) + (y * y * y) + (z * z * z) == N)
+                        {
+                            Console.WriteLine("x={0}^3  y={1}^3  z={2}^3", x, y, z);
+                            q = true;
+                        }
+                        
+                    }
+                    //Console.Write("- ");
+                }
+                Console.Write("+ ");
+            }
+            if (!q) Console.WriteLine("No such combinations!");
         }
         public static void ex_6() 
         {
             
-            Console.WriteLine("entet 0<x<100 ");
+            Console.WriteLine("enter 0<x<100 ");
             int year = int.Parse(Console.ReadLine());
                 if (year % 10 == 1 && year != 11) Console.WriteLine("{0} год ", year);
                 else if ((year % 10 >= 2 && year % 10 <= 4) && (year >= 22 || year <= 4)) Console.WriteLine("{0} года ", year);
@@ -120,7 +142,12 @@ namespace Labs
 
 
         }
-       
+
+        public static void ex_a1_5() // НЕ ГОТОВО
+        {
+
+        }
+
     }
 }
     

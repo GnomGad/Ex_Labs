@@ -71,6 +71,7 @@ namespace Labs
                     case "4": { lab2.ex_4(); break; }
                     case "5": { lab2.ex_5(); break; }
                     case "6": { lab2.ex_6(); break; }
+                    case "7": { lab2.ex_a1_5(); break; }
                     default: { Console.WriteLine("Нет такого значения"); break; }
                 }
             }
