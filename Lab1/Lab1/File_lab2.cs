@@ -7,7 +7,7 @@ namespace Labs
 {
     class lab2
     {
-        public static void ex_1()
+        public static void ex_1() // работает
         {
             double a, b, c;
             double Dis;
@@ -45,7 +45,7 @@ namespace Labs
            // Console.WriteLine($" {Dis}   {Math.Sqrt(Dis)}");
         }
 
-        public static void ex_2()
+        public static void ex_2() // работает
         {
             double pi = 0; //число пи
             double k = 1;
@@ -59,7 +59,7 @@ namespace Labs
             }
              Console.WriteLine(pi);
         }
-        public static void ex_3()
+        public static void ex_3() // работает
         {
             int f0 = 1, f1 = 1, f2 = 1; 
             while (f1<10000)
@@ -72,7 +72,7 @@ namespace Labs
             } 
         }
 
-        public static void ex_4() // НЕ ГОТОВО
+        public static void ex_4() // Не работае
         {
 
             Console.WriteLine("enter x,q < 17");
@@ -80,7 +80,7 @@ namespace Labs
             int q = int.Parse(Console.ReadLine()); //количество интераций
             double r = x*(Math.PI/180), cos=0; // нам нужны радианы r = радианы
             double temp = 1;
-            int k = -1,nul = 1;
+            int k = -1;
             double cub = 0, fact = 0,sum = 1;
             for (int i =1,pf=2;i<=q;i++,pf+=2)
             {
@@ -94,7 +94,7 @@ namespace Labs
             Console.WriteLine("cos({0})",cos);
         }
 
-        static int Factorial(int x) //факториал
+        static int Factorial(int x) //факториал для ex_4 
         {
             int res = 1;
             for (int i = x; i > 1; i--)
@@ -105,7 +105,7 @@ namespace Labs
 
 
 
-        public static void ex_5() // вроде работает
+        public static void ex_5() // вроде работает. много символов не стоит записывать, а то зависнет
         {
             Console.WriteLine("enter N ");
             int N = int.Parse(Console.ReadLine());
@@ -118,36 +118,110 @@ namespace Labs
                 { 
                     for (z = 1; z <= N; z++)
                     {
-                        if ((x * x * x) + (y * y * y) + (z * z * z) == N)
+                        if ((x*x*x) + (y * y * y) + (z * z * z) == N)
                         {
-                            Console.WriteLine("x={0}^3  y={1}^3  z={2}^3", x, y, z);
+                            Console.WriteLine("x={0}  y={1}  z={2}", x, y, z);
                             q = true;
                         }
                         
                     }
                     //Console.Write("- ");
                 }
-                Console.Write("+ ");
+               // Console.Write("+ ");
             }
             if (!q) Console.WriteLine("No such combinations!");
         }
-        public static void ex_6() 
+        public static void ex_6() // работает
         {
-            
+            re:
             Console.WriteLine("enter 0<x<100 ");
             int year = int.Parse(Console.ReadLine());
+            if (year>=100|| year <= 0) goto re;
                 if (year % 10 == 1 && year != 11) Console.WriteLine("{0} год ", year);
                 else if ((year % 10 >= 2 && year % 10 <= 4) && (year >= 22 || year <= 4)) Console.WriteLine("{0} года ", year);
                 else Console.WriteLine("{0} лет ", year);
-
-
         }
 
-        public static void ex_a1_5() // НЕ ГОТОВО
+        public static void Ex_a1_5() // дайте мне в лоб )))))) работает
         {
 
+            Console.WriteLine("enter Day ");
+            string day = Console.ReadLine();
+            Console.WriteLine("enter Month ");
+            string month = Console.ReadLine();
+            Console.WriteLine("enter Year ");
+            string year = Console.ReadLine();
+            //если число меньше, то выход
+            if (int.Parse(day) < 0 || int.Parse(month) < 0 || int.Parse(year) < 0)
+            {
+                return;
+            }
+            //если число больше, то подгоняем до dd/mm/yyyy
+            if (int.Parse(day) > 99)
+            {
+                for (int i = 0; i < (int.Parse(day)); i += 100)
+                {
+                    day = Convert.ToString(int.Parse(day) / 10);
+                }
+            }
+            if (int.Parse(month) > 99)
+            {
+                for (int i = 0; i < (int.Parse(month)); i += 100)
+                {
+                    month = Convert.ToString(int.Parse(month) / 10);
+                }
+            }
+            if (int.Parse(year) > 9999)
+            {
+                for (int i = 9999; i < (int.Parse(year)); i += 1000)
+                {
+                    year = Convert.ToString(int.Parse(year) / 10);
+                }
+            }
+            // список условий с нулями
+            if (int.Parse(day) < 10) day = "0" + day;
+            if (int.Parse(month) < 10) month = "0" + month;
+            if (int.Parse(year) < 10) year = "000" + int.Parse(year);
+            else if (int.Parse(year) < 100) year = "00" + int.Parse(year);
+            else if (int.Parse(year) < 1000) year = "0" + int.Parse(year);
+            // 1-31     2-30    3-31   4-30      5-31     6-28/29     7-31    8-31       9-30      10-31    11-30       12-31
+            int d = int.Parse(day);
+            int m = int.Parse(month);
+            int y = int.Parse(year);
+
+           month = Convert.ToString( Math.Min(int.Parse(month), 12));//месяц
+
+            if (d > 31)
+            day = "31";
+            if (int.Parse(day) > 31) d = 31;
+            //в любом случае будет 31 день
+
+            if ((m == 2 || m == 4 || m == 9 || m == 11)&& d > 30) day = "30";
+            if (day == "30") d = 30;
+            //в этих случаях у нас будет 30, во всех других 31
+            if (y % 4 == 0 && m == 6 && d > 28) day = "29";
+            else if (m == 6 && d > 27) day = "28";
+
+            //в первом случае 29 во втором 28
+            if (int.Parse(month) < 10) month = "0" + month;
+
+            Console.WriteLine("{0}/{1}/{2}", day,month,year);
         }
 
+        public static void ex_a2_5() // работает
+        {
+            Console.WriteLine("enter a");
+            int a =Math.Abs(int.Parse(Console.ReadLine()));
+            Console.WriteLine("enter b");
+            int b = Math.Abs(int.Parse(Console.ReadLine()));
+
+            if (a > b) { a = a + b;b = a - b;a = a - b; }//a<b
+            for(; a<=b;a++ )
+            {
+                Console.WriteLine("a = "+a);
+            }
+
+        }
     }
 }
     

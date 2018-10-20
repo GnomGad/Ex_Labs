@@ -59,7 +59,7 @@ namespace Labs
             string k;
             while (true)
             {
-                Console.WriteLine("Введите номер задания 1-6, 0 шаг назад, cl для очистки экрана,");
+                Console.WriteLine("Введите номер задания 1-8, 0 шаг назад, cl для очистки экрана,");
                 k = Console.ReadLine();
                 switch (k)
                 {
@@ -71,7 +71,8 @@ namespace Labs
                     case "4": { lab2.ex_4(); break; }
                     case "5": { lab2.ex_5(); break; }
                     case "6": { lab2.ex_6(); break; }
-                    case "7": { lab2.ex_a1_5(); break; }
+                    case "7": { lab2.Ex_a1_5(); break; }
+                    case "8": { lab2.ex_a2_5(); break; }
                     default: { Console.WriteLine("Нет такого значения"); break; }
                 }
             }
