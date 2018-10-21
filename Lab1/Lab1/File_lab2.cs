@@ -75,26 +75,28 @@ namespace Labs
         public static void ex_4() // Не работае
         {
 
-            Console.WriteLine("enter x,q < 17");
+            Console.WriteLine("enter x,q");
             int x = int.Parse(Console.ReadLine());// градусы
-            int q = int.Parse(Console.ReadLine()); //количество интераций
-            double r = x*(Math.PI/180), cos=0; // нам нужны радианы r = радианы
-            double temp = 1;
-            int k = -1;
-            double cub = 0, fact = 0,sum = 1;
-            for (int i =1,pf=2;i<=q;i++,pf+=2)
+            int q = int.Parse(Console.ReadLine()); //число
+            double add = 0;
+            sbyte sign = -1;
+            int pow = 2;
+            double cos = 1;
+            while (true)
             {
-                cub = Math.Pow(r, pf);
-                fact = Factorial(pf);
-                sum = r*cub / fact;
-                temp = temp + (k*sum);
-                Console.WriteLine("cub({0})  fact({1})    sum({2})", cub,fact,temp,sum);
-                k *= -1;
+                add = sign * (Math.Pow(x, pow) / factorial(pow));
+                if (Math.Abs(add) < q)
+                    break;
+                else
+                    cos = cos + add;
+                Console.WriteLine(cos);
+                pow += 2;
+                sign *= -1;
+
             }
-            Console.WriteLine("cos({0})",cos);
         }
 
-        static int Factorial(int x) //факториал для ex_4 
+        static int factorial(int x) //факториал для ex_4 
         {
             int res = 1;
             for (int i = x; i > 1; i--)
