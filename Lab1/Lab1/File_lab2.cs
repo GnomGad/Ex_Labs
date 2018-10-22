@@ -7,7 +7,7 @@ namespace Labs
 {
     class lab2
     {
-        public static void ex_1() // работает
+        public static void ex_1() // работает дискриминант
         {
             double a, b, c;
             double Dis;
@@ -45,34 +45,27 @@ namespace Labs
            // Console.WriteLine($" {Dis}   {Math.Sqrt(Dis)}");
         }
 
-        public static void ex_2() // работает
+        public static void ex_2() // работает число пи
         {
             double pi = 0; //число пи
             double k = 1;
             Console.WriteLine("enter number");
             int num = int.Parse(Console.ReadLine());
 
-            for(int i = 1; i < num; i+=2)
+            for(int i = 1; i < num; i+=2,k *= -1)// смена знака, без него будут огромные числа
             {
                 pi += 4 *k / i ;// первое умножение на +1 даст нам число 4, последующиее будут умножатся на k и делиться на i, которое должно каждый раз +2 делать по условию
-                k *= -1; // смена знака, без него будут огромные числа
             }
              Console.WriteLine(pi);
         }
-        public static void ex_3() // работает
+        public static void ex_3() //   работает   фибоначи
         {
-            int f0 = 1, f1 = 1, f2 = 1; 
-            while (f1<10000)
-            {
-                Console.WriteLine($"{f1}");  
-                f0 = f1; 
-                f1 = f2; 
-                f2 = f0 + f1;
-                
-            } 
+            int count = 0;
+            for (int f0 = 1, f1 = 1, f2 = 1; f1 < 10000; f0 = f1,f1=f2,f2=f0+f1) if (f1 > 999 && f1 <= 9999) count++;
+            Console.WriteLine("count= {0}", count);
         }
 
-        public static void ex_4() // Не работае
+        public static void ex_4() // Не работает
         {
 
             Console.WriteLine("enter x,q");
@@ -107,7 +100,7 @@ namespace Labs
 
 
 
-        public static void ex_5() // вроде работает. много символов не стоит записывать, а то зависнет
+        public static void ex_5() // вроде работает. много символов не стоит записывать, а то зависнет x^3+y^3+z^3=N
         {
             Console.WriteLine("enter N ");
             int N = int.Parse(Console.ReadLine());
@@ -144,7 +137,7 @@ namespace Labs
                 else Console.WriteLine("{0} лет ", year);
         }
 
-        public static void Ex_a1_5() // дайте мне в лоб )))))) работает
+        public static void Ex_a1_5() // дайте мне в лоб )))))) работает dd/mm/yyyy 
         {
 
             Console.WriteLine("enter Day ");
@@ -192,17 +185,17 @@ namespace Labs
             int y = int.Parse(year);
 
            month = Convert.ToString( Math.Min(int.Parse(month), 12));//месяц
-
+            //================================ ветвление верного дня по месяцу
             if (d > 31)
             day = "31";
             if (int.Parse(day) > 31) d = 31;
             //в любом случае будет 31 день
 
-            if ((m == 2 || m == 4 || m == 9 || m == 11)&& d > 30) day = "30";
+            if ((m == 6 || m == 4 || m == 9 || m == 11)&& d > 30) day = "30";
             if (day == "30") d = 30;
             //в этих случаях у нас будет 30, во всех других 31
-            if (y % 4 == 0 && m == 6 && d > 28) day = "29";
-            else if (m == 6 && d > 27) day = "28";
+            if (y % 4 == 0 && m == 2 && d > 28) day = "29";
+            else if (m == 2 && d > 27) day = "28";
 
             //в первом случае 29 во втором 28
             if (int.Parse(month) < 10) month = "0" + month;
@@ -210,19 +203,20 @@ namespace Labs
             Console.WriteLine("{0}/{1}/{2}", day,month,year);
         }
 
-        public static void ex_a2_5() // работает
+        public static void ex_a2_5() // работает   вывести сумму нечетных чисел a,b
         {
             Console.WriteLine("enter a");
             int a =Math.Abs(int.Parse(Console.ReadLine()));
             Console.WriteLine("enter b");
             int b = Math.Abs(int.Parse(Console.ReadLine()));
-
-            if (a > b) { a = a + b;b = a - b;a = a - b; }//a<b
+            int k = 0;
+            if (a > b) { a = a + b;b = a - b;a = a - b; }//a<b 
             for(; a<=b;a++ )
             {
-                Console.WriteLine("a = "+a);
+                if (a % 2 != 0) k += a;
+                
             }
-
+            Console.WriteLine("sum= {0}",k);
         }
     }
 }
