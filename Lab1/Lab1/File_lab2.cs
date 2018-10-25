@@ -21,13 +21,13 @@ namespace Labs
             {
                 var x1 = (((-b) + Math.Sqrt(Dis)) / (2 * a));
                 var x2 = (((-b) - Math.Sqrt(Dis)) / (2 * a));
-                Console.WriteLine(" x1: {0}  x2: {1}",x1,x2);
+                Console.WriteLine(" x1: {0}  x2: {1}", x1, x2);
 
             }
             else if (Dis == 0) //1 корень если равен 0
             {
                 var x1 = -((b) / (2 * a));
-                Console.WriteLine(" x1: {0}",x1);
+                Console.WriteLine(" x1: {0}", x1);
             }
             else // если вообще нет корней, ибо дис меньше 0, то будем искать 2 корня x+y*i  x-y*i
             {
@@ -35,14 +35,11 @@ namespace Labs
                 var x1 = (((-b) / (2 * a)));  // находим х
                 var y1 = ((Math.Sqrt(Dis)) / (2 * a)); // находим y
 
-                var x2 = (((-b) / (2 * a)));
-                var y2 = ((Math.Sqrt(Dis)) / (2 * a));
+                Console.WriteLine(" x1 = {0} + {1} * i\n x2 = {0} - {1} * i", x1, y1);
 
-                Console.WriteLine("x1 = {0} + {1} * i",x1,y1);
-                Console.WriteLine("x2 = {0} - {1} * i",x2,y2);
-               
+
             }
-           // Console.WriteLine($" {Dis}   {Math.Sqrt(Dis)}");
+            // Console.WriteLine($" {Dis}   {Math.Sqrt(Dis)}");
         }
 
         public static void ex_2() // работает число пи
@@ -52,16 +49,16 @@ namespace Labs
             Console.WriteLine("enter number");
             int num = int.Parse(Console.ReadLine());
 
-            for(int i = 1; i < num; i+=2,k *= -1)// смена знака, без него будут огромные числа
+            for (int i = 1; i < num; i += 2, k *= -1)// смена знака, без него будут огромные числа
             {
-                pi += 4 *k / i ;// первое умножение на +1 даст нам число 4, последующиее будут умножатся на k и делиться на i, которое должно каждый раз +2 делать по условию
+                pi += 4 * k / i;// первое умножение на +1 даст нам число 4, последующиее будут умножатся на k и делиться на i, которое должно каждый раз +2 делать по условию
             }
-             Console.WriteLine(pi);
+            Console.WriteLine(pi);
         }
         public static void ex_3() //   работает   фибоначи
         {
             int count = 0;
-            for (int f0 = 1, f1 = 1, f2 = 1; f1 < 10000; f0 = f1,f1=f2,f2=f0+f1) if (f1 > 999 && f1 <= 9999) count++;
+            for (int f0 = 1, f1 = 1, f2 = 1; f1 < 10000; f0 = f1, f1 = f2, f2 = f0 + f1) if (f1 > 999 && f1 <= 9999) count++;
             Console.WriteLine("count= {0}", count);
         }
 
@@ -69,24 +66,30 @@ namespace Labs
         {
 
             Console.WriteLine("enter x,q");
-            int x = int.Parse(Console.ReadLine());// градусы
-            int q = int.Parse(Console.ReadLine()); //число
+            double x = int.Parse(Console.ReadLine());// градусы
+            double q = double.Parse(Console.ReadLine()); //число
             double add = 0;
+            //double x = n * Math.PI / 180;
             sbyte sign = -1;
-            int pow = 2;
+            int pow = 2, count = 0;
             double cos = 1;
+            Console.WriteLine("cos({0}) ", x);
             while (true)
             {
-                add = sign * (Math.Pow(x, pow) / factorial(pow));
-                if (Math.Abs(add) < q)
+                add =(Math.Pow(x, pow) / factorial(pow));
+                count++;
+                if (add< q)
                     break;
                 else
-                    cos = cos + add;
+                {
+                    cos = cos + (sign * add);
+                    
+                }
                 Console.WriteLine(cos);
                 pow += 2;
                 sign *= -1;
-
             }
+            Console.WriteLine("cos({2}) = {0}      слогаемых {1}",cos,count,x);
         }
 
         static int factorial(int x) //факториал для ex_4 
@@ -97,10 +100,9 @@ namespace Labs
 
             return res;
         }
-
-
-
-        public static void ex_5() // вроде работает. много символов не стоит записывать, а то зависнет x^3+y^3+z^3=N
+       
+       
+            public static void ex_5() // вроде работает. много символов не стоит записывать, а то зависнет x^3+y^3+z^3=N
         {
             Console.WriteLine("enter N ");
             int N = int.Parse(Console.ReadLine());
@@ -210,7 +212,12 @@ namespace Labs
             Console.WriteLine("enter b");
             int b = Math.Abs(int.Parse(Console.ReadLine()));
             int k = 0;
-            if (a > b) { a = a + b;b = a - b;a = a - b; }//a<b 
+            if (a > b)
+            {
+                a = a + b;
+                b = a - b;
+                a = a - b;
+            }//a<b 
             for(; a<=b;a++ )
             {
                 if (a % 2 != 0) k += a;
