@@ -62,18 +62,17 @@ namespace Labs
             Console.WriteLine("count= {0}", count);
         }
 
-        public static void ex_4() // Не работает
+        public static void ex_4() // от части работает
         {
 
             Console.WriteLine("enter x,q");
-            double x = int.Parse(Console.ReadLine());// градусы
+            double n = int.Parse(Console.ReadLine());// градусы
             double q = double.Parse(Console.ReadLine()); //число
             double add = 0;
-            //double x = n * Math.PI / 180;
+            double x = n * Math.PI / 180;
             sbyte sign = -1;
             int pow = 2, count = 0;
             double cos = 1;
-            Console.WriteLine("cos({0}) ", x);
             while (true)
             {
                 add =(Math.Pow(x, pow) / factorial(pow));
@@ -85,7 +84,6 @@ namespace Labs
                     cos = cos + (sign * add);
                     
                 }
-                Console.WriteLine(cos);
                 pow += 2;
                 sign *= -1;
             }
