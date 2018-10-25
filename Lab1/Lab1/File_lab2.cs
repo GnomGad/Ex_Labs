@@ -105,15 +105,16 @@ namespace Labs
             Console.WriteLine("enter N ");
             int N = int.Parse(Console.ReadLine());
             int x = 1, y = 1, z = 1;
+            
             bool q = false;
 
             for (x = 1; x <= y; x++)
             { 
-                for (y = 1; y <= z; y++)
+                for (y = 1; y <= z; y++ )
                 { 
-                    for (z = 1; z <= N; z++)
+                    for (z = 1; z <= N; z++ )
                     {
-                        if ((x*x*x) + (y * y * y) + (z * z * z) == N)
+                        if ((x*x*x) +(y*y*y)+(z*z*z) == N)
                         {
                             Console.WriteLine("x={0}  y={1}  z={2}", x, y, z);
                             q = true;
@@ -125,6 +126,7 @@ namespace Labs
                // Console.Write("+ ");
             }
             if (!q) Console.WriteLine("No such combinations!");
+            
         }
         public static void ex_6() // работает
         {
@@ -137,7 +139,7 @@ namespace Labs
                 else Console.WriteLine("{0} лет ", year);
         }
 
-        public static void Ex_a1_5() // дайте мне в лоб )))))) работает dd/mm/yyyy 
+        public static void ex_a1_5() // дайте мне в лоб )))))) работает dd/mm/yyyy 
         {
 
             Console.WriteLine("enter Day ");

@@ -12,7 +12,7 @@ namespace Labs
 
             while (true)
             {
-                Console.WriteLine("Введите номер лабы 1-2, 0 для выхода, cl для очистки экрана");
+                Console.WriteLine("Введите номер лабы 1-3, 0 для выхода, cl для очистки экрана");
                 string key = Console.ReadLine();
                 switch (key)
                 {
@@ -20,6 +20,7 @@ namespace Labs
                     case "0": { return; }
                     case "1": { Ex_lab1(); break; }
                     case "2": { Ex_lab2(); break; }
+                    case "3": { Ex_lab3(); break; }
                     default: { Console.WriteLine("Нет такого значения"); break; }
 
                 }
@@ -71,13 +72,38 @@ namespace Labs
                     case "4": { lab2.ex_4(); break; }
                     case "5": { lab2.ex_5(); break; }
                     case "6": { lab2.ex_6(); break; }
-                    case "7": { lab2.Ex_a1_5(); break; }
+                    case "7": { lab2.ex_a1_5(); break; }
                     case "8": { lab2.ex_a2_5(); break; }
                     default: { Console.WriteLine("Нет такого значения"); break; }
                 }
             }
         }
-
+        
+        static void Ex_lab3()
+        {
+            string k;
+            while (true)
+            {
+                Console.WriteLine("Введите номер задания 1-10, 0 шаг назад, cl для очистки экрана,");
+                k = Console.ReadLine();
+                switch (k)
+                {
+                    case "cl": { Console.Clear(); break; }
+                    case "0": { return; }
+                    case "1": { lab3.ex_1(); break; }
+                    case "2": { lab3.ex_2(); break; }
+                    case "3": { lab3.ex_3(); break; }
+                    case "4": { lab3.ex_4(); break; }
+                    case "5": { lab3.ex_5(); break; }
+                    case "6": { lab3.ex_6(); break; }
+                    case "7": { lab3.ex_7(); break; }
+                    case "8": { lab3.ex_8(); break; }
+                    case "9": { lab3.ex_a1_5(); break; }
+                    case "10": { lab3.ex_a2_5(); break; }
+                    default: { Console.WriteLine("Нет такого значения"); break; }
+                }
+            }
+        }
 
         //<========================================================== LABA ===================================================================>
         static void  Ex_0()// лабба 1
