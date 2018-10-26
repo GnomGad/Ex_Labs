@@ -45,26 +45,26 @@ namespace Labs
         {
             int[,] nums = new int[7,7];
             Random r = new Random();
-            
-            for (int i = 0; i < 7; i++)// заполняю массив
-                for(int j =0; j<7;j++)
+            for (int i = 0; i < nums.GetLength(0); i++)// заполняю массив
+               for(int j =0; j< nums.GetLength(1); j++)
                     nums[i,j] = r.Next(-30, 45);
+
             Console.Write("\n\n");
-            for (int i = 0; i < 7; i++)// вывожу массив
-                for (int j = 0; j < 7; j++)
+            for (int i = 0; i < nums.GetLength(0); i++)// вывожу массив
+                for (int j = 0; j < nums.GetLength(1); j++)
                 {
                     Console.Write("{0,5}",nums[i,j] );
                     if (j == 6) Console.Write("\n");
                 }
+
             Console.Write("\n\n");
-            for (int i = 0; i < 7; i++)// вывожу массив
-                for (int j = 0; j < 7; j++)
+            for (int i = 0; i <nums.GetLength(1) ; i++)// вывожу массив
+                for (int j = nums.GetLength(0)-1; j >= 0; j--)
                 {
-                    Console.Write("{0,5}", nums[j, i]);
-                    if (j == 6) Console.Write("\n");
+                    Console.Write("{0,5}", nums[i, j]);
+                    if (j == 0) Console.Write("\n");
                 }
             Console.Write("\n\n");
-
         }
         public static void ex_3()
         {
