@@ -66,8 +66,68 @@ namespace Labs
                 }
             Console.Write("\n\n");
         }
+
+
+
+
         public static void ex_3()
         {
+            int[] nums = new int[4];
+            int[] nums2 = new int[4];
+
+            Console.WriteLine("Введите k");
+            int k = int.Parse(Console.ReadLine());
+       
+
+            for (int i = 0; i < nums.Length; i++) // заполняю массив
+                nums[i] = i;
+            // последний символ
+
+            foreach (int i in nums) // вывожу массив
+            {
+                Console.Write("{0} ", i);
+
+            }
+            Console.Write("\n\n");
+
+
+            //=========================================== // работающий читерский способ через второй массив
+            //for (int i = 0; i<nums.Length;i++) 
+            //{
+            //    if(i-k>=0)
+            //    {
+
+            //        nums2[i-k] = nums[i];
+            //    }
+            //    else
+            //    {
+            //        nums2[nums.Length-1-i] = nums[i];
+            //    }
+
+
+            //}
+            //=========================================== // работает только при массиве в 4 при остальных размерах магия
+            // int t = nums.Length-1,temp,lel;
+            //for (int i = 0; i < k; i++) 
+            //{
+            //    temp = t;
+            //    t = t - k < 0 ?t= nums.Length  - k : t = t - k;
+            //    lel = nums[t];
+            //    nums[t] = nums[temp];
+            //    nums[temp] = lel;
+            //    t = t - 1 < 0 ? t =nums.Length - 2 : t=t-1;
+            //=========================================== 
+
+            //}
+
+            foreach (int i in nums) // вывожу массив
+            {
+                Console.Write("{0} ", i);
+
+            }
+            Console.Write("\n\n");
+
+
         }
         public static void ex_4() 
         {
