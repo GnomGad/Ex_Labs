@@ -7,7 +7,7 @@ namespace Labs
 {
     class lab3
     {
-        public static void ex_1() 
+        public static void ex_1() // работает
         {
             Console.WriteLine("Введите количество элементов");
             int n = int.Parse(Console.ReadLine());
@@ -41,7 +41,7 @@ namespace Labs
             }
             Console.Write("\n\n");
         }
-        public static void ex_2() // не работае так как надо
+        public static void ex_2() // работает
         {
             int[,] nums = new int[7,7];
             Random r = new Random();
@@ -70,10 +70,10 @@ namespace Labs
 
 
 
-        public static void ex_3()
+        public static void ex_3() // работает с читом
         {
             int[] nums = new int[4];
-            int[] nums2 = new int[4];
+            int[] nums2 = new int[nums.Length];
 
             Console.WriteLine("Введите k");
             int k = int.Parse(Console.ReadLine());
@@ -138,8 +138,21 @@ namespace Labs
         public static void ex_6()
         {
         }
-        public static void ex_7() 
+        public static void ex_7() // робит но хз насчет количества членов
         {
+            Console.WriteLine("Введите n членов");
+            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine(for_ex_7(n:n));
+        }
+        public static int for_ex_7(int f0 = 1,int f1 = 1,int f2 = 1,int n=1) 
+        {
+
+            f0 = f1;
+            f1 = f2;
+            f2 = f0 + f1;
+            n--;
+            if (n > 0) return for_ex_7(f0, f1, f2, n);
+            else return f1;
         }
         public static void ex_8()
         {
