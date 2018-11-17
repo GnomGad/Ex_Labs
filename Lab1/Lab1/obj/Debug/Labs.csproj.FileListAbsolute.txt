@@ -21,4 +21,4 @@ D:\Code\FORLABS\Lab1\Lab1\bin\Debug\Lab1.pdb
 D:\Code\FORLABS\Lab1\Lab1\obj\Debug\Labs.csproj.CoreCompileInputs.cache
 D:\Code\FORLABS\Lab1\Lab1\obj\Debug\Lab1.exe
 D:\Code\FORLABS\Lab1\Lab1\obj\Debug\Lab1.pdb
-D:\Code\FORLABS\Lab1\Lab1\obj\Debug\Labs.csprojResolveAssemblyReference.cache
+D:\Code\FORLABS\Lab1\Lab1\obj\Debug\Labs.csprojAssemblyReference.cache

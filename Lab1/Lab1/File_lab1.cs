@@ -7,106 +7,10 @@ namespace Labs
 {
     class Lab1
     {
-        static void Main(string[] args)
-        {
 
-            while (true)
-            {
-                Console.WriteLine("Введите номер лабы 1-3, 0 для выхода, cl для очистки экрана");
-                string key = Console.ReadLine();
-                switch (key)
-                {
-                    case "cl": { Console.Clear(); break; }
-                    case "0": { return; }
-                    case "1": { Ex_lab1(); break; }
-                    case "2": { Ex_lab2(); break; }
-                    case "3": { Ex_lab3(); break; }
-                    default: { Console.WriteLine("Нет такого значения"); break; }
-
-                }
-            }
-
-        }
-
-        static void Ex_lab1() //<======================================================== LAB1
-        {
-            string k;
-            while (true)
-            {
-                Console.WriteLine("Введите номер задания 1-11, 0 шаг назад, cl для очистки экрана,");
-                k = Console.ReadLine();
-                switch (k)
-                {
-                    case "cl": { Console.Clear(); break; }
-                    case "0": { return; }
-                    case "1": { Ex_0(); break; }
-                    case "2": { Ex_1(); break; }
-                    case "3": { Ex_2(); break; }
-                    case "4": { Ex_3(); break; }
-                    case "5": { Ex_4(); break; }
-                    case "6": { Ex_5(); break; }
-                    case "7": { Ex_6(); break; }
-                    case "8": { Ex_7(); break; }
-                    case "9": { Ex_8(); break; }
-                    case "10": { Ex_A1_5(); break; }
-                    case "11": { Ex_A2_5(); break; }
-                    default: { Console.WriteLine("Нет такого значения"); break; }
-                }
-            }
-        }
-
-        static void Ex_lab2() //<======================================================== LAB2
-        {
-            string k;
-            while (true)
-            {
-                Console.WriteLine("Введите номер задания 1-8, 0 шаг назад, cl для очистки экрана,");
-                k = Console.ReadLine();
-                switch (k)
-                {
-                    case "cl": { Console.Clear(); break; }
-                    case "0": { return; }
-                    case "1": { lab2.ex_1(); break; }
-                    case "2": { lab2.ex_2(); break; }
-                    case "3": { lab2.ex_3(); break; }
-                    case "4": { lab2.ex_4(); break; }
-                    case "5": { lab2.ex_5(); break; }
-                    case "6": { lab2.ex_6(); break; }
-                    case "7": { lab2.ex_a1_5(); break; }
-                    case "8": { lab2.ex_a2_5(); break; }
-                    default: { Console.WriteLine("Нет такого значения"); break; }
-                }
-            }
-        }
-        
-        static void Ex_lab3()
-        {
-            string k;
-            while (true)
-            {
-                Console.WriteLine("Введите номер задания 1-10, 0 шаг назад, cl для очистки экрана,");
-                k = Console.ReadLine();
-                switch (k)
-                {
-                    case "cl": { Console.Clear(); break; }
-                    case "0": { return; }
-                    case "1": { lab3.ex_1(); break; }
-                    case "2": { lab3.ex_2(); break; }
-                    case "3": { lab3.ex_3(); break; }
-                    case "4": { lab3.ex_4(); break; }
-                    case "5": { lab3.ex_5(); break; }
-                    case "6": { lab3.ex_6(); break; }
-                    case "7": { lab3.ex_7(); break; }
-                    case "8": { lab3.ex_8(); break; }
-                    case "9": { lab3.ex_a1_5(); break; }
-                    case "10": { lab3.ex_a2_5(); break; }
-                    default: { Console.WriteLine("Нет такого значения"); break; }
-                }
-            }
-        }
 
         //<========================================================== LABA ===================================================================>
-        static void  Ex_0()// лабба 1
+        public static void  Ex_0()// лабба 1
         {
             Console.WriteLine("enter any value");
             double d = Convert.ToDouble(Console.ReadLine());// любое значение с запятой
@@ -115,7 +19,7 @@ namespace Labs
             Console.WriteLine(((int)(d)));
             
         }
-        static void Ex_1()
+        public static void Ex_1()
         {
             Console.WriteLine("enter seconds");
             int hour,minut,idk,sec = Convert.ToInt32(Console.ReadLine()); ; 
@@ -125,7 +29,7 @@ namespace Labs
             Console.WriteLine("Часы {0} минуты {1}", hour, minut);
             
         }
-        static void Ex_2()
+        public static void Ex_2()
         {
             Console.WriteLine("enter time: h,m,s ");
             
@@ -135,7 +39,7 @@ namespace Labs
             Console.WriteLine(idk);
             
         }
-        static void Ex_3()
+        public static void Ex_3()
         {
             int first = 1,second = 2; 
             Console.WriteLine(first + " " + second);
@@ -146,7 +50,7 @@ namespace Labs
             
 
         }
-        static void Ex_4()
+        public static void Ex_4()
         {
 
             int  a, b;
@@ -165,7 +69,7 @@ namespace Labs
 
 
 
-        static void Ex_5()
+        public static void Ex_5()
         {
             Console.WriteLine("enter 4х numeric value");
             int a,i,p=1;
@@ -187,7 +91,7 @@ namespace Labs
             Console.WriteLine(p);
             
         }
-        static void Ex_6()
+        public static void Ex_6()
         {
             Console.WriteLine("enter 3х numeric value");
             int a_b,i,b_a=0; //a_b правильная. b_a реверс 3x знаков
@@ -205,7 +109,7 @@ namespace Labs
             Console.WriteLine(b_a);
             
         }
-        static void Ex_7()// 
+        public static void Ex_7()// 
         {
             double x;
             Console.WriteLine("enter x");
@@ -215,7 +119,7 @@ namespace Labs
            
 
         }
-        static void Ex_8()
+        public static void Ex_8()
         {
              int a1, a2, a3, b1, b2, b3, c1, c2, c3, d1, d2, d3,de, de1, de2, de3;
             //int a1 = 2, a2 = 1, a3 = 2, b1 = 5, b2 = 3, b3 = 10, c1 = 4, c2 = 2, c3 = 9, d1 = 30, d2 = 150, d3 = 110, de, de1, de2, de3;
@@ -256,7 +160,7 @@ namespace Labs
             
 
         }
-        static void Ex_A1_5() // 5 вариант
+        public static void Ex_A1_5() // 5 вариант
         {
 
             string
@@ -299,7 +203,7 @@ namespace Labs
             Console.WriteLine("{0}", x0);
         }
 
-        static void Ex_A2_5()
+        public static void Ex_A2_5()
         {
             
             double a,b,t,y,s;

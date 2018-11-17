@@ -57,6 +57,7 @@
     <Compile Include="File_lab2.cs" />
     <Compile Include="File_lab1.cs" />
     <Compile Include="File_lab3.cs" />
+    <Compile Include="MainL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
