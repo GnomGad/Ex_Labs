@@ -11,7 +11,7 @@ namespace Labs
         {
             double a, b, c;
             double Dis;
-            Console.WriteLine("enter a,b,c and press Enter");//дальше будет ввод
+            Console.WriteLine("введите a,b,c через энтер");//дальше будет ввод
             a = int.Parse(Console.ReadLine());
             b = int.Parse(Console.ReadLine());
             c = int.Parse(Console.ReadLine());
@@ -46,7 +46,7 @@ namespace Labs
         {
             double pi = 0; //число пи
             double k = 1;
-            Console.WriteLine("enter number");
+            Console.WriteLine("введите число 0,1 и меньше");
             int num = int.Parse(Console.ReadLine());
 
             for (int i = 1; i < num; i += 2, k *= -1)// смена знака, без него будут огромные числа
@@ -65,7 +65,7 @@ namespace Labs
         public static void ex_4() // от части работает
         {
 
-            Console.WriteLine("enter x,q");
+            Console.WriteLine("введите x,q через энтер");
             double n = int.Parse(Console.ReadLine());// градусы
             double q = double.Parse(Console.ReadLine()); //число
             double add = 0;
@@ -102,7 +102,7 @@ namespace Labs
        
             public static void ex_5() // вроде работает. много символов не стоит записывать, а то зависнет x^3+y^3+z^3=N
         {
-            Console.WriteLine("enter N ");
+            Console.WriteLine("введите N ");
             int N = int.Parse(Console.ReadLine());
             int x = 1, y = 1, z = 1;
             
@@ -131,7 +131,7 @@ namespace Labs
         public static void ex_6() // работает
         {
             re:
-            Console.WriteLine("enter 0<x<100 ");
+            Console.WriteLine("введите 0< x <100 ");
             int year = int.Parse(Console.ReadLine());
             if (year>=100|| year <= 0) goto re;
                 if (year % 10 == 1 && year != 11) Console.WriteLine("{0} год ", year);
@@ -142,11 +142,11 @@ namespace Labs
         public static void ex_a1_5() // дайте мне в лоб )))))) работает dd/mm/yyyy 
         {
 
-            Console.WriteLine("enter Day ");
+            Console.WriteLine("введите день ");
             string day = Console.ReadLine();
-            Console.WriteLine("enter Month ");
+            Console.WriteLine("введите месяц ");
             string month = Console.ReadLine();
-            Console.WriteLine("enter Year ");
+            Console.WriteLine("введите год ");
             string year = Console.ReadLine();
             //если число меньше, то выход
             if (int.Parse(day) < 0 || int.Parse(month) < 0 || int.Parse(year) < 0)
@@ -207,9 +207,9 @@ namespace Labs
 
         public static void ex_a2_5() // работает   вывести сумму нечетных чисел a,b
         {
-            Console.WriteLine("enter a");
+            Console.WriteLine("введите a");
             int a =Math.Abs(int.Parse(Console.ReadLine()));
-            Console.WriteLine("enter b");
+            Console.WriteLine("введите b");
             int b = Math.Abs(int.Parse(Console.ReadLine()));
             int k = 0;
             if (a > b)
@@ -223,7 +223,7 @@ namespace Labs
                 if (a % 2 != 0) k += a;
                 
             }
-            Console.WriteLine("sum= {0}",k);
+            Console.WriteLine("сумма = {0}",k);
         }
     }
 }

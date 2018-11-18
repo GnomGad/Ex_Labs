@@ -12,7 +12,7 @@ namespace Labs
         //<========================================================== LABA ===================================================================>
         public static void  Ex_0()// лабба 1
         {
-            Console.WriteLine("enter any value");
+            Console.WriteLine("введи любое значение");
             double d = Convert.ToDouble(Console.ReadLine());// любое значение с запятой
             d *= 10;
             d %= 10;
@@ -21,7 +21,7 @@ namespace Labs
         }
         public static void Ex_1()
         {
-            Console.WriteLine("enter seconds");
+            Console.WriteLine("введи секунды");
             int hour,minut,idk,sec = Convert.ToInt32(Console.ReadLine()); ; 
             hour = sec / 3600; // получаем час
             idk = hour * 60; // час в минутах
@@ -31,7 +31,7 @@ namespace Labs
         }
         public static void Ex_2()
         {
-            Console.WriteLine("enter time: h,m,s ");
+            Console.WriteLine("введите время: h,m,s ");
             
             int h = Convert.ToInt32(Console.ReadLine()), m = Convert.ToInt32(Console.ReadLine()), s = Convert.ToInt32(Console.ReadLine());
             double idk;
@@ -56,9 +56,9 @@ namespace Labs
             int  a, b;
             double S,P,D;
            // string a, b;
-            Console.WriteLine("enter first cathetus");
+            Console.WriteLine("введите первый катет");
             a =(Convert.ToInt32 (Console.ReadLine()));// ввод и сразу конвертация
-            Console.WriteLine("enter two cathetus");
+            Console.WriteLine("введите второй катет");
             b = (Convert.ToInt32 (Console.ReadLine()));
             S = (a * b) / 2; //площадь равна половине произведения катета
             D = (Math.Sqrt(((a * a) + (b * b))));
@@ -71,7 +71,7 @@ namespace Labs
 
         public static void Ex_5()
         {
-            Console.WriteLine("enter 4х numeric value");
+            Console.WriteLine("введите 4х значние число");
             int a,i,p=1;
             a = (Convert.ToInt32(Console.ReadLine()));
 
@@ -93,7 +93,7 @@ namespace Labs
         }
         public static void Ex_6()
         {
-            Console.WriteLine("enter 3х numeric value");
+            Console.WriteLine("введите 3х значние число");
             int a_b,i,b_a=0; //a_b правильная. b_a реверс 3x знаков
             a_b = (Convert.ToInt32(Console.ReadLine()));
             i = a_b / 100;
@@ -112,7 +112,7 @@ namespace Labs
         public static void Ex_7()// 
         {
             double x;
-            Console.WriteLine("enter x");
+            Console.WriteLine("введите x");
             x = (Convert.ToDouble(Console.ReadLine()));
             double a = x * (x * (x * (3 * x - 5) + 2) - 1) + 7;
             Console.WriteLine(a);
@@ -123,17 +123,17 @@ namespace Labs
         {
              int a1, a2, a3, b1, b2, b3, c1, c2, c3, d1, d2, d3,de, de1, de2, de3;
             //int a1 = 2, a2 = 1, a3 = 2, b1 = 5, b2 = 3, b3 = 10, c1 = 4, c2 = 2, c3 = 9, d1 = 30, d2 = 150, d3 = 110, de, de1, de2, de3;
-            Console.WriteLine("enter values using formula  a,b,c,d and press Enter");
+            Console.WriteLine("введите первый ряд по формуле  a,b,c,d каждое значение через энтер");
             a1 = Convert.ToInt32(Console.ReadLine());
             b1 = Convert.ToInt32(Console.ReadLine());
             c1 = Convert.ToInt32(Console.ReadLine());
             d1 = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("enter values using formula a,b,c,d and press Enter");
+            Console.WriteLine("введите второй ряд по формуле  a,b,c,d каждое значение через энтер");
             a2 = Convert.ToInt32(Console.ReadLine());
             b2 = Convert.ToInt32(Console.ReadLine());
             c2 = Convert.ToInt32(Console.ReadLine());
             d2 = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("enter values using formula a,b,c,d and press Enter");
+            Console.WriteLine("введите третий ряд по формуле  a,b,c,d каждое значение через энтер");
             a3 = Convert.ToInt32(Console.ReadLine());
             b3 = Convert.ToInt32(Console.ReadLine());
             c3 = Convert.ToInt32(Console.ReadLine());
@@ -207,7 +207,7 @@ namespace Labs
         {
             
             double a,b,t,y,s;
-            Console.WriteLine("entered value a,b,t and press Enter");
+            Console.WriteLine("введите значение  a,b,t каждое через энтер");
           
             a = (Convert.ToDouble(Console.ReadLine()));
             b = (Convert.ToDouble(Console.ReadLine()));
