@@ -70,7 +70,7 @@ namespace Labs
 
 
 
-        public static void ex_3() // работает с читом
+        public static void ex_3() // работает с вторым массивом
         {
             int[] nums = new int[4];
             int[] nums2 = new int[nums.Length];
@@ -81,9 +81,9 @@ namespace Labs
 
             for (int i = 0; i < nums.Length; i++) // заполняю массив
                 nums[i] = i;
-            // последний символ
+            
 
-            foreach (int i in nums) // вывожу массив
+            foreach (int i in nums) // вывожу массив обычный
             {
                 Console.Write("{0} ", i);
 
@@ -91,36 +91,23 @@ namespace Labs
             Console.Write("\n\n");
 
 
-            //=========================================== // работающий читерский способ через второй массив
-            //for (int i = 0; i<nums.Length;i++) 
-            //{
-            //    if(i-k>=0)
-            //    {
+           
+            for (int i = 0; i < nums.Length; i++)// работающий читерский способ через второй массив
+            {
+                if (i - k >= 0)
+                {
 
-            //        nums2[i-k] = nums[i];
-            //    }
-            //    else
-            //    {
-            //        nums2[nums.Length-1-i] = nums[i];
-            //    }
+                    nums2[i - k] = nums[i];
+                }
+                else
+                {
+                    nums2[nums.Length - 1 - i] = nums[i];
+                }
 
 
-            //}
-            //=========================================== // работает только при массиве в 4 при остальных размерах магия
-            // int t = nums.Length-1,temp,lel;
-            //for (int i = 0; i < k; i++) 
-            //{
-            //    temp = t;
-            //    t = t - k < 0 ?t= nums.Length  - k : t = t - k;
-            //    lel = nums[t];
-            //    nums[t] = nums[temp];
-            //    nums[temp] = lel;
-            //    t = t - 1 < 0 ? t =nums.Length - 2 : t=t-1;
-            //=========================================== 
+            }
 
-            //}
-
-            foreach (int i in nums) // вывожу массив
+            foreach (int i in nums2) // вывожу массив со сдвигом в лево
             {
                 Console.Write("{0} ", i);
 
@@ -135,10 +122,75 @@ namespace Labs
         public static void ex_5() 
         {
         }
-        public static void ex_6()
+        public static void ex_6() // работает
         {
+            Random  rand = new Random();
+            int NumArray = 10;// длина массива
+            int m1 = 0, m2 = 10; //их 
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Введите длину массива");
+            Console.ForegroundColor = ConsoleColor.White;
+            NumArray = int.Parse(Console.ReadLine());
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Введите минимальный мин и макс для рандома");
+            Console.Write("минимум: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            m1 =int.Parse(Console.ReadLine());
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("максимум: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            m2 = int.Parse(Console.ReadLine());
+
+            int[] array = new int[NumArray];
+            for (int i = 0; i < array.Length; i++) array[i] = rand.Next(m1,m2);
+           
+            foreach (int n in array)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write(n + " ");
+            }
+            Console.Write("\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("sumIterative " + sumIterative(array));
+            Console.WriteLine("sumRecursive " + sumRecursive(array));
+            Console.WriteLine("minIterative " + minIterative(array));
+            Console.WriteLine("minRecursive " + minRecursive(array));
         }
-        public static void ex_7() // робит но хз насчет количества членов
+
+        static int sumIterative(int[] array) 
+        {
+            int sum = 0;
+            foreach (int n in array)
+            {
+                sum += n;
+            }
+            return sum;
+        }
+
+        static int sumRecursive(int[] array,int n=0, int i = 0)
+        {
+            
+            return array.Length>i?sumRecursive(array,n + array[i],++i) :n ; // проверка индекса? суммирование : вывод суммы
+        }
+        
+        static int minIterative(int[] array)
+        {
+            int min = int.MaxValue;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < min) min = array[i];    
+            }
+            return min;
+        }
+
+        static int minRecursive(int[] array, int min = int.MaxValue,int i = 0) 
+        {
+           
+            return array.Length  > i ? array[i] < min ? minRecursive(array,min = array[i],++i) : minRecursive(array, min, ++i) : min ;// проверка индекса?проверка на минимум?запуск рекурсии с новым минимумо: запуск рекурсии со старым минимумом: вывод минимума
+
+        }
+
+        public static void ex_7() // робит 
         {
             Console.WriteLine("Введите n членов");
             int n = int.Parse(Console.ReadLine());

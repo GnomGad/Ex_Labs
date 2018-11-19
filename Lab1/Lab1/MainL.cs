@@ -12,7 +12,7 @@ namespace Labs
         public static ConsoleColor Color_Red = ConsoleColor.Red; // ошибки
         public static ConsoleColor Color_Yellow = ConsoleColor.Yellow; // помощь
         public static ConsoleColor Color_DarkGreen = ConsoleColor.DarkGreen;// название тем
-        public static ConsoleColor Color_Cyan = ConsoleColor.Cyan;
+        public static ConsoleColor Color_Cyan = ConsoleColor.Cyan; // не помню где юзаю)
         public static string Ex = "Задание:", bug = "Ошибка:", topic = "Тема:",Glob_Menu="Меню:",help_mes="Помощь:",help_mesR="Помощь по разделу:",space="    ", test_questions="Контрольные вопросы";// tipics
 
         static string  stroka_normal(string fullstring)
