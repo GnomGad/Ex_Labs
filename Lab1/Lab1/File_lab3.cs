@@ -341,7 +341,7 @@ namespace Labs
         }
         public static void ex_8()
         {
-             
+          //тест   
         }
         public static void ex_a1_5()
         {
