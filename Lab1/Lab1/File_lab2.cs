@@ -47,7 +47,7 @@ namespace Labs
         {
             double pi = 0; //число пи
             double k = 1;
-            Console.WriteLine("введите число 0,1 и меньше");
+            Console.WriteLine("введите большое число");
             int num = int.Parse(Console.ReadLine());
 
             for (int i = 1; i < num; i += 2, k *= -1)// смена знака, без него будут огромные числа
