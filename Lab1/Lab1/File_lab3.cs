@@ -70,16 +70,17 @@ namespace Labs
 
 
 
-        public static void ex_3() // работает с вторым массивом
+        public static void ex_3() // НЕ РАБОТАЕТ, БАГ С НУЛЕМ КОТОРЫЙ НЕ ХОЧЕТ ДВИГАТЬСЯ БОЛЬШЕ ЧЕМ НАДО
         {
-            int[] nums = new int[4];
-            int[] nums2 = new int[nums.Length];
+            Console.WriteLine("Введите длинну массива и K");
+            string n = Console.ReadLine();
+            int[] array_n = MainL.Normal_Enter_Parse(n, 1);
 
-            Console.WriteLine("Введите k");
-            int k = int.Parse(Console.ReadLine());
-       
+            int[] nums = new int[array_n[0]];
+            int[] nums2 = new int[array_n[0]];
 
-            for (int i = 0; i < nums.Length; i++) // заполняю массив
+
+            for (int i = 0; i < array_n[0]; i++) // заполняю массив
                 nums[i] = i;
             
 
@@ -92,12 +93,12 @@ namespace Labs
 
 
            
-            for (int i = 0; i < nums.Length; i++)// работающий читерский способ через второй массив
+            for (int i = 0; i < array_n[0]; i++)
             {
-                if (i - k >= 0)
+                if (i - array_n[1] >= 0)
                 {
 
-                    nums2[i - k] = nums[i];
+                    nums2[i - array_n[1]] = nums[i];
                 }
                 else
                 {
@@ -116,11 +117,143 @@ namespace Labs
 
 
         }
-        public static void ex_4() 
+        public static void ex_4() // работает 
         {
+            Console.WriteLine("Массив A");
+            int[,] First_array = new int[3, 3];
+            int[,] Second_array = new int[3, 3];
+            Random rand = new Random();
+            for (int i = 0; i < First_array.GetLength(0); i++)
+            {
+                for (int j = 0, count = 0; j < Second_array.GetLength(0); j++, count++)
+                {
+                    First_array[i, j] = rand.Next(0, 10);
+                    Console.Write("{0,-5}", First_array[i, j]);//  заполнение 1 и 2 массива вывод 1
+                    Second_array[i, j] = rand.Next(0, 10);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("Массив B");
+            for (int i = 0; i < Second_array.GetLength(0); i++) // вывод второго  массива
+            {
+                for (int j = 0; j < Second_array.GetLength(0); j++)
+                    Console.Write("{0,-5}", Second_array[i, j]);
+                Console.WriteLine();
+            }
+            Console.WriteLine("Массив A+B");
+            int[,] Third_array = new int[3, 3];
+            Third_array = sum(First_array, Second_array, out float summ);
+
+            for (int i = 0; i < Third_array.GetLength(0); i++) // вывод третьего  массива
+            {
+                for (int j = 0; j < Third_array.GetLength(0); j++)
+                    Console.Write("{0,-5}", Third_array[i, j]);
+                Console.WriteLine();
+            }
+            Console.WriteLine("Среднее значение A+B: " + summ);
+
+            int[,] Fourth_array = new int[3, 3];
+            Fourth_array = diff(First_array, Second_array, out float summ_2);
+            Console.WriteLine("Массив A-B");
+            for (int i = 0; i < Fourth_array.GetLength(0); i++) // вывод четвертого  массива
+            {
+                for (int j = 0; j < Fourth_array.GetLength(0); j++)
+                    Console.Write("{0,-5}", Fourth_array[i, j]);
+                Console.WriteLine();
+            }
+            Console.WriteLine("Среднее значение A-B: " + summ_2);
         }
-        public static void ex_5() 
+
+
+
+        public static int[,] sum(int[,] First_array, int[,] Second_array, out float summ) //сумма
         {
+            summ = 0;
+            int[,] Third_array = new int[3,3];
+            int count = 0;
+            for (int i = 0; i < First_array.GetLength(0); i++) 
+                for (int j = 0; j < Second_array.GetLength(0); j++,count++)
+                {
+                    Third_array[i,j] = First_array[i, j] + Second_array[i, j];
+                    summ += Third_array[i, j];
+
+                }
+            summ =summ/(count*2);
+            return Third_array;
+        }
+        public static int[,] diff(int[,] First_array, int[,] Second_array, out float summ_2)
+        {
+            int count = 0;
+            summ_2 = 0;
+            int[,] Third_array = new int[3, 3];
+            for (int i = 0; i < First_array.GetLength(0); i++)
+                for (int j = 0; j < Second_array.GetLength(0); j++, count++)
+                {
+                    Third_array[i, j] = First_array[i, j] - Second_array[i, j];
+                    summ_2 += Third_array[i, j];
+            }
+            summ_2 = summ_2 / (count * 2);
+            return Third_array;
+        }
+
+
+
+
+
+
+        public static void ex_5() // работает для любых  x == y значений [2,2] [100,100]
+        {
+           
+
+            int[,] First_Array =  new int[5,5];
+            int[,] Second_Array = new int[5,5];
+            int[,] Third_Array = new int[5,5];
+            Random rand = new Random();
+            for (int i = 0; i < First_Array.GetLength(0); i++)// заполнение первого и второго массива, вывод первого
+            {
+                for (int j = 0; j < First_Array.GetLength(0); j++)
+                {
+                    First_Array[i, j] = rand.Next(0, 100);
+                    Console.Write("{0,-5}",First_Array[i, j]);// 
+                    Second_Array[i, j] = rand.Next(0, 100);
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine('+');
+
+            for (int i = 0; i < First_Array.GetLength(0); i++) // вывод второго  массива
+            {
+                for (int j = 0; j < First_Array.GetLength(0); j++)
+                    Console.Write("{0,-5}",Second_Array[i, j]);
+                Console.WriteLine();
+            }
+            for (int i = 0; i < First_Array.GetLength(0); i++) // заполняем третий массив через уже существующий метод
+                for (int j = 0; j < First_Array.GetLength(0); j++)
+                    Third_Array[i,j]=proizv(First_Array, Second_Array,i,j);
+            Console.WriteLine();
+            for (int i = 0; i < Third_Array.GetLength(0); i++)// вывод 3 массива
+            {
+                for (int j = 0; j < Third_Array.GetLength(0); j++)
+                    Console.Write("{0,-7}",Third_Array[i, j]);
+                Console.WriteLine();
+            }
+        }
+        static int proizv(int[,] First_Array,int[,] Second_Array,int x,int y)//тот самый метод
+        {
+            int summ = 0;
+            int First_x = x,Second_y = y;
+            // фича в том, что мы получаем координаты x и y, у первого массива x статична, она постоянная, а y увеличивается на +1
+            // у второго массива первая +1, а вторая статичная Y
+            // зная эту зависимость массивов можно сделать вот такую форму для подсчета
+            
+                for (int i = 0; i < First_Array.GetLength(1)|| i < Second_Array.GetLength(0); i++)
+
+                {
+                    summ += (First_Array[First_x, i] * Second_Array[i, Second_y]);
+                }
+           
+            return summ;
         }
         public static void ex_6() // работает
         {
@@ -208,6 +341,7 @@ namespace Labs
         }
         public static void ex_8()
         {
+             
         }
         public static void ex_a1_5()
         {

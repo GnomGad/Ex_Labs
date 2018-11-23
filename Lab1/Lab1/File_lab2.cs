@@ -11,10 +11,11 @@ namespace Labs
         {
             double a, b, c;
             double Dis;
-            Console.WriteLine("введите a,b,c через энтер");//дальше будет ввод
-            a = int.Parse(Console.ReadLine());
-            b = int.Parse(Console.ReadLine());
-            c = int.Parse(Console.ReadLine());
+            Console.WriteLine("введите a,b,c");//дальше будет ввод
+            int[] n = MainL.Normal_Enter_Parse(Console.ReadLine(), 1);
+            a = n[0];
+            b = n[1];
+            c = n[2];
             if (a == 0) return; //главное условие, если а = 0 то вылетаем
             Dis = (Math.Pow(b, 2) - 4 * a * c);//нахождение дискриминанта
             if (Dis > 0) //2 корня если дискриминант больше 0
@@ -62,7 +63,7 @@ namespace Labs
             Console.WriteLine("count= {0}", count);
         }
 
-        public static void ex_4() // от части работает
+        public static void ex_4() // работает
         {
 
             Console.WriteLine("введите x,q через энтер");
@@ -142,12 +143,13 @@ namespace Labs
         public static void ex_a1_5() // дайте мне в лоб )))))) работает dd/mm/yyyy 
         {
 
-            Console.WriteLine("введите день ");
-            string day = Console.ReadLine();
-            Console.WriteLine("введите месяц ");
-            string month = Console.ReadLine();
-            Console.WriteLine("введите год ");
-            string year = Console.ReadLine();
+            Console.WriteLine("введите день месяц год ");
+            string[] str = MainL.Normal_Enter_Parse(Console.ReadLine(), "s");
+            string day = str[0];
+
+            string month = str[1];
+
+            string year = str[2];
             //если число меньше, то выход
             if (int.Parse(day) < 0 || int.Parse(month) < 0 || int.Parse(year) < 0)
             {
@@ -207,10 +209,10 @@ namespace Labs
 
         public static void ex_a2_5() // работает   вывести сумму нечетных чисел a,b
         {
-            Console.WriteLine("введите a");
-            int a =Math.Abs(int.Parse(Console.ReadLine()));
-            Console.WriteLine("введите b");
-            int b = Math.Abs(int.Parse(Console.ReadLine()));
+            Console.WriteLine("введите a и b");
+            int[] num = MainL.Normal_Enter_Parse(Console.ReadLine(), 1);
+            int a =Math.Abs(num[0]);
+            int b = Math.Abs(num[0]);
             int k = 0;
             if (a > b)
             {

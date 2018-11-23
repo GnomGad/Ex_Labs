@@ -32,10 +32,11 @@ namespace Labs
         public static void Ex_2()
         {
             Console.WriteLine("введите время: h,m,s ");
-            
-            int h = Convert.ToInt32(Console.ReadLine()), m = Convert.ToInt32(Console.ReadLine()), s = Convert.ToInt32(Console.ReadLine());
+
+            int[] hms = MainL.Normal_Enter_Parse(Console.ReadLine(), 1);
+           
             double idk;
-            idk = (h * 30 + m * 0.5 + s * (0.5 / 60.0));// вроде робит 1 час = 360/12 = 30градусов, 1 минута  = 30 градусов /60 = 0.5 градусов, 1 секунда = 0.5 градусов на 60
+            idk = (hms[0] * 30 + hms[1] * 0.5 + hms[2] * (0.5 / 60.0));// вроде робит 1 час = 360/12 = 30градусов, 1 минута  = 30 градусов /60 = 0.5 градусов, 1 секунда = 0.5 градусов на 60
             Console.WriteLine(idk);
             
         }
@@ -53,16 +54,13 @@ namespace Labs
         public static void Ex_4()
         {
 
-            int  a, b;
             double S,P,D;
            // string a, b;
-            Console.WriteLine("введите первый катет");
-            a =(Convert.ToInt32 (Console.ReadLine()));// ввод и сразу конвертация
-            Console.WriteLine("введите второй катет");
-            b = (Convert.ToInt32 (Console.ReadLine()));
-            S = (a * b) / 2; //площадь равна половине произведения катета
-            D = (Math.Sqrt(((a * a) + (b * b))));
-            P = (a + b + D); // а+б+с = площадь 
+            Console.WriteLine("введите первый и второй катеты");
+                int[] cat = MainL.Normal_Enter_Parse(Console.ReadLine(),1);
+            S = (cat[0]* cat[1]) / 2; //площадь равна половине произведения катета
+            D = (Math.Sqrt(((cat[0] * cat[0]) + (cat[1] * cat[1]))));
+            P = (cat[0] + cat[1] + D); // а+б+с = площадь 
             Console.WriteLine("S = {0}, P {1}",S,P);    
             
         }
@@ -123,21 +121,25 @@ namespace Labs
         {
              int a1, a2, a3, b1, b2, b3, c1, c2, c3, d1, d2, d3,de, de1, de2, de3;
             //int a1 = 2, a2 = 1, a3 = 2, b1 = 5, b2 = 3, b3 = 10, c1 = 4, c2 = 2, c3 = 9, d1 = 30, d2 = 150, d3 = 110, de, de1, de2, de3;
-            Console.WriteLine("введите первый ряд по формуле  a,b,c,d каждое значение через энтер");
-            a1 = Convert.ToInt32(Console.ReadLine());
-            b1 = Convert.ToInt32(Console.ReadLine());
-            c1 = Convert.ToInt32(Console.ReadLine());
-            d1 = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("введите второй ряд по формуле  a,b,c,d каждое значение через энтер");
-            a2 = Convert.ToInt32(Console.ReadLine());
-            b2 = Convert.ToInt32(Console.ReadLine());
-            c2 = Convert.ToInt32(Console.ReadLine());
-            d2 = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("введите третий ряд по формуле  a,b,c,d каждое значение через энтер");
-            a3 = Convert.ToInt32(Console.ReadLine());
-            b3 = Convert.ToInt32(Console.ReadLine());
-            c3 = Convert.ToInt32(Console.ReadLine());
-            d3 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("введите первый ряд по формуле  a,b,c,d ");
+            int[] D = MainL.Normal_Enter_Parse(Console.ReadLine(), 1);
+            a1 = D[0];
+            b1 = D[1];
+            c1 = D[2];
+            d1 = D[3];
+            Console.WriteLine("введите второй ряд по формуле  a,b,c,d ");
+            D = MainL.Normal_Enter_Parse(Console.ReadLine(), 1);
+            a2 = D[0];
+            b2 = D[1];
+            c2 = D[2];
+            d2 = D[3];
+            Console.WriteLine("введите третий ряд по формуле  a,b,c,d ");
+            D = MainL.Normal_Enter_Parse(Console.ReadLine(), 1);
+            a3 = D[0];
+            b3 = D[1];
+            c3 = D[2];
+            d3 = D[3];
+
 
             de = a1 * b2 * c3 - a1 * b3 * c2 - b1 * a2 * c3 + b1 * a3 * c2 + c1 * a2 * b3 - c1 * a3 * b2; // nu
             
@@ -207,11 +209,11 @@ namespace Labs
         {
             
             double a,b,t,y,s;
-            Console.WriteLine("введите значение  a,b,t каждое через энтер");
-          
-            a = (Convert.ToDouble(Console.ReadLine()));
-            b = (Convert.ToDouble(Console.ReadLine()));
-            t = (Convert.ToDouble(Console.ReadLine()));
+            Console.WriteLine("введите значение  a,b,t ");
+            int[] n = MainL.Normal_Enter_Parse(Console.ReadLine(),1);
+            a = n[0];
+            b = n[1];
+            t = n[2];
             y =(Math.Pow(Math.E,-b*t) * Math.Sin(a*t+b)-Math.Sqrt(Math.Abs(b*t+a)));
             s = (b * Math.Sin(a * Math.Pow(t, 2) * Math.Cos(2 * t) - 1));
             Console.WriteLine("y= {0}",y);

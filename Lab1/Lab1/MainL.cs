@@ -13,8 +13,24 @@ namespace Labs
         public static ConsoleColor Color_Yellow = ConsoleColor.Yellow; // помощь
         public static ConsoleColor Color_DarkGreen = ConsoleColor.DarkGreen;// название тем
         public static ConsoleColor Color_Cyan = ConsoleColor.Cyan; // не помню где юзаю)
-        public static string Ex = "Задание:", bug = "Ошибка:", topic = "Тема:",Glob_Menu="Меню:",help_mes="Помощь:",help_mesR="Помощь по разделу:",space="    ", test_questions="Контрольные вопросы";// tipics
+        public static ConsoleColor Color_Magnetta = ConsoleColor.Magenta;
+        public static string Ex = "Задание:", bug = "Ошибка:", topic = "Тема:", Glob_Menu = "Меню:", help_mes = "Помощь:", help_mesR = "Помощь по разделу:", space = "    ", test_questions = "Контрольные вопросы";// tipics
 
+        public static int[] Normal_Enter_Parse(string stroka, int n = 1)
+        {
+
+            string[] nums_str = stroka.Split(',', ' ', '.', '/', '\\','\'',';');
+
+                int[] nums_int = new int[nums_str.Length];
+                for (int i = 0; i < nums_int.Length; i++)
+                    nums_int[i] = int.Parse(nums_str[i]);
+                return nums_int;
+        }
+        public static string[] Normal_Enter_Parse(string stroka,string s="string")
+        {
+            string[] nums_str = stroka.Split(',', ' ', '.', '/', '\\', '\'', ';');
+            return nums_str;
+        }
         static string  stroka_normal(string fullstring)
         {
 
@@ -81,13 +97,21 @@ namespace Labs
             {
                 Console_message(Glob_Menu,"Введите номер лабораторной работы 1-3");
                 string key = Console.ReadLine();
+                //string[] nums = key.Split(',', ' ', '.','/','\\');
+                string[] nums = Normal_Enter_Parse(key," ");
+                string key_second = "-1";
+                if (nums.Length == 2)
+                {
+                    key = nums[0];
+                      key_second = nums[1];
+                }
                 switch (key)
                 {
                     case "cl": { Console.Clear(); break; }
                     case "0": { return; }
-                    case "1": { Console_message(topic,"Базовые типы данных языка C#. Работа с консолью", Color_DarkGreen) ; Ex_lab1(); break; }
-                    case "2": { Console_message(topic,"Программирование ветвления и циклов на языке C#", Color_DarkGreen); Ex_lab2(); break; }
-                    case "3": { Console_message(topic,"Массивы. Пользовательские функции", Color_DarkGreen); Ex_lab3(); break; }
+                    case "1": { Console_message(topic,"Базовые типы данных языка C#. Работа с консолью", Color_DarkGreen) ; Ex_lab1(key_second); break; }
+                    case "2": { Console_message(topic,"Программирование ветвления и циклов на языке C#", Color_DarkGreen); Ex_lab2(key_second); break; }
+                    case "3": { Console_message(topic,"Массивы. Пользовательские функции", Color_DarkGreen); Ex_lab3(key_second); break; }
                     case "help": { help(1); break; }
                     default: { Console_message(bug,"Неверное значение, команда help для помощи",Color_Red) ; break; }
 
@@ -96,14 +120,16 @@ namespace Labs
 
         }
 
-        static void Ex_lab1() //<======================================================== LAB1
+        static void Ex_lab1(string d ) //<======================================================== LAB1
         {
             
-            string k;
+            string k = d;
+            
             while (true)
             {
-                Console_message(Glob_Menu, "Введите номер задания  1-11");
-                k = Console.ReadLine();
+                if(k!="0")Console_message(Glob_Menu, "Введите номер задания  1-11");
+                if(k == "-1") k = Console.ReadLine();
+
                 switch (k)
                 {
                     
@@ -140,16 +166,19 @@ namespace Labs
                     default: { Console_message(bug, "Неверное значение, команда help для помощи", Color_Red); break; }
 
                 }
+                Console_message(Glob_Menu, "space если хотите повторить или номер нужного задания", Color_Magnetta);
+                string tmp = Console.ReadLine();
+                if (tmp != " ") k = tmp;
             }
         }
 
-        static void Ex_lab2() //<======================================================== LAB2
+        static void Ex_lab2(string d ) //<======================================================== LAB2
         {
-            string k;
+            string k=d;
             while (true)
             {
-                Console_message(Glob_Menu, "Введите номер задания  1-8");
-                k = Console.ReadLine();
+                if (k != "0") Console_message(Glob_Menu, "Введите номер задания  1-8");
+                if (k == "-1") k = Console.ReadLine();
                 switch (k)
                 {
                     case "help": { help(2); break; }
@@ -175,16 +204,19 @@ namespace Labs
                             break; }
                     default: { Console_message(bug, "Неверное значение, команда help для помощи", Color_Red); break; }
                 }
+                Console_message(Glob_Menu, "space если хотите повторить или номер нужного задания", Color_Magnetta);
+                string tmp = Console.ReadLine();
+                if (tmp != " ") k = tmp;
             }
         }
 
-        static void Ex_lab3()
+        static void Ex_lab3(string d)
         {
-            string k;
+            string k=d;
             while (true)
             {
-                Console_message(Glob_Menu, "Введите номер задания  1-10");
-                k = Console.ReadLine();
+                if (k != "0") Console_message(Glob_Menu, "Введите номер задания  1-10");
+                if (k == "-1") k = Console.ReadLine();
                 switch (k)
                 {
                     case "help": { help(2); break; }
@@ -218,6 +250,9 @@ namespace Labs
                             break; }
                     default: { Console_message(bug, "Неверное значение, команда help для помощи", Color_Red); break; }
                 }
+                Console_message(Glob_Menu, "space если хотите повторить или номер нужного задания", Color_Magnetta);
+                string tmp = Console.ReadLine();
+                if (tmp != " ") k = tmp;
             }
         }
     }
