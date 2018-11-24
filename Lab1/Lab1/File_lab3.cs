@@ -70,47 +70,44 @@ namespace Labs
 
 
 
-        public static void ex_3() // НЕ РАБОТАЕТ, БАГ С НУЛЕМ КОТОРЫЙ НЕ ХОЧЕТ ДВИГАТЬСЯ БОЛЬШЕ ЧЕМ НАДО
+        public static void ex_3() // ЕЕЕ ЗАРАБОТАЛО
         {
             Console.WriteLine("Введите длинну массива и K");
             string n = Console.ReadLine();
             int[] array_n = MainL.Normal_Enter_Parse(n, 1);
 
-            int[] nums = new int[array_n[0]];
-            int[] nums2 = new int[array_n[0]];
+            //int n_of_array = array_n[0];
 
+            int[] nums = new int[array_n[0]];
 
             for (int i = 0; i < array_n[0]; i++) // заполняю массив
+            {
                 nums[i] = i;
+                Console.Write("{0} ", nums[i]);
+            }
+            // вывожу массив обычный
+                
+            Console.Write("\n\n");
+            //<--------------------------------- влево это туда <--------------------------------------
+            //зона для цикла 
+            int a1;
+            for (int j = 0; j < array_n[1]; j++)// сдвиг на 1 k раз
+            {
+                a1 = nums[0];
+                // а1 - текущий который надо поменять a2 - тот на который надо поменять
+                for (int i = 0; i <nums.Length-1; i++)// сдвиг на 1 всех элементов
+                {
+                    nums[i]=nums[i+1];
+                }
+                nums[array_n[0] - 1] = a1;
+            }
+            //зона для цикла
             
 
-            foreach (int i in nums) // вывожу массив обычный
+
+            foreach (int j in nums) // вывожу массив со сдвигом в лево
             {
-                Console.Write("{0} ", i);
-
-            }
-            Console.Write("\n\n");
-
-
-           
-            for (int i = 0; i < array_n[0]; i++)
-            {
-                if (i - array_n[1] >= 0)
-                {
-
-                    nums2[i - array_n[1]] = nums[i];
-                }
-                else
-                {
-                    nums2[nums.Length - 1 - i] = nums[i];
-                }
-
-
-            }
-
-            foreach (int i in nums2) // вывожу массив со сдвигом в лево
-            {
-                Console.Write("{0} ", i);
+                Console.Write("{0} ", j);
 
             }
             Console.Write("\n\n");
@@ -339,15 +336,93 @@ namespace Labs
             if (n > 0) return for_ex_7(f0, f1, f2, n);
             else return f1;
         }
-        public static void ex_8()
+        //---------------------------------надо сделать
+        public static void ex_8()//чаво?
         {
-          //тест   
+            Console.WriteLine("Введите N");
+            int len = Convert.ToInt32(Console.ReadLine());
+            int[,] array = new int[len, len];
+            Random rand = new Random();
+
+            for (int i = 0; i < len; i++) // заполнение
+                for (int j = 0; j < len; j++)
+                    array[i, j] = rand.Next(1, 10);
+            for (int i = 0; i < len; i++)// вывод
+            {
+                for (int j = 0; j < len; j++)
+                {
+                    Console.Write("{0,2}", array[i, j]);
+                }
+                Console.WriteLine();
+            }
         }
-        public static void ex_a1_5()
+
+
+        public static int Rec()// здесь должна быть ваша рекурсия
         {
+            return 0;
         }
-        public static void ex_a2_5() 
+
+
+        public static void ex_a1_5()// работает
         {
+            Random rand = new Random();
+            int[,] array = new int[9, 9];
+            int[,] array_1 = array;
+
+            for (int i = 0; i < 9; i++) // заполнение
+                for(int j =0; j<9;j++)
+                    array[i, j] = rand.Next(1,10);
+
+            for (int i = 0; i < 9; i++)// вывод
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    Console.Write("{0,4}",array[i, j]);
+                }
+                Console.WriteLine();
+             }
+            Console.WriteLine();
+            //int sumxy=0;
+            for (int xy=0;xy<9;xy++) // магия
+            {
+                int sum = 0;
+                for (int x = 0; x < 9; x++)
+                    if(x!=xy) sum += array[x, xy] + array[xy, x];
+                array_1[xy, xy] = sum;
+
+            }
+            for (int i = 0; i < 9; i++)// вывод
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    Console.Write("{0,4}", array[i, j]);
+                }
+                Console.WriteLine();
+            }
+
+        }
+        public static void ex_a2_5() // работает
+        {
+            Console.WriteLine("Введите длину массива");
+            int len = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите символы");
+            int[] array1 = MainL.Normal_Enter_Parse(Console.ReadLine(), 1);
+            int[] array = new int[len];
+            for (int i = 0; i < len; i++) array[i] = array1[i];
+            foreach (int i in array) Console.Write(i + " ");
+            Console.WriteLine();
+            int max = int.MinValue,count = 0;
+            for(int i = 0;i<len;i+=2)
+            {
+                if (array[i] % 2 == 1 || array[i] % 2 == -1)
+                {
+                    if (max < array[i]) max = array[i];
+                    count++;
+                }
+            }
+            if(count>0)Console.WriteLine(max);
+            else Console.WriteLine("Нет такого значения");
         }
 
     }

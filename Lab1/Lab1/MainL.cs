@@ -19,7 +19,7 @@ namespace Labs
         public static int[] Normal_Enter_Parse(string stroka, int n = 1)
         {
 
-            string[] nums_str = stroka.Split(',', ' ', '.', '/', '\\','\'',';');
+            string[] nums_str = stroka.Split(',', ' ', '.', '/', '\\','\'',';','ю', 'б', 'э', 'ж', 'д', 'ъ', 'х', 'з', 'щ', 'm', 'l', '[', ']', '|', 'p', 'o', '?');
 
                 int[] nums_int = new int[nums_str.Length];
                 for (int i = 0; i < nums_int.Length; i++)
@@ -113,6 +113,7 @@ namespace Labs
                     case "2": { Console_message(topic,"Программирование ветвления и циклов на языке C#", Color_DarkGreen); Ex_lab2(key_second); break; }
                     case "3": { Console_message(topic,"Массивы. Пользовательские функции", Color_DarkGreen); Ex_lab3(key_second); break; }
                     case "help": { help(1); break; }
+                    case "": { Labs.Test.test(); break; }
                     default: { Console_message(bug,"Неверное значение, команда help для помощи",Color_Red) ; break; }
 
                 }
