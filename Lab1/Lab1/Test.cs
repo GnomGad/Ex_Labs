@@ -9,10 +9,10 @@ namespace Labs
     {
         public static void test()
         {
-
-            Labs.lab3.ex_8();
-            
+            Labs.lab3.ex_3();
+         
         }
+
     }
 
 }
