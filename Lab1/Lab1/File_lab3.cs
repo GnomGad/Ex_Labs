@@ -357,12 +357,12 @@ namespace Labs
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine("det A= " + DetRec(array));
+            Console.WriteLine("det A= " + Rec(array));
 
         }
 
 
-        private static int DetRec(int[,] array_det)// здесь должна быть ваша рекурсия
+        private static int Rec(int[,] array_det)// здесь должна быть ваша рекурсия
         {
             if (array_det.GetLength(0) == 1) return array_det[0, 0];
             else if(array_det.GetLength(0) == 2) return array_det[0, 0] * array_det[1, 1] - array_det[0, 1] * array_det[1, 0];// два исключения
@@ -370,13 +370,13 @@ namespace Labs
             int sign = 1, res = 0;
             for (int i = 0; i < array_det.GetLength(1); i++)// проходимся по всем верхним значениям
             {
-                int[,] minor = GetMinor(array_det, i); // получаем наш минор через рекурсию
-                res += sign * array_det[0, i] * DetRec(minor);// все та же рекурсия умножаем наш sign для смены знака на верхний знак i и его минор под рекурсией,
+                int[,] minor = Rec_Minor(array_det, i); // получаем наш минор через рекурсию
+                res += sign * array_det[0, i] * Rec(minor);// все та же рекурсия умножаем наш sign для смены знака на верхний знак i и его минор под рекурсией,
                 sign = -sign;
             }
             return res;
         }
-        public static int[,] GetMinor(int[,] array_Minor, int n)// минор
+        public static int[,] Rec_Minor(int[,] array_Minor, int n)// минор
         {
             int[,] res = new int[array_Minor.GetLength(0) - 1, array_Minor.GetLength(0) - 1];//сам массив с вычеркнутыми строками
             for (int i = 1; i < array_Minor.GetLength(0); i++)
