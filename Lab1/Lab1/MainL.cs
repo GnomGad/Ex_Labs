@@ -88,6 +88,8 @@ namespace Labs
                 Console_message(help_mes, "q - Контрольные вопросы", Color_Yellow);
             }
         }
+
+
         static void Main(string[] args)// 80*
         {
             // for(int i = 1;i<=80; i++)
@@ -95,7 +97,7 @@ namespace Labs
 
             while (true)
             {
-                Console_message(Glob_Menu,"Введите номер лабораторной работы 1-3");
+                Console_message(Glob_Menu,"Введите номер лабораторной работы 1-4");
                 string key = Console.ReadLine();
                 //string[] nums = key.Split(',', ' ', '.','/','\\');
                 string[] nums = Normal_Enter_Parse(key," ");
@@ -112,6 +114,7 @@ namespace Labs
                     case "1": { Console_message(topic,"Базовые типы данных языка C#. Работа с консолью", Color_DarkGreen) ; Ex_lab1(key_second); break; }
                     case "2": { Console_message(topic,"Программирование ветвления и циклов на языке C#", Color_DarkGreen); Ex_lab2(key_second); break; }
                     case "3": { Console_message(topic,"Массивы. Пользовательские функции", Color_DarkGreen); Ex_lab3(key_second); break; }
+                    case "4": { Console_message(topic, "Работа со строками в C#. Знакомство с регулярными выражениями", Color_DarkGreen);Ex_Lab4(key_second);break; }
                     case "help": { help(1); break; }
                     case "": { Labs.Test.test(); break; }
                     default: { Console_message(bug,"Неверное значение, команда help для помощи",Color_Red) ; break; }
@@ -249,6 +252,42 @@ namespace Labs
                             Console_message( "6. Передача параметров в функцию. Ключевые слова params, ref и out.", Color_Cyan);
                             Console_message( "7. то такое рекурсия? Особенности написания рекурсивных функций", Color_Cyan);
                             break; }
+                    default: { Console_message(bug, "Неверное значение, команда help для помощи", Color_Red); break; }
+                }
+                Console_message(Glob_Menu, "space если хотите повторить или номер нужного задания", Color_Magnetta);
+                string tmp = Console.ReadLine();
+                if (tmp != " ") k = tmp;
+            }
+        }
+
+        static void Ex_Lab4(string d)
+        {
+            string k = d;
+            while(true)
+            {
+                if (k != "0") Console_message(Glob_Menu, "Введите номер задания  1-10");
+                if (k == "-1") k = Console.ReadLine();
+                switch (k)
+                {
+                    case "help": { help(2); break; }
+                    case "cl": { Console.Clear(); break; }
+                    case "0": { return; }
+                    case "1": { Console_message(Ex, "1. Ввести с клавиатуры текст предложения, завершить точкой. Вывести на консоль все символы, которые входят в этот текст ровно по одному разу. Решить задачу 2 способами: через обработку строки как массива символов и с помощью методов класса string", Color_Green);Labs.lab4.Ex_1() ;break; }
+                    case "2": { Console_message(Ex, "2. Ввести с клавиатуры текст предложения, завершить точкой. Сформировать новую строку на основе исходной, в которой после каждого слова в скобках указать номер слова в предложении(слова разделяются запятыми, пробелами или тире).Например, если введено «Донецк – прекрасный город», результирующая строка должна выглядеть так: «Донецк(1) – прекрасный(2) город(3)». Решить задачу 2 способами: через обработку строки как массива символов и с помощью методов класса string.", Color_Green); lab4.Ex_2() ; break; }
+                    case "q":
+                        {
+                            Console_message(test_questions, Color_Cyan);
+                            Console_message("1. Как в C# .NET может быть представлена строка символов?", Color_Cyan);
+                            Console_message("2. Кратко опишите особенности и основные методы класса String", Color_Cyan);
+                            Console_message("3. Что делают методы split() и join()?", Color_Cyan);
+                            Console_message("4. Укажите особенности сравнения строк в C# .NET", Color_Cyan);
+                            Console_message("5. Что такое абстрактное синтаксическое дерево? Дерево разбора?", Color_Cyan);
+                            Console_message("6. Приведите определение и пример РБНФ-выражения.", Color_Cyan);
+                            Console_message("7. Что такое регулярные выражения? Для чего они используются?", Color_Cyan);
+                            Console_message("8. Опишите основные синтакические элементы регулярных выражений", Color_Cyan);
+                            Console_message("9. Укажите разницу между «жадными», «ленивыми» и «собственническими» квантификаторами в регулярных выражениях", Color_Cyan);
+                            break;
+                        }
                     default: { Console_message(bug, "Неверное значение, команда help для помощи", Color_Red); break; }
                 }
                 Console_message(Glob_Menu, "space если хотите повторить или номер нужного задания", Color_Magnetta);

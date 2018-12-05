@@ -9,7 +9,7 @@ namespace Labs
     {
         public static void test()
         {
-            Labs.lab3.ex_3();
+            Labs.lab4.Ex_2();
          
         }
 
