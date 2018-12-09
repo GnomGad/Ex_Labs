@@ -47,7 +47,8 @@ namespace Labs
             Console.WriteLine();
 
         }
-        public static void Ex_2()//доделать
+
+        public static void Ex_2()//доделал
         {
            
             string str_s = Console.ReadLine();
