@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Labs
 {
@@ -317,9 +317,151 @@ namespace Labs
                 Console.WriteLine("Строка номер {0}",temp1+1);
             
         }
+
+
+        private static bool is_symbol(int char_int, bool bol, bool bol_two=true)// для 5 задания проверочка
+        {
+            if (char_int >= 32 && char_int <= 47 && !bol && !bol_two)
+                return true;
+            if (char_int <= 90 && char_int>=65 && bol && bol_two)
+                return true;
+            if (char_int <= 57 && char_int >= 48 && !bol && bol_two)
+                return true;
+            if (char_int <= 122 && char_int >= 97 &&!bol_two)  
+            return true;
+            
+            return false;
+        }
         public static void Ex_5()
         {
+            string str_s = Console.ReadLine();
+            {
+                int flag = 0;
+                string str_not_s = "";
+                str_s += " ";
+                foreach (char char_for_str in str_s)// 65 и 90 это A-Z 48-57 числа 0-9  символы письма 32 @space@  
+                {
+                    if (is_symbol(char_for_str, true) && flag == 0) { flag = 1; str_not_s += char_for_str; }//вход большого символа
+                    else if ((flag == 1) && is_symbol(char_for_str, true, false)) str_not_s += char_for_str;   //вход маленького символа
+                    else if ((flag == 1) && is_symbol(char_for_str, false)) { flag = 2; str_not_s += char_for_str; }//вход цифры первой
+                    else if ((flag == 2) && is_symbol(char_for_str, false)) { flag = 3; str_not_s += char_for_str; }//вход цифры второй
+                    else if ((flag == 3) && is_symbol(char_for_str, false, false)) { flag = 0; Console.WriteLine(str_not_s); str_not_s = ""; }//сброс есть 
+                    else { flag = 0; str_not_s = ""; }//если будет ничего
+                }
+            }// умертвим наши переменные не нужные
+            Regex regex = new Regex(@"[A-ZА-Я]([a-zа-я]+)\d\d");// регулярочка
+            foreach (Match match in regex.Matches(str_s))
+                Console.WriteLine(match);
+        }
+        public static void Ex_6()
+        {
+            string s_new_regex_match = "";
+            string str_s = Console.ReadLine();
+            string part_reg = @"\s+";
+            string target = "";
+            string temp = "";
+            Regex regex = new Regex(part_reg);
+            str_s = regex.Replace(str_s, target);
+            Console.WriteLine(str_s);
+            // регулярочка(-?)\s*\d+\s*?[+-]\s*?\d+\s*?=\s*?(-?)\s*?\d+
+            int[] int_array = new int[3];
+            regex = new Regex(@"-?\d+");
+            temp = regex.Match(str_s).ToString();
+            int_array[0] = Int32.Parse(temp);
+            Console.WriteLine(int_array[0]);
 
+
+            regex = new Regex(@"[+-]\d+");
+            string temp2 = regex.Match(str_s, temp.Length - 1).ToString();
+            int_array[1] = Int32.Parse(temp2);
+            Console.WriteLine(int_array[1]);
+
+
+            regex = new Regex(@"-?\d+");
+            string temp3 = regex.Match(str_s, temp.Length+temp2.Length).ToString();
+            int_array[2] = Int32.Parse(temp3);
+            Console.WriteLine(int_array[2]);
+
+        }
+        public static void Ex_7()//работает
+        {//заполнение
+            string[] music_list = new string[10];
+            double[] music_double_time = new double[10];
+            music_list[0] = "1. Gentle Giant – Free Hand [6:15]";
+            music_list[1] = "2. Supertramp – Child Of Vision [07:27]";
+            music_list[2] = "3. Camel – Lawrence [10:46]";
+            music_list[3] = "4. Yes – Don’t Kill The Whale [3:55]";
+            music_list[4] = "5. 10CC – Notell Hotel [04:58]";
+            music_list[5] = "6. Nektar – King Of Twilight [4:16]";
+            music_list[6] = "7. The Flower Kings – Monsters & Men [21:19]";
+            music_list[7] = "8. Focus – Le Clochard [1:59]";
+            music_list[8] = "9.Pendragon – Fallen Dream And Angel[5:23]";
+            music_list[9] = "10. Kaipa – Remains Of The Day [08:02]";
+            //for (int i = 0; i < 10; i++) music_list[i]=Console.ReadLine();//разблокировать для рукописного ввода
+
+            //общая длина
+            Int32 summ_list_time = 0;
+            int summ_list_time_sec =0;
+            double big_music = Double.MinValue;
+            double small_music = Double.MaxValue;
+            double min_inteval_first = Double.MaxValue;
+
+            int[] kekster = { 0, 0, 0, 0 };
+            int[] int_spec = { 0,0};//0 для макса 1 для мина
+            {
+                
+                Regex regex = new Regex(@"(\[)\d+:\d+(\])");
+                Regex regex_two = new Regex(@"[\[\]]");
+                Regex regex_three = new Regex(@":");
+                for (int i = 0; i < 10; i++)
+                {
+                    string temp = music_list[i];
+                    temp = regex.Match(temp).ToString();
+                    temp = regex_two.Replace(temp, "");
+                    temp = regex_three.Replace(temp, ",");
+                    double temp_d = Double.Parse(temp);
+                    music_double_time[i] = temp_d;
+                    summ_list_time += (int)(temp_d);//время
+                    {//для секунд
+                        double temp_for_sec = temp_d-(int)(temp_d);
+                        temp_for_sec =temp_for_sec* 100;
+                        summ_list_time_sec +=(int)(temp_for_sec) ;
+                    }
+                    
+                    if (big_music < temp_d)   {big_music = temp_d;   int_spec[0] = i;}
+                    if (small_music > temp_d) {small_music = temp_d; int_spec[1] = i;}
+                }
+                
+                for(int i =0;i<10;i++)
+                {
+                    for(int j =0;j<10;j++)
+                    {
+                        if (i != j && (Math.Abs(music_double_time[i] - music_double_time[j]) < min_inteval_first))//j наименьшая получается
+                        {
+                            min_inteval_first = Math.Abs(music_double_time[i] - music_double_time[j]);
+                            kekster[0] = i;
+                            kekster[1] = j;
+                        }
+                    }
+                }
+                
+
+            }
+            double summ_double_time = 0;
+            int int_item_time = 0;
+            foreach (double doub in music_double_time)
+            {
+                double temp = doub;
+                int_item_time += (int)(temp);
+                summ_double_time+= ((doub-(int)(temp)));
+            }
+            int item_free = (int)(summ_double_time);
+            summ_double_time = summ_double_time - item_free;
+            summ_double_time += item_free + int_item_time;
+            Console.WriteLine("Общее время всех песен "+ summ_double_time);
+            Console.WriteLine("\nСамая длинная песня \n"+music_list[int_spec[0]]);
+            Console.WriteLine("\nСамая короткая песня \n" + music_list[int_spec[1]]);
+           Console.WriteLine("\nМинимальный интервал между \n{0} \n{1} ", music_list[kekster[0]],music_list[kekster[1]]);
         }
     }
 }
