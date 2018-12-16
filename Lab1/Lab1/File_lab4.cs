@@ -7,6 +7,20 @@ namespace Labs
 {
     class lab4
     {
+        private static char[] char_any = { ' ', ',', '.', '-' };
+        private static char[] char_any_whitout_dot = { ' ', ',', '-' };
+        private static char[] char_any_cybol_for_word = { 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л'
+                                               ,'д', 'ж', 'э', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю','q','w','e','r','t','y','u','i','o','p','a','s','d'
+                                               ,'z','x','c','v','b','n','m','Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Z','X'
+                                               ,'C','V','B','N','M','M','Й','Ц','У','Е','Н','Г','Ш','Щ','З','Х','Ъ','Ф','Ы','В','А','П','Р','О','Л','Д','Ж','Э'
+                                               ,'Я','Ч','С','М','И','Т','Ь','Б','Ю','1','2','3','4','5','6','7','8','9','0','К'};
+
+        private static char[] char_any_symbol_withou_space = { 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л'
+                                               ,'д', 'ж', 'э', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю','q','w','e','r','t','y','u','i','o','p','a','s','d'
+                                               ,'z','x','c','v','b','n','m','Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Z','X'
+                                               ,'C','V','B','N','M','M','Й','Ц','У','Е','Н','Г','Ш','Щ','З','Х','Ъ','Ф','Ы','В','А','П','Р','О','Л','Д','Ж','Э'
+                                               ,'Я','Ч','С','М','И','Т','Ь','Б','Ю','1','2','3','4','5','6','7','8','9','0','К','\\','/','\"','\'',',', '.', '-' };
+
         public static void Ex_1()// починил
         {
             int count = 0;
@@ -108,7 +122,7 @@ namespace Labs
             Console.WriteLine();
         }
 
-        public static void Ex_3()//сделал 1 способ и он работает
+        public static void Ex_3()//Работает
         {
             int sleep = 0;// это счетчик пропусков, пока он не ноль, мы будем пропускать вывода номера слова при особых символах
             string str_s = Console.ReadLine();
@@ -160,12 +174,152 @@ namespace Labs
             Console.WriteLine();
             //---------------------------------------------------------------------------------
             
-            string[] array2_str = new string[array_str.Length];
-            string[] array2_str_new = new string[array_str.Length];
+            string[] array2_str = new string[str_s.Length];
+            string[] array2_str_new = new string[str_s.Length];
+            
             Console.WriteLine("Второй способ");
            
+            
+            int n = 0;
+
+             array2_str = str_s.Split(char_any);
+             array2_str_new =  str_s.Split(char_any_cybol_for_word);
+
+
+
+            if (str_s.IndexOfAny(char_any_cybol_for_word) == 0) // если начало со слова, то строка 0 а спец 1
+            {
+                for (int i = 0, j = array2_str.Length - 1; ;)
+                {
+                    for (; j != -1;)
+                        if (array2_str[j] != "")
+                        {
+                            Console.Write(array2_str[j]);
+                            j--;
+                            break;
+                        }
+                        else j--;
+                    for (; i < array2_str_new.Length;)
+                        if (array2_str_new[i] != "")
+                        {
+                            Console.Write(array2_str_new[i]);
+                            i++;
+                            break;
+                        }
+                        else i++;
+                    if (j < 0 && i >= array2_str_new.Length) break;
+
+                }
+            }
+            else if (str_s.IndexOfAny(char_any) == 0)//наоборот с символа начинается
+            {
+                for (int i = 0, j = array2_str.Length - 1; ;)
+                {
+
+                    for (; i < array2_str_new.Length;)
+                        if (array2_str_new[i] != "")
+                        {
+                            Console.Write(array2_str_new[i]);
+                            i++;
+                            break;
+                        }
+                        else i++;
+                    for (; j != -1;)
+                        if (array2_str[j] != "")
+                        {
+                            Console.Write(array2_str[j]);
+                            j--;
+                            break;
+                        }
+                        else j--;
+                    if (j < 0 && i >= array2_str_new.Length) break;
+
+                }
+            }
+            else Console.WriteLine("Неизвестная мне ошибка");
+            Console.WriteLine();
 
         }
+        public static void Ex_4()//робит
+        {//блок заполнения
+            string[][] array_str = new string[8][];
+            string[][] array_str_new = new string[8][];
+            string[] array_str_first = new string[8];
+            for (int i = 0; i < 8; i++)
+            {
+                string temp = Console.ReadLine();
+                string[] temp_array = temp.Split(char_any_whitout_dot, StringSplitOptions.RemoveEmptyEntries);
+                string[] temp_array_two = temp.Split(char_any_cybol_for_word, StringSplitOptions.RemoveEmptyEntries);
+                array_str[i] = temp_array;
+                array_str_new[i] = temp_array_two;
+                array_str_first[i] = temp;
+            }
+            Console.WriteLine("Первый способ");
+            Console.WriteLine();
 
+            //блок нахождения и вывода в словах .com методами стринга
+            foreach (string s in array_str_first)
+            {
+                string lower = s.ToLowerInvariant();
+                if (lower.Contains(".com"))
+                    Console.WriteLine(s);
+            }
+
+            //блок поиска пробелов для 
+            string[] array_str_space = new string[8];
+            int[] int_array =  { 0,Int32.MaxValue,0};//0 каунт 1 результат 2 номер строки
+            char[] ch = { ' ' };
+            foreach (string s in array_str_first)
+            {
+                string[] s_two = s.Split(ch, StringSplitOptions.RemoveEmptyEntries);
+                string s_string=null;
+                foreach (string s_three in s_two)
+                    s_string += s_three;
+                if (s.Length - s_string.Length < int_array[1])
+                {
+                    int_array[1] = s.Length - s_string.Length;
+                    int_array[2] = int_array[0];
+                }
+                int_array[0]++;
+            }
+            Console.WriteLine();
+            Console.WriteLine(" Строка номер {0}",int_array[2]+1);// счет с 1
+            Console.WriteLine("Второй способ");
+            // блок поиска .com ручками 
+            foreach(string[] string_for_array in array_str)
+            {
+                foreach(string string_not_array_for_string_for_array in string_for_array)
+                {
+                    int int_temp = -1;
+                    foreach(char char_for_string in string_not_array_for_string_for_array)
+                    {
+                        string temp_char = char_for_string.ToString();
+                        if (temp_char.ToLower() == "." && int_temp == -1) int_temp = 0;
+                        else if (temp_char.ToLower() == "c" && int_temp == 0) int_temp = 1;
+                        else if (temp_char.ToLower() == "o" && int_temp == 1) int_temp = 2;
+                        else if (temp_char.ToLower() == "m" && int_temp == 2) 
+                        { Console.WriteLine(string_not_array_for_string_for_array); int_temp = -1; break; }
+                        else int_temp = -1;
+                    }
+                }
+            }
+            //блок поиска пробелов так же ручками
+            int[] int_array_two = { 0, Int32.MaxValue, 0,0 };//0 каунт// 1 количество пробелов // 2 количество пробелов в строке // 3 номер строки
+            foreach (string strint_for_array in array_str_first)
+            {
+                foreach(char char_for_strint_for_array in strint_for_array)
+                    if (char_for_strint_for_array == ' ') int_array_two[2]++;
+                if (int_array_two[1] > int_array_two[2]) { int_array_two[1] = int_array_two[2]; int_array_two[3] = int_array_two[0]; }
+                int_array_two[0]++;
+                int_array_two[2]=0;
+            }
+            int temp1 = int_array_two[3];
+                Console.WriteLine("Строка номер {0}",temp1+1);
+            
+        }
+        public static void Ex_5()
+        {
+
+        }
     }
 }
