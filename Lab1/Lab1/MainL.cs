@@ -280,9 +280,11 @@ namespace Labs
                             Console_message("10. Kaipa – Remains Of The Day [08:02]", Color_Green);
                             Console_message(Ex, "Написать программу, которая обрабатывает весь треклист, суммирует время звучания песен и выводит результат на экран, а также отображает самую длинную и самую короткую песню в списке и пару песен с минимальной разницей во времени звучания.", Color_Green);
                             Labs.lab4.Ex_7(); break; };
-                    case "8": { Console_message(Ex, "8.", Color_Green); break; };
-                    case "9": { Console_message(Ex, "9.", Color_Green); break; };
-                    case "10": { Console_message(Ex, "10.", Color_Green); break; };
+                    case "8": { Console_message(Ex, "8.Написать программу, позволяющую шифровать и расшифровывать строки символов на основе 3 симметричных алгоритмов шифрования(прилож.А) Шифр Гронсфельда  ", Color_Green);lab4.Ex_A1_5(); break; };
+                    case "9": { Console_message(Ex, "9.Написать программу обработки текста, в соответствии с вариантом. Решить задачу 2 способами: через обработку строки как массива символов и с помощью методов классов string и / или StringBuilder", Color_Green);
+                            Console_message("Ввести с клавиатуры латинский текст. Сформировать новую строку из исходной путем замены всех больших букв в коротких словах(менее 6 букв) на символ «_»).", Color_Green); Labs.lab4.Ex_A2_5(); break; };
+                    case "10": { Console_message(Ex, "10.Написать регулярные выражения для поиска подстроки в строке по правилу или шаблону, в соответствии с вариантом.", Color_Green);
+                            Console_message("Найти в тексте все номера телефонов – подстроки вида «(000)1112233» или «(000)111-22-33»", Color_Green); Labs.lab4.Ex_A3_5() ; break; };
                     case "q":
                         {
                             Console_message(test_questions, Color_Cyan);

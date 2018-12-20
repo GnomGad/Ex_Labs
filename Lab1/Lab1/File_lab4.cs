@@ -13,7 +13,7 @@ namespace Labs
                                                ,'д', 'ж', 'э', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю','q','w','e','r','t','y','u','i','o','p','a','s','d'
                                                ,'z','x','c','v','b','n','m','Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Z','X'
                                                ,'C','V','B','N','M','M','Й','Ц','У','Е','Н','Г','Ш','Щ','З','Х','Ъ','Ф','Ы','В','А','П','Р','О','Л','Д','Ж','Э'
-                                               ,'Я','Ч','С','М','И','Т','Ь','Б','Ю','1','2','3','4','5','6','7','8','9','0','К'};
+                                               ,'Я','Ч','С','М','И','Т','Ь','Б','Ю','1','2','3','4','5','6','7','8','9','0','К','k'};
 
         private static char[] char_any_symbol_withou_space = { 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л'
                                                ,'д', 'ж', 'э', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю','q','w','e','r','t','y','u','i','o','p','a','s','d'
@@ -462,6 +462,205 @@ namespace Labs
             Console.WriteLine("\nСамая длинная песня \n"+music_list[int_spec[0]]);
             Console.WriteLine("\nСамая короткая песня \n" + music_list[int_spec[1]]);
            Console.WriteLine("\nМинимальный интервал между \n{0} \n{1} ", music_list[kekster[0]],music_list[kekster[1]]);
+        }
+        public static void Ex_A1_5()// работает
+        {
+            /*                                                  хитрожопый план
+            * переводим текст в ловер и записываем в посимвольный массив+
+            * делаем отдельный массив от "а" до "я" символов и записать их номера, ибо ручками в падлу, пусть компилится
+            * находим одинаковые символы и добавляем к ним число связанное с их номером, кодируем крч
+            * неизвестные значения получают + 100, и потом декодируется вся эта каша
+            * небольшая побочка, надо добавить 1071, шоб выйти в те же символы
+             */
+
+            /*                                      нормальный план пришедший после того, как я реализовал хитрожопый
+             * тупо к символьным интам добавлять ключи по списку, на вывод чисел отнимать у них -1071,шоб была иллюзия работы
+             * после чего в другой массив кидать уже с - ключами и получать все те же значения.........
+             */
+            // ввод текста
+            Console.WriteLine("Введите текст");
+            string normal_text =  Console.ReadLine();
+            char[] array_char_for_normal_text = new char[normal_text.Length];
+            normal_text = normal_text.ToLower();
+            int[] keys = { 2, 5, 9 };// массив ключей
+           
+
+
+            // разбиение текста на массив символов
+            for (int i = 0; i< array_char_for_normal_text.Length;i++)
+                array_char_for_normal_text[i] = normal_text[i];
+
+
+            int[] coding_normal_text = coding(array_char_for_normal_text, keys);// вывод
+            foreach (int symbol in coding(array_char_for_normal_text, keys))
+                Console.Write(symbol + " ");
+            Console.WriteLine();
+
+
+            encoding(keys,coding_normal_text);
+            Console.WriteLine();
+        }
+        static int[] coding(char[] array_char_for_normal_text, int[] keys)
+        {//массив который над изменить, символы нормали, числа, ключи
+            // базовый массив и заполнение 
+            
+            char[] basic_array_chars = new char[1103 - 1072 + 2];//до я от а 
+            int[] basic_array_int = new int[1103 - 1072 + 2];// порядковый номер начиная с нуля
+
+            for (int i = 0, k = 1072; i < 1103 - 1072 + 1; i++, k++)
+            {
+                basic_array_int[i] = i + 1;
+                basic_array_chars[i] = (char)(k);
+            }
+            basic_array_int[basic_array_int.Length - 1] = 33;
+            basic_array_chars[basic_array_chars.Length - 1] = 'ё'; //1105 символ, аутируем вместе
+
+            int[] exit_array = new int[array_char_for_normal_text.Length];
+
+            for (int i = 0, k = 0; i < array_char_for_normal_text.Length; i++,k++)
+            {
+                int count = 0;
+                if (k == 3) k = 0;
+                for(int j =0;j< basic_array_chars.Length;j++)
+                {
+                    if(array_char_for_normal_text[i] == basic_array_chars[j])
+                    {
+                        count++;
+                         exit_array[i] = basic_array_int[j] + keys[k];
+                    }
+                }
+                if (count == 0) { exit_array[i] = array_char_for_normal_text[i] + 100; k--; }
+            }
+            return exit_array;
+        }
+
+
+        static void encoding(int[] keys, int[] array_coding_normal_text)
+        {
+            char[] basic_array_chars = new char[1103 - 1072 + 2];//до я от а 
+            int[] basic_array_int = new int[1103 - 1072 + 2];// порядковый номер начиная с нуля
+
+            for (int i = 0, k = 1072; i < 1103 - 1072 + 1; i++, k++)
+            {
+                basic_array_int[i] = i + 1;
+                basic_array_chars[i] = (char)(k);
+            }
+            basic_array_int[basic_array_int.Length - 1] = 33;
+            basic_array_chars[basic_array_chars.Length - 1] = 'ё'; //1105 символ, аутируем вместе
+            
+            int[] exit_array = new int[array_coding_normal_text.Length];
+            //процедура энкодинга
+            for (int i = 0, k = 0; i < array_coding_normal_text.Length; i++,k++)
+            {
+                if (k == 3) k = 0;
+                if (array_coding_normal_text[i] >= 100) { exit_array[i] = array_coding_normal_text[i] - 100;k--; }
+                else
+                {
+                        exit_array[i] = array_coding_normal_text[i] - keys[k]+1071;
+
+                }
+            }
+
+            foreach (char kek in exit_array)
+                Console.Write(kek);
+
+        }
+
+
+        public static void Ex_A2_5()// работает
+        {
+            int sleep = 0;// это счетчик пропусков, пока он не ноль, мы будем пропускать вывода номера слова при особых символах
+            string str_s = Console.ReadLine();
+            string[] array_str = new string[(int)(str_s.Length / 2)];
+            string[] array_str_new = new string[array_str.Length];
+            Console.WriteLine("Первый способ");
+            for (int i = 0, count = 0; i < str_s.Length; i++)//обработка основной каждого элемента
+            {
+                if ((str_s[i] == ' ' || str_s[i] == ',' || str_s[i] == '.' || str_s[i] == '-') && sleep == 0)// проверка на нужный символ, а так же слип
+                {
+                    count++;// это счетчик слов
+                    for (; ; sleep++)// божественный слип не делал условия выхода, что бы сделать потом
+                    {
+                        if (i + sleep < str_s.Length)// проверка, что бы не улетать за границы массива
+                        {//собственно, если после конца слова будут идти еще такие символы, то мы их должны посчитать
+                            // что бы потом, их даже не использовать
+                            if (str_s[i + sleep] == ' ' || str_s[i + sleep] == ',' || str_s[i + sleep] == '.' || str_s[i + sleep] == '-') ;
+                            else break;
+                        }
+                        else break;// выход если улетели
+                    }
+                }
+                else if (sleep == 0) array_str[count] += str_s[i];// когда слипы не 0 это значит, что мы идем по символам
+                if (sleep != 0) { array_str_new[count] += str_s[i]; sleep--; }// на каждой итерации будет идти -- и так до нуля, что бы не запороть слова
+            }
+
+            for (int i = 0; i < array_str.Length; i++)
+            {
+                if (array_str[i] == null) break;
+                string temp = array_str[i];
+                if (temp.Length<6)
+                {
+                    string temp_for_array = null;
+                  foreach(int k in temp)
+                    {
+                        if (k >= 65 && k <= 90)
+                        {
+                            temp_for_array += "\"_\"";
+                        }
+                        else temp_for_array +=(char) k;
+                    }
+                    array_str[i] = temp_for_array;
+                } 
+            }
+            char[] big_cymbols = { 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L',  'Z', 'X', 'C', 'C', 'V', 'B', 'N', 'M' };
+            
+            for(int i =0;i< array_str.Length;i++)
+            {
+                if (array_str[i] != null)
+                {
+                    Console.Write(array_str[i]+array_str_new[i+1]);
+                }
+                else break;
+            }
+            Console.WriteLine();
+            Console.WriteLine("Второй способ");//str_s
+
+            string[] array_for_str_s = str_s.Split(char_any, StringSplitOptions.RemoveEmptyEntries);
+            string[] array_for_str_s_tans = str_s.Split(char_any_cybol_for_word, StringSplitOptions.RemoveEmptyEntries);
+            string[] new_array_str = new string[array_for_str_s.Length];
+
+
+            for(int i =0;i<array_for_str_s.Length;i++)
+            {
+                string temp = array_for_str_s[i];
+                if (temp.Length < 6)
+                {
+                    for (int j = 0; j < big_cymbols.Length; j++)
+                        temp = temp.Replace(big_cymbols[j].ToString(), "\"_\"");
+                }
+                else temp = temp;
+                new_array_str[i] = temp;
+            }
+
+
+            for (int i = 0; i < new_array_str.Length; i++)
+            {
+
+                    Console.Write(new_array_str[i]);
+                //if(i< array_for_str_s_tans.Length)
+                    Console.Write(array_for_str_s_tans[i]);
+            }
+            Console.WriteLine();
+        }
+        public static void Ex_A3_5()// работает
+        {
+            string stroka_normalnaya = Console.ReadLine();
+            Regex regex = new Regex(@"\(\d{3}\)\d{3}\-\d{2}\-\d{2}");
+            foreach (Match kek in regex.Matches(stroka_normalnaya))
+                Console.WriteLine(kek);
+            regex = new Regex(@"\(\d{3}\)\d{3}\d{2}\d{2}");
+            foreach (Match kek in regex.Matches(stroka_normalnaya))
+                Console.WriteLine(kek);
         }
     }
 }
