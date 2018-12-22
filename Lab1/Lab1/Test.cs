@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Text;
 
 namespace Labs
 {
@@ -9,9 +10,8 @@ namespace Labs
     {
         public static void test()
         {
-            Labs.lab4.Ex_A2_5();
-           
-
+             Labs.lab5_1.main();
+            
         }
 
     }
