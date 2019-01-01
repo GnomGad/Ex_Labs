@@ -105,6 +105,11 @@ namespace Labs
                     case "3": { Console_message(topic,"Массивы. Пользовательские функции", Color_DarkGreen); Ex_lab3(key_second); break; }
                     case "4": { Console_message(topic, "Работа со строками в C#. Знакомство с регулярными выражениями", Color_DarkGreen);Ex_Lab4(key_second);break; }
                     case "5": { Console_message(topic, "Перечисления и структуры в C#", Color_DarkGreen); Ex_Lab5(key_second); break; }
+                    case "6": { Console_message(topic, "Работа с файлами", Color_DarkGreen); Ex_Lab6(key_second); break; }
+                    case "7": { Console_message(topic, "Простые алгоритмы сортировки. Анализ алгоритмов", Color_DarkGreen); Ex_Lab7(key_second); break; }
+                    case "8": { Console_message(topic, "Алгоритмы поиска", Color_DarkGreen); Ex_Lab8(key_second); break; }
+                    case "9": { Console_message(topic, "Абстрактные типы данных (АТД). Коллекции в .NET.", Color_DarkGreen); Ex_Lab9(key_second); break; }
+                    case "10": { Console_message(topic, "Продвинутые алгоритмы сортировки. Динамическое программирование. Алгоритмы на графах.", Color_DarkGreen); Ex_Lab10(key_second); break; }
                     case "help": { help(1); break; }
                     case "": { Labs.Test.test(); break; }
                     default: { Console_message(bug,"Неверное значение, команда help для помощи",Color_Red) ; break; }
@@ -249,6 +254,7 @@ namespace Labs
                 if (tmp != " ") k = tmp;
             }
         }
+
         static void Ex_Lab4(string d)
         {
             string k = d;
@@ -355,5 +361,176 @@ namespace Labs
                 if (tmp != " ") k = tmp;
             }
         }
+
+        static void Ex_Lab6(string d)//в сей момент работа происходит здесь
+        {
+            string k = d;
+
+            while (true)
+            {
+                if (k != "0") Console_message(Glob_Menu, "Введите номер задания  1-");
+                if (k == "-1") k = Console.ReadLine();
+
+                switch (k)
+                {
+
+                    case "help": { help(2); break; }
+                    case "cl": { Console.Clear(); break; }
+                    case "0": { return; }
+                    case "1": { Console_message(Ex, "Дополнить код лабораторной работы №5, организовав хранение данных предметной области в бинарном(четные варианты) или текстовом(нечетные варианты) файле lab.dat.Данные должны считываться из файла при запуске программы и записываться в файл при закрытии программы.", Color_Green);
+                            Labs.File_lab6.Ex_1();
+                            break; }
+                    case "2": { Console_message(Ex, ". Написать программу для работы с бинарными файлами, в соответствии с вариантом(приложение А).", Color_Green);
+                            break; }
+                    case "3": { Console_message(Ex, "Написать программу для работы с текстовыми файлами, в соответствии с вариантом(приложение Б).", Color_Green);
+                            Console_message("",Color_Green);
+                            break; }
+                    case "4": { Console_message(Ex, "Написать программу, которая создает на одном из разделов жесткого диска директорию Lab6_Temp, автоматически копирует в эту директорию Ваш файл lab.dat из задания 1 и создает в ней копию этого файла lab_backup.dat путем побайтового копирования.Вывести на консоль информацию о файле lab.dat: размер, время последнего изменения, время последнего доступа.", Color_Green);
+                            break; }
+                    case "5": { Console_message(Ex, "Написать программу, которая позволяет ввести имя bmp-файла, считать его заголовки и вывести на консоль информацию о размере файла, ширине и высоте в пикселях, количестве бит на пиксель, разрешении горизонтальном и вертикальном(количестве пикселей на метр), типе сжатия(без сжатия / 4бит RLE / 8бит RLE).Подготовьте несколько файлов изображений и проверьте на них Вашу программу.Структура bmp - файла приведена в приложении В", Color_Green);
+                            break; }
+                    case "q":
+                        {
+                            Console_message(test_questions, Color_Cyan);
+                            Console_message("Мне лень их заполнять)  ", Color_Cyan);
+
+                            break;
+                        }
+                    default: { Console_message(bug, "Неверное значение, команда help для помощи", Color_Red); break; }
+
+                }
+                Console_message(Glob_Menu, "space если хотите повторить или номер нужного задания", Color_Magnetta);
+                string tmp = Console.ReadLine();
+                if (tmp != " ") k = tmp;
+            }
+        }
+        static void Ex_Lab7(string d)
+        {
+            string k = d;
+
+            while (true)
+            {
+                if (k != "0") Console_message(Glob_Menu, "Введите номер задания  1-");
+                if (k == "-1") k = Console.ReadLine();
+
+                switch (k)
+                {
+
+                    case "help": { help(2); break; }
+                    case "cl": { Console.Clear(); break; }
+                    case "0": { return; }
+                    case "1": { Console_message(Ex, "", Color_Green); Lab1.Ex_0(); break; }
+                    case "q":
+                        {
+                            Console_message(test_questions, Color_Cyan);
+                            Console_message("1.  ", Color_Cyan);
+
+                            break;
+                        }
+                    default: { Console_message(bug, "Неверное значение, команда help для помощи", Color_Red); break; }
+
+                }
+                Console_message(Glob_Menu, "space если хотите повторить или номер нужного задания", Color_Magnetta);
+                string tmp = Console.ReadLine();
+                if (tmp != " ") k = tmp;
+            }
+        }
+
+        static void Ex_Lab8(string d)
+        {
+            string k = d;
+
+            while (true)
+            {
+                if (k != "0") Console_message(Glob_Menu, "Введите номер задания  1-");
+                if (k == "-1") k = Console.ReadLine();
+
+                switch (k)
+                {
+
+                    case "help": { help(2); break; }
+                    case "cl": { Console.Clear(); break; }
+                    case "0": { return; }
+                    case "1": { Console_message(Ex, "", Color_Green); Lab1.Ex_0(); break; }
+                    case "q":
+                        {
+                            Console_message(test_questions, Color_Cyan);
+                            Console_message("1.  ", Color_Cyan);
+
+                            break;
+                        }
+                    default: { Console_message(bug, "Неверное значение, команда help для помощи", Color_Red); break; }
+
+                }
+                Console_message(Glob_Menu, "space если хотите повторить или номер нужного задания", Color_Magnetta);
+                string tmp = Console.ReadLine();
+                if (tmp != " ") k = tmp;
+            }
+        }
+
+        static void Ex_Lab9(string d)
+        {
+            string k = d;
+
+            while (true)
+            {
+                if (k != "0") Console_message(Glob_Menu, "Введите номер задания  1-");
+                if (k == "-1") k = Console.ReadLine();
+
+                switch (k)
+                {
+
+                    case "help": { help(2); break; }
+                    case "cl": { Console.Clear(); break; }
+                    case "0": { return; }
+                    case "1": { Console_message(Ex, "", Color_Green); Lab1.Ex_0(); break; }
+                    case "q":
+                        {
+                            Console_message(test_questions, Color_Cyan);
+                            Console_message("1.  ", Color_Cyan);
+
+                            break;
+                        }
+                    default: { Console_message(bug, "Неверное значение, команда help для помощи", Color_Red); break; }
+
+                }
+                Console_message(Glob_Menu, "space если хотите повторить или номер нужного задания", Color_Magnetta);
+                string tmp = Console.ReadLine();
+                if (tmp != " ") k = tmp;
+            }
+        }
+
+        static void Ex_Lab10(string d)
+        {
+            string k = d;
+
+            while (true)
+            {
+                if (k != "0") Console_message(Glob_Menu, "Введите номер задания  1-");
+                if (k == "-1") k = Console.ReadLine();
+
+                switch (k)
+                {
+
+                    case "help": { help(2); break; }
+                    case "cl": { Console.Clear(); break; }
+                    case "0": { return; }
+                    case "1": { Console_message(Ex, "", Color_Green); Lab1.Ex_0(); break; }
+                    case "q":
+                        {
+                            Console_message(test_questions, Color_Cyan);
+                            Console_message("1.  ", Color_Cyan);
+
+                            break;
+                        }
+                    default: { Console_message(bug, "Неверное значение, команда help для помощи", Color_Red); break; }
+
+                }
+                Console_message(Glob_Menu, "space если хотите повторить или номер нужного задания", Color_Magnetta);
+                string tmp = Console.ReadLine();
+                if (tmp != " ") k = tmp;
+            }
+        }
+
     }
 }
