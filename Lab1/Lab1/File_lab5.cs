@@ -6,17 +6,17 @@ using System.Text.RegularExpressions;
 
 namespace Labs
 {
-    class lab5_1
+    public class lab5_1
     {/// <summary>
      ///  если над поменять количество максимальное строк в таблице
      /// </summary>
-        private const byte MaxStrinTable = 2;
-        private const byte MaxBuildConst = 50;
-        static LogActions[] Builds = new LogActions[MaxBuildConst];
-        static GetTvshow[] Tv_Shows = new GetTvshow[MaxStrinTable];
-        static BigSpan TimeS = new BigSpan();
-        static DateTime tim = DateTime.Now;
-        static byte COUNT = 0;
+        public const byte MaxStrinTable = 2; // максимальное число таблицы
+        public const byte MaxBuildConst = 50; // максимальное число логов
+         static LogActions[] Builds = new LogActions[MaxBuildConst];
+         static GetTvshow[] Tv_Shows = new GetTvshow[MaxStrinTable];
+         static BigSpan BigSpan = new BigSpan();
+         static DateTime tim = DateTime.Now;
+         static byte COUNT = 0;
 
         /// <summary>
         /// свой майн с блэк джеком и таблицами
@@ -41,7 +41,7 @@ namespace Labs
             }
         }
 
-        static void show()// показ
+        public static void show()// показ
         {
             Tv_Shows[1].ShowTheme();
             for (int i = 0; i < MaxStrinTable; i++)
@@ -55,7 +55,7 @@ namespace Labs
 
         }
 
-        static void build()// построение
+       public static void build()// построение
         {
             for (int i = 0; i < MaxStrinTable; i++)
             {
@@ -94,7 +94,7 @@ namespace Labs
         }
 
 
-        static void delete()// удаление
+        public static void delete()// удаление
         {
             Console.WriteLine("Введи порядковый номер записи из списка");
             byte i = Byte.Parse(Console.ReadLine());
@@ -125,7 +125,7 @@ namespace Labs
             }
         }
 
-        static void update()//ап
+        public static void update()//ап
         {
             Console.WriteLine("Введи порядковый номер записи из списка");
             byte i = Byte.Parse(Console.ReadLine());
@@ -170,7 +170,7 @@ namespace Labs
         }
 
 
-        static void search()//поиск   организовать тип по значениям
+        public static void search()//поиск   организовать тип по значениям
         {
             Console.WriteLine("Выбери тип поиска\n1-Поиск по типу\n2-Поиск по оценке");
             string KeyFirst = Console.ReadLine();
@@ -180,7 +180,7 @@ namespace Labs
         }
 
 
-        static void serach_for_value()// работает
+        public static void serach_for_value()// работает
         {
             Console.WriteLine("Через пробел введите нумера |Все нумеры .");
             string TypeKeyFirst = Console.ReadLine();
@@ -219,7 +219,7 @@ namespace Labs
         }
 
 
-        static void serach_for_type()// найс
+        public static void serach_for_type()// найс
         {
             Console.WriteLine("Через пробел введите символы |Все символы просто .|Все символы кроме одного .символ");
             string TypeKeyFirst = Console.ReadLine().ToUpper();

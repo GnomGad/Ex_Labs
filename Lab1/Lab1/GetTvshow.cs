@@ -3,7 +3,7 @@ using System.Text;
 /// <summary>
 /// NameTV - название тв NameArtist Фамилия ведущего  Assest - оценка от 1 до 5  Type это тип И-игровая А-аналитическая Т-ток-шоу
 /// </summary>
-struct GetTvshow
+public struct GetTvshow
 {
     public string NameTV;
     public string NameArtist;
@@ -51,7 +51,7 @@ struct GetTvshow
     }
 }
 
-struct LogActions
+public struct LogActions
 {
    public string Telepered;
     ForLogAction Action;// действие адд делит упдейт
@@ -80,7 +80,7 @@ struct LogActions
         Console.WriteLine("{0:00}:{1:00}:{2:00}  -  {3}",Time.Hour,Time.Minute,Time.Second,text);
     }
 }
-struct BigSpan
+public struct BigSpan
 {
      TimeSpan ts;
    public  DateTime timelast;
