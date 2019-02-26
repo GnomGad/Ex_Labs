@@ -46,8 +46,8 @@ namespace Labs
         {
 
             ReadAndSetTvShowsFilePlaylist();
-            //WriteFilePlaylist();
-            
+            GetFromTvShowsAndWriteFilePlaylist();
+
 
             Console.ReadKey();
 
@@ -88,7 +88,6 @@ namespace Labs
         }
 
 
-
         private static string[] ReturValueForTvShows(string str)// возврат 4 элементов массива
         {
             char[] chars = { ' ', Convert.ToChar(9) };
@@ -127,11 +126,20 @@ namespace Labs
        
         
 
-        private static void WriteFilePlaylist()
+        private static void GetFromTvShowsAndWriteFilePlaylist()
         {
             StreamWriter WritePlatList = new StreamWriter(FILES_PATH_FOR_PLAYLIST);
-            
+            for (int i = 0; i < MAX_STRING_TABLE; i++)
+            {
+                if (TvShows[i].NameArtist != null)
+                {
+                    WritePlatList.WriteLine(TvShows[i].NameTV+" \\ "+ TvShows[i].NameArtist+" \\ "+ TvShows[i].Value+" \\ "+TvShows[i].Type);
+                    
+                }
+            }
             WritePlatList.Close();
         }
+
+       
     }
 }
