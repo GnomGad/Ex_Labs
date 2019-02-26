@@ -98,7 +98,7 @@ public struct BigSpan
         Console.WriteLine("{0:00}:{1:00}:{2:00}  -  {3}", ts.Hours, ts.Minutes, ts.Seconds, "Самый долгий период бездействия пользователя"); ;
     }
 }
-enum ValueOfTV
+public enum ValueOfTV
 {
     one =1,
     two,
@@ -106,7 +106,7 @@ enum ValueOfTV
     four,
     five
 }
-enum ForLogAction
+public enum ForLogAction
 { 
     Add,
     Delete,

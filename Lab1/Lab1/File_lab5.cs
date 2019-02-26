@@ -14,8 +14,8 @@ namespace Labs
         public const byte MaxBuildConst = 50; // максимальное число логов
          static LogActions[] Builds = new LogActions[MaxBuildConst];
          static GetTvshow[] Tv_Shows = new GetTvshow[MaxStrinTable];
-         static BigSpan BigSpan = new BigSpan();
-         static DateTime tim = DateTime.Now;
+        public static BigSpan TimeS = new BigSpan();
+        public static DateTime tim = DateTime.Now;
          static byte COUNT = 0;
 
         /// <summary>

@@ -12,6 +12,8 @@ namespace Labs
         // UTF8Encoding используется как текущая
         //\n = 10 ; \r = 13
         //
+
+
         const string FILES_FULL_PATH = @"D:\Application\Git\Ex_Labs\Lab1\Lab1\Files";
         //фулл путь к файлам
         const string FILES_PATH = @"..\..\Files"; 
@@ -24,6 +26,7 @@ namespace Labs
         // константа макс числа строк таблицы
         const byte MAX_BUILD_CONST= MaxBuildConst;
         // МАКСИМАЛЬНОЕ количесво числа логов
+
 
         static LogActions[] BuildLogs = new LogActions[MaxBuildConst];
         // массив логов
