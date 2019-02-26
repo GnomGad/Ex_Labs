@@ -44,8 +44,8 @@ namespace Labs
 
         public static void Ex_1()
         {
-            
-            ReadFilePlaylist();
+
+            ReadAndSetTvShowsFilePlaylist();
             //WriteFilePlaylist();
             
 
@@ -58,7 +58,7 @@ namespace Labs
 
 
         
-        private static void ReadFilePlaylist()
+        private static void ReadAndSetTvShowsFilePlaylist()
         {
             StreamReader ReadPlayList = new StreamReader(FILES_PATH_FOR_PLAYLIST);
 
@@ -76,23 +76,19 @@ namespace Labs
                     continue;
                 string[] ReturnArrayForTests = ReturValueForTvShows(tmp);
                 if (ReturnArrayForTests != null) // проверка на числовой элемент -1 если его нет
-                foreach(string s in ReturnArrayForTests) // тестовый стенд
-                {
-                        Console.Write(s+" ");
-                }
-                Console.WriteLine();
+                    SetTvShows(ReturnArrayForTests);
+                
             }
 
            
 
 
             ReadPlayList.Close();
-            Console.WriteLine();
+           
         }
 
 
 
-        
         private static string[] ReturValueForTvShows(string str)// возврат 4 элементов массива
         {
             char[] chars = { ' ', Convert.ToChar(9) };
@@ -111,9 +107,25 @@ namespace Labs
         }
 
 
+        private static void SetTvShows(string[] array) // заполнение в tvshows
+        {
+            for (int i = 0; i < MAX_STRING_TABLE; i++)
+            {
 
+                if (TvShows[i].NameArtist == null)
+                {
+                    string er1 = null;
+                    string er2 = null;
+                    TvShows[i].NameTV = array[0];
+                    TvShows[i].NameArtist = array[1];
+                    TvShows[i].check_for_value(array[2], out er1);
+                    TvShows[i].check_for_tyoe(Char.Parse(array[3]), out er2);
+                    i = MAX_STRING_TABLE;
+                }
+            } 
+        }
        
-
+        
 
         private static void WriteFilePlaylist()
         {
