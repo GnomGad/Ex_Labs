@@ -12,8 +12,8 @@ namespace Labs
      /// </summary>
         public const byte MaxStrinTable = 2; // максимальное число таблицы
         public const byte MaxBuildConst = 50; // максимальное число логов
-         static LogActions[] Builds = new LogActions[MaxBuildConst];
-         static GetTvshow[] Tv_Shows = new GetTvshow[MaxStrinTable];
+         public static LogActions[] Builds = new LogActions[MaxBuildConst];
+       public    static GetTvshow[] Tv_Shows = new GetTvshow[MaxStrinTable];
         public static BigSpan TimeS = new BigSpan();
         public static DateTime tim = DateTime.Now;
          static byte COUNT = 0;
@@ -259,6 +259,7 @@ namespace Labs
             }
             Tv_Shows[1].ShowStatement();
         }
+
 
 
         static void check_log()//лог
