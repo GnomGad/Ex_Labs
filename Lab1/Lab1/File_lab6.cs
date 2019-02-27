@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Labs
 {
-    class File_lab6 
+    class File_lab6 :lab5_1
     {
         //
         // UTF8Encoding используется как текущая
@@ -44,8 +44,10 @@ namespace Labs
 
         public static void Ex_1()
         {
+            TimeS.timelast = DateTime.Now;
 
             ReadAndSetTvShowsFilePlaylist();
+            main();
             GetFromTvShowsAndWriteFilePlaylist();
 
 
@@ -111,14 +113,14 @@ namespace Labs
             for (int i = 0; i < MAX_STRING_TABLE; i++)
             {
 
-                if (TvShows[i].NameArtist == null)
+                if (Tv_Shows[i].NameArtist == null)
                 {
                     string er1 = null;
                     string er2 = null;
-                    TvShows[i].NameTV = array[0];
-                    TvShows[i].NameArtist = array[1];
-                    TvShows[i].check_for_value(array[2], out er1);
-                    TvShows[i].check_for_tyoe(Char.Parse(array[3]), out er2);
+                    Tv_Shows[i].NameTV = array[0];
+                    Tv_Shows[i].NameArtist = array[1];
+                    Tv_Shows[i].check_for_value(array[2], out er1);
+                    Tv_Shows[i].check_for_tyoe(Char.Parse(array[3]), out er2);
                     i = MAX_STRING_TABLE;
                 }
             } 
@@ -131,9 +133,9 @@ namespace Labs
             StreamWriter WritePlatList = new StreamWriter(FILES_PATH_FOR_PLAYLIST);
             for (int i = 0; i < MAX_STRING_TABLE; i++)
             {
-                if (TvShows[i].NameArtist != null)
+                if (Tv_Shows[i].NameArtist != null)
                 {
-                    WritePlatList.WriteLine(TvShows[i].NameTV+" \\ "+ TvShows[i].NameArtist+" \\ "+ TvShows[i].Value+" \\ "+TvShows[i].Type);
+                    WritePlatList.WriteLine(Tv_Shows[i].NameTV+" \\ "+ Tv_Shows[i].NameArtist+" \\ "+ (int)(Tv_Shows[i].Value)+" \\ "+ Tv_Shows[i].Type);
                     
                 }
             }
