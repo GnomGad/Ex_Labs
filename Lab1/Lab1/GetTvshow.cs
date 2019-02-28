@@ -41,12 +41,27 @@ public struct GetTvshow
         else if (Int32.Parse(value) == 5) Value = ValueOfTV.five;
         else er = "error";
     }
+    public void check_for_value_non_set_value(string value, out string er)
+    {
+        er = "good";
+        if (!(Int32.Parse(value) >= 1 && Int32.Parse(value) <=5))   
+            er = "error"; 
+       
+    }
     public void check_for_tyoe(char value, out string er)
     {
         er = "good";
         if (value == 'A' || value == 'А') Type = 'А';
         else if (value == 'T' || value == 'Т') Type = 'Т';
         else if (value == 'I' || value == 'И') Type = 'И';
+        else er = "error";
+    }
+    public void check_for_tyoe_non_set_type(char value, out string er)
+    {
+        er = "good";
+        if (value == 'A' || value == 'А') ;
+        else if (value == 'T' || value == 'Т') ;
+        else if (value == 'I' || value == 'И') ;
         else er = "error";
     }
 }

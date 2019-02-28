@@ -10,7 +10,7 @@ namespace Labs
     {/// <summary>
      ///  если над поменять количество максимальное строк в таблице
      /// </summary>
-        public const byte MaxStrinTable = 2; // максимальное число таблицы
+        public const byte MaxStrinTable = 10; // максимальное число таблицы
         public const byte MaxBuildConst = 50; // максимальное число логов
          public static LogActions[] Builds = new LogActions[MaxBuildConst];
        public    static GetTvshow[] Tv_Shows = new GetTvshow[MaxStrinTable];
