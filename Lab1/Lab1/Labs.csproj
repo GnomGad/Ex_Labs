@@ -60,6 +60,7 @@
     <Compile Include="File_lab4.cs" />
     <Compile Include="File_lab5.cs" />
     <Compile Include="File_lab6.cs" />
+    <Compile Include="File_Lab6_3.cs" />
     <Compile Include="GetTvshow.cs" />
     <Compile Include="MainL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
