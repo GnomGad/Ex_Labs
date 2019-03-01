@@ -12,15 +12,14 @@ namespace Labs
         //public static void test() => Labs.File_lab6.Ex_1();
         public static void test()
         {
-            FileLab6_3 FileL = new FileLab6_3();
-          string kek = FileL.ReadTextFromFileAndReturnIt(@"..\..\Files\TextEx3.txt");
 
-            
-                Console.Write(kek+" ");
-
-            
-            //Console.WriteLine(dom);
-
+            Ex3();
+        }
+        static  void Ex3()
+        {
+            Lab6Manager Ex3 = new Lab6Manager();
+            Ex3.FileOutName = "OutThere.txt";
+            Ex3.Ex3();
         }
     }
 
