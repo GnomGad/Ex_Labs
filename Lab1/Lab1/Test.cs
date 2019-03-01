@@ -14,7 +14,7 @@ namespace Labs
         {
 
 
-            Ex4();
+            Ex5();
         }
         static  void Ex3()
         {
@@ -27,6 +27,13 @@ namespace Labs
             Lab6Manager Ex4 = new Lab6Manager();
             
             Ex4.Ex4();
+        }
+        static void Ex5()
+        {
+            Lab6Manager Ex5 = new Lab6Manager();
+            Ex5.FileName = "test3.bmp"; 
+            Ex5.DirectoryName = "";
+            Ex5.Ex5();
         }
     }
 
