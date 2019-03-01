@@ -7,14 +7,17 @@ using System.IO;
 
 namespace Labs
 {
-    class LibraryFileLab6_3
+    class LibraryFileLab6
     {
         ConsoleManager ConsoleManager = new ConsoleManager();
         string FilesPath = @"..\..\Files";
         string FileForRead = @"Input.txt";// ввод сюда
         string FileForWrite = @"Output.txt";// вывод отсюда
+        string DirectoryName = @"Lab6_Temp";//
+        string FileNameForLabDotDat = @"Lab.dat";
+        string FileNameForBackUp = null;
 
-        public LibraryFileLab6_3()
+        public LibraryFileLab6()
         {
 
         }
@@ -23,7 +26,7 @@ namespace Labs
         /// </summary>
         /// <param name="FileForRead">Пример Input.txt</param>
         /// <param name="FileForWrite">Пример Output.txt</param>
-        public LibraryFileLab6_3(string FileForRead, string FileForWrite)
+        public LibraryFileLab6(string FileForRead, string FileForWrite)
         {
             this.FileForRead = TestNamePath(FileForRead);
             this.FileForWrite = TestNamePath(FileForWrite);
@@ -34,7 +37,7 @@ namespace Labs
         /// <param name="FileForRead">Input.txt</param>
         /// <param name="FileForWrite">Output.txt</param>
         /// <param name="FilesPath">C:\Application\Dock</param>
-        public LibraryFileLab6_3(string FileForRead, string FileForWrite, string FilesPath)
+        public LibraryFileLab6(string FileForRead, string FileForWrite, string FilesPath)
         {
             this.FileForRead = TestNamePath(FileForRead);
             this.FileForWrite = TestNamePath(FileForWrite);
@@ -44,11 +47,10 @@ namespace Labs
         /// 
         /// </summary>
         /// <param name="FilesPath">Out.txt</param>
-        public LibraryFileLab6_3(string FileForWrite)
+        public LibraryFileLab6(string FileForWrite)
         {
             this.FileForWrite = TestNamePath(FileForWrite);
         }
-
         string TestNamePath(string Head)
         {
             Head = Path.GetFileName(Head);
@@ -87,7 +89,7 @@ namespace Labs
             }
             catch (Exception e)
             {
-                ConsoleManager.RedSendToConsole("Ошибка в блоке чтения файла \r\n" + e.Message);
+                ConsoleManager.RedSendToConsole("ReadTextFromFileAndReturnIt \r\n" + e.Message);
             }
             finally
             {
@@ -110,7 +112,7 @@ namespace Labs
             }
             catch (Exception e)
             {
-                ConsoleManager.RedSendToConsole("Ошибка в блоке записи в файл \r\n" + e.Message);
+                ConsoleManager.RedSendToConsole("WriteTextInFile \r\n" + e.Message);
 
             }
             finally
@@ -134,12 +136,12 @@ namespace Labs
             }
             catch (Exception e)
             {
-                ConsoleManager.RedSendToConsole("Ошибка в блоке записи в файл \r\n" + e.Message);
+                ConsoleManager.RedSendToConsole("WriteTextInFileAndCreateFile \r\n" + e.Message);
 
             }
             finally
             {
-               // StreamWrite.Flush();
+                // StreamWrite.Flush();
                 StreamWrite.Close();
             }
         }
@@ -152,22 +154,22 @@ namespace Labs
         {
             string[] SplitArray = null;
             string TextWithoutNumber = "";
-            char[] chars = { '0', '1', '2','3','4','5','6','7','8','9' };
+            char[] chars = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
             try
             {
                 SplitArray = Text.Split(chars);
-                foreach(string S in SplitArray)
-                    TextWithoutNumber = TextWithoutNumber+ S;
-                
+                foreach (string S in SplitArray)
+                    TextWithoutNumber = TextWithoutNumber + S;
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                ConsoleManager.RedSendToConsole("Ошибка в блоке удаления чисел \r\n" + e.Message);
+                ConsoleManager.RedSendToConsole("ReturnTextWithoutNumbers \r\n" + e.Message);
             }
             finally
             {
-                
-                ConsoleManager.GreenSendToConSole((Text.Length - TextWithoutNumber.Length).ToString()+" именно столько цифр удалено из текста");
+
+                ConsoleManager.GreenSendToConSole((Text.Length - TextWithoutNumber.Length).ToString() + ", именно столько цифр удалено из текста");
             }
             return TextWithoutNumber;
         }
@@ -176,9 +178,9 @@ namespace Labs
         /// </summary>
         /// <param name="FileForWrite">Name.txt</param>
         /// 
-        public void SetNameFileForWrite(string FileForWrite) 
+        public void SetNameFileForWrite(string FileForWrite)
         {
-            this.FileForWrite =  TestNamePath(FileForWrite);
+            this.FileForWrite = TestNamePath(FileForWrite);
         }
         /// <summary>
         /// 
@@ -203,13 +205,135 @@ namespace Labs
         {
             if (!File.Exists(FilesPath + "\\" + FileForWrite))
             {
-            
                 File.CreateText(FilesPath + "\\" + FileForWrite).Close();
                 ConsoleManager.GreenSendToConSole("Файл успешно создан");
-              
             }
+            else ConsoleManager.GreenSendToConSole("Файл уже существует");
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="PathF">C:\Application\Dock</param>
+        /// <param name="Name">Lab.dat</param>
+        public void CreateOutFile(string PathF,string Name)
+        {
+            SetFileNameForBackUp(Name);
+            string FullPath = Path.Combine(PathF, FileNameForBackUp);
+            if (!File.Exists(FullPath))
+            {
+                File.Create(FullPath).Close();
+                ConsoleManager.GreenSendToConSole("Файл успешно создан");
+            }
+            else ConsoleManager.GreenSendToConSole("Файл уже существует");
+        }
+        public void SetFileNameForBackUp(string FileNameForBackUp)
+        {
+            this.FileNameForBackUp = Path.GetFileNameWithoutExtension(FileNameForBackUp) + "_backup" + Path.GetExtension(FileNameForBackUp);
         }
 
+
+        /// <summary>
+        /// Создание директории
+        /// </summary>
+        public void CreateDirectory()
+        {
+            if (!Directory.Exists(FilesPath + "\\" + DirectoryName))
+            {
+                Directory.CreateDirectory(FilesPath + "\\" + DirectoryName);
+                ConsoleManager.GreenSendToConSole("Директория успешно создана");
+            }
+            else ConsoleManager.GreenSendToConSole("Директория уже существует");
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="DirectoryName">Name</param>
+        public void SetDirectoryName(string DirectoryName)
+        {
+            if (DirectoryName.Trim().Length != 0)
+                this.DirectoryName = DirectoryName;
+            else
+            {
+                ConsoleManager.RedSendToConsole("Неверное имя директории");
+                ConsoleManager.GreenSendToConSole("Имя директории остается по умолчаию");
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="FileNameForLabDotDat">Lab.dot</param>
+        public void SetFileNameForLabDotDat(string FileNameForLabDotDat)
+        {
+            this.FileNameForLabDotDat = TestNamePath(FileNameForLabDotDat);
+        }
+        /// <summary>
+        /// Копирует файл FilesPath +"\\" +FileNameForLabDotDat   в  
+        ///               FilesPath + "\\" + DirectoryName + "\\" + FileNameForLabDotDat
+        ///               Файл копируется в другую директрию
+        /// </summary>
+        public void CopyFileInMyDirectory()
+        {
+            try
+            {
+                File.Copy((FilesPath +"\\" +FileNameForLabDotDat), FilesPath + "\\" + DirectoryName + "\\" + FileNameForLabDotDat, true);
+                ConsoleManager.GreenSendToConSole("Файл успешно скопирован");
+            }
+            catch (Exception e)
+            {
+                ConsoleManager.RedSendToConsole("CopyFileInMyDirectory\r\n" + e.Message);
+            }
+        }
+        /// <summary>
+        /// в начале необходимо проинициализировать FileNameForBackUp через SetFileNameForBackUp
+        /// </summary>
+        public void ByteBackup()
+        {
+            BinaryReader BiRead = null;
+            BinaryWriter BiWrite = null;
+            if (File.Exists((FilesPath + "\\" + DirectoryName + "\\" + FileNameForBackUp)))
+                ConsoleManager.RedSendToConsole("Файл для бэкапа уже существует, он будет перезаписан\r\n");
+
+            try
+            {
+                 BiRead = new BinaryReader(File.Open((FilesPath + "\\" + DirectoryName + "\\" + FileNameForLabDotDat), FileMode.Open));
+                 BiWrite = new BinaryWriter(File.Open((FilesPath + "\\" + DirectoryName + "\\" + FileNameForBackUp), FileMode.OpenOrCreate));
+
+                for(long i=0; i< BiRead.BaseStream.Length;i++)
+                {
+                    BiWrite.Write(BiRead.ReadByte());
+                }
+
+                ConsoleManager.GreenSendToConSole("Бэкап успешно произошел\r\n");
+
+
+            }
+            catch(Exception e)
+            {
+                ConsoleManager.RedSendToConsole("ByteBackup\r\n" + e.Message);
+            }
+            finally
+            {
+                
+                BiRead.Close();
+                BiWrite.Flush();
+                BiWrite.Close();
+            }
+        }
+        public void InfoFile()
+        {
+            try
+            {
+                FileInfo Flinfo = new FileInfo(FilesPath + "\\" + DirectoryName + "\\" + FileNameForLabDotDat);
+                ConsoleManager.GreenSendToConSole("Информация о файле "+FileNameForLabDotDat);
+                ConsoleManager.GreenSendToConSole("Размер файла: "+Flinfo.Length.ToString()+" Байт");
+                ConsoleManager.GreenSendToConSole("Время последнего изменения: " + Flinfo.LastWriteTime);
+                ConsoleManager.GreenSendToConSole("Время последнего доступа: " + Flinfo.LastAccessTime);
+            }
+            catch(Exception e)
+            {
+                ConsoleManager.RedSendToConsole("InfoFile\r\n" + e.Message);
+            }
+        }
     }
     class ConsoleManager
     {
@@ -236,21 +360,36 @@ namespace Labs
         private void GreenFontConsole() => Console.ForegroundColor = ConsoleColor.Green;
     }
 
+
     class Lab6Manager
     {
-        
+
         public string FileOutName = "Output.txt";
         public string FileInName = "Input.txt";
         public string FilePathName = @"..\..\Files";
+        public string DirectoryName = @"Lab6_Temp";
+        public string FileName = @"Lab.dat";
 
         public void Ex3()
         {
-            LibraryFileLab6_3 FileLab = new LibraryFileLab6_3(FileInName,FileOutName,FilePathName);
+            LibraryFileLab6 FileLab = new LibraryFileLab6(FileInName, FileOutName, FilePathName);
             string Text = FileLab.ReadTextFromFileAndReturnIt();
             string TextWithoutNums = FileLab.ReturnTextWithoutNumbers(Text);
             FileLab.WriteTextInFileAndCreateFile(TextWithoutNums);
             Console.WriteLine();
+            
+        }
+        public void Ex4()
+        {
+            LibraryFileLab6 FileLab = new LibraryFileLab6();
+            FileLab.SetFileNameForLabDotDat(FileName);
+            FileLab.CreateDirectory();
+            FileLab.CopyFileInMyDirectory();
+            FileLab.CreateOutFile(FilePathName +"\\"+ DirectoryName, FileName);
+            FileLab.ByteBackup();
+            FileLab.InfoFile();
+            
         }
     }
-        
+
 }

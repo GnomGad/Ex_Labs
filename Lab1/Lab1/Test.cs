@@ -13,13 +13,20 @@ namespace Labs
         public static void test()
         {
 
-            Ex3();
+
+            Ex4();
         }
         static  void Ex3()
         {
             Lab6Manager Ex3 = new Lab6Manager();
             Ex3.FileOutName = "OutThere.txt";
             Ex3.Ex3();
+        }
+        static void Ex4()
+        {
+            Lab6Manager Ex4 = new Lab6Manager();
+            
+            Ex4.Ex4();
         }
     }
 
