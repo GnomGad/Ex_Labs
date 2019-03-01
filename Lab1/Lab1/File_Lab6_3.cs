@@ -16,7 +16,7 @@ namespace Labs
         string DirectoryName = @"Lab6_Temp";//
         string FileNameForLabDotDat = @"Lab.dat";
         string FileNameForBackUp = null;
-
+        string FileBmpName = null;
         public LibraryFileLab6()
         {
 
@@ -323,7 +323,7 @@ namespace Labs
         {
             try
             {
-                FileInfo Flinfo = new FileInfo(FilesPath + "\\" + DirectoryName + "\\" + FileNameForLabDotDat);
+                FileInfo Flinfo = new FileInfo(FilesPath + "\\"  + FileNameForLabDotDat);
                 ConsoleManager.GreenSendToConSole("Информация о файле "+FileNameForLabDotDat);
                 ConsoleManager.GreenSendToConSole("Размер файла: "+Flinfo.Length.ToString()+" Байт");
                 ConsoleManager.GreenSendToConSole("Время последнего изменения: " + Flinfo.LastWriteTime);
@@ -334,6 +334,29 @@ namespace Labs
                 ConsoleManager.RedSendToConsole("InfoFile\r\n" + e.Message);
             }
         }
+
+        public void SetStructForBMPFile(string FileBmpName)
+        {
+            this.FileBmpName = Path.ChangeExtension(FileBmpName, ".bmp");
+            StuctForBMPFile BMP = new StuctForBMPFile();
+
+            BinaryReader BiRead = new BinaryReader(File.Open((FilesPath + "\\" + this.FileBmpName), FileMode.Open));//0
+            BiRead.ReadBytes(2);//2
+            BMP.SetName(this.FileBmpName);
+            BMP.SetSize(BiRead.ReadInt32());//6
+            BiRead.ReadBytes(12);//18
+            BMP.SetWidth(BiRead.ReadInt32());//22
+            BMP.SetHeight(BiRead.ReadInt32());//26
+            BiRead.ReadBytes(2);//28
+            BMP.SetBitPerPixel(BiRead.ReadInt16());//30
+            BMP.SetCompression(BiRead.ReadInt32());//34
+            BiRead.Close();
+
+            /*
+             * ДОПИСАТЬ ВЫВОД ДЛЯ BMP СТРУКТУРЫ
+             */ 
+            
+        }      
     }
     class ConsoleManager
     {
@@ -390,6 +413,31 @@ namespace Labs
             FileLab.InfoFile();
             
         }
+        public void Ex5()
+        {
+            LibraryFileLab6 FileLab = new LibraryFileLab6();
+           // FileLab.SetFileNameForLabDotDat(FileName);
+            FileLab.SetStructForBMPFile("test3.bmp");
+            
+
+        }
+    }
+
+    public struct StuctForBMPFile
+    {
+        public string Name;
+        public int Size;
+        public int Width;
+        public int Height;
+        public short BitsPerPixel;
+        public int Compression;
+
+        public void SetName(string Name) => this.Name = Name;
+        public void SetSize(int Size) => this.Size = Size;
+        public void SetWidth(int Width) => this.Width = Width;
+        public void SetHeight(int Height) => this.Height = Height;
+        public void SetBitPerPixel(short BitsPerPixel) => this.BitsPerPixel = BitsPerPixel;
+        public void SetCompression(int Compression) => this.Compression = Compression;
     }
 
 }
