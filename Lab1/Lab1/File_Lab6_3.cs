@@ -73,7 +73,61 @@ namespace Labs
             return Body;
         }
         //2 задание
+        /// <summary>
+        /// Запишет пары
+        /// </summary>
+        public void WriteInBinaryFileSetOfPairs()
+        {
+            BinaryWriter BiWrite = null;
+            try
+            {
+                
+                BiWrite = new BinaryWriter(File.Open((FilesPath + "\\" + FileForWrite), FileMode.OpenOrCreate));
+                for (byte i = 4; i <= 81; i++)
+                {
+                    BiWrite.Write(i);
+                    BiWrite.Write((float)Math.Pow(i, 0.5));
+                }
 
+            }
+            catch(Exception e)
+            {
+                ConsoleManager.RedSendToConsole("WriteInBinaryFileSetOfPairs\r\n" + e.Message);
+            }
+            finally
+            {
+                BiWrite.Close();
+            }
+        }
+        /// <summary>
+        /// Запишет второе число из пар
+        /// </summary>
+        public void ReadInBinaryFileSecondNumberAndWriteItinNewBinaryFile()
+        {
+            BinaryReader BiRead = null;
+            BinaryWriter BiWrite = null;
+            try
+            {
+
+                BiRead = new BinaryReader(File.Open((FilesPath + "\\" + FileForWrite), FileMode.Open));
+                BiWrite = new BinaryWriter(File.Open((FilesPath + "\\" + FileForRead), FileMode.OpenOrCreate));
+                for (byte i = 4; i <= 81; i++)
+                {
+                    BiRead.ReadByte();
+                    BiWrite.Write(BiRead.ReadSingle());
+                }
+
+            }
+            catch (Exception e)
+            {
+                ConsoleManager.RedSendToConsole("ReadInBinaryFileSecondNumberAndWriteItinNewBinaryFile\r\n" + e.Message);
+            }
+            finally
+            {
+                BiRead.Close();
+                BiWrite.Close();
+            }
+        }
 
         //3 задание
         /// <summary>
@@ -428,9 +482,17 @@ namespace Labs
         public string FilePathName = @"..\..\Files";
         public string DirectoryName = @"Lab6_Temp";
         public string FileName = @"Lab.dat";
+        /// <summary>
+        /// FileOutName имя файла куда метод запишет byte and float
+        /// FileInName имя файла куда метод запишет только float из файла FileOutName
+        /// </summary>
         public void Ex2()
         {
             LibraryFileLab6 FileLab = new LibraryFileLab6();
+            FileLab.SetNameFileForWrite(FileOutName);
+            FileLab.SetNameFileForRrite(FileInName);
+            FileLab.WriteInBinaryFileSetOfPairs();
+            FileLab.ReadInBinaryFileSecondNumberAndWriteItinNewBinaryFile();
         }
         public void Ex3()
         {
