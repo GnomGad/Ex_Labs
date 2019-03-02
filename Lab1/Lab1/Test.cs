@@ -14,23 +14,48 @@ namespace Labs
         {
 
 
-            
+            LabManager6();
+
+
+        }
+        public static void LabManager6()//работает
+        {
+            char k = 'j';
+            while (k != 0)
+            {
+                Console.WriteLine("\r\nНомер задания, 0 - выход");
+                k = Console.ReadKey().KeyChar;
+                if (k == '1') File_lab6.Ex_1();
+                else if (k == '2') Ex2();
+                else if (k == '3') Ex3();
+                else if (k == '4') Ex4();
+                else if (k == '5') Ex5();
+            }
+        }
+        static void Ex2()//работает
+        {
+            Console.WriteLine("Программно записать в бинарный файл набор пар «N – N^1/2» для N от 4 до 81.Написать функцию, которая считывает из этого файла все вторые числа из каждой пары и записывает во второй файл");
+            Lab6Manager Ex2F = new Lab6Manager();
+            Ex2F.FileOutName = "OutFile.txt";
+            Ex2F.FileInName = "InputFile.txt";
+            Ex2F.Ex2();
         }
         static  void Ex3()// работает
         {
             Lab6Manager Ex3F = new Lab6Manager();
             Console.WriteLine("Считать текстовый файл, сформировать новый файл, в котором удалить все цифры. Вывести на консоль количество удалений.");
             Console.WriteLine("Как назвать новый файл?");
+            Ex3F.FileInName = "Ex3";
             Ex3F.FileOutName = Console.ReadLine();
             Ex3F.Ex3();
         }
-        static void Ex4()
+        static void Ex4()// работает
         {
             Lab6Manager Ex4 = new Lab6Manager();
             Console.WriteLine("Написать программу, которая создает на одном из разделов жесткого диска директорию Lab6_Temp, автоматически копирует в эту директорию Ваш файл lab.dat из задания 1 и создает в ней копию этого файла lab_backup.dat путем побайтового копирования.Вывести на консоль информацию о файле lab.dat: размер, время последнего изменения, время последнего доступа.\r\n");
             Ex4.Ex4();
         }
-        static void Ex5()
+        static void Ex5()// работает
         {
             Lab6Manager Ex5F = new Lab6Manager();
             Console.WriteLine("Перенесите файл в папку и введите её название ( . для получения информации)");
