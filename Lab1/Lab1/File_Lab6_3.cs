@@ -72,7 +72,10 @@ namespace Labs
             }
             return Body;
         }
+        //2 задание
 
+
+        //3 задание
         /// <summary>
         /// Берет значения из файла и возвращает их
         /// </summary>
@@ -231,7 +234,7 @@ namespace Labs
             this.FileNameForBackUp = Path.GetFileNameWithoutExtension(FileNameForBackUp) + "_backup" + Path.GetExtension(FileNameForBackUp);
         }
 
-
+        //4 задание
         /// <summary>
         /// Создание директории
         /// </summary>
@@ -324,10 +327,10 @@ namespace Labs
             try
             {
                 FileInfo Flinfo = new FileInfo(FilesPath + "\\"  + FileNameForLabDotDat);
-                ConsoleManager.GreenSendToConSole("Информация о файле "+FileNameForLabDotDat);
-                ConsoleManager.GreenSendToConSole("Размер файла: "+Flinfo.Length.ToString()+" Байт");
-                ConsoleManager.GreenSendToConSole("Время последнего изменения: " + Flinfo.LastWriteTime);
-                ConsoleManager.GreenSendToConSole("Время последнего доступа: " + Flinfo.LastAccessTime);
+                ConsoleManager.BlueSendToConSole("Информация о файле "+FileNameForLabDotDat);
+                ConsoleManager.BlueSendToConSole("Размер файла: "+Flinfo.Length.ToString()+" Байт");
+                ConsoleManager.BlueSendToConSole("Время последнего изменения: " + Flinfo.LastWriteTime);
+                ConsoleManager.BlueSendToConSole("Время последнего доступа: " + Flinfo.LastAccessTime);
             }
             catch(Exception e)
             {
@@ -335,27 +338,37 @@ namespace Labs
             }
         }
 
-        public void SetStructForBMPFile(string FileBmpName)
+        //5 задание
+        public void SetStructForBMPFileAndShowIt(string FileBmpName)
         {
             this.FileBmpName = Path.ChangeExtension(FileBmpName, ".bmp");
             StuctForBMPFile BMP = new StuctForBMPFile();
+            try
+            {
+                BinaryReader BiRead = new BinaryReader(File.Open((FilesPath + "\\" + this.FileBmpName), FileMode.Open));//0
+                BiRead.ReadBytes(2);//2
+                BMP.SetName(this.FileBmpName);
+                BMP.SetSize(BiRead.ReadInt32());//6
+                BiRead.ReadBytes(12);//18
+                BMP.SetWidth(BiRead.ReadInt32());//22
+                BMP.SetHeight(BiRead.ReadInt32());//26
+                BiRead.ReadBytes(2);//28
+                BMP.SetBitPerPixel(BiRead.ReadInt16());//30
+                BMP.SetCompression(BiRead.ReadInt32());//34
+                BiRead.Close();
 
-            BinaryReader BiRead = new BinaryReader(File.Open((FilesPath + "\\" + this.FileBmpName), FileMode.Open));//0
-            BiRead.ReadBytes(2);//2
-            BMP.SetName(this.FileBmpName);
-            BMP.SetSize(BiRead.ReadInt32());//6
-            BiRead.ReadBytes(12);//18
-            BMP.SetWidth(BiRead.ReadInt32());//22
-            BMP.SetHeight(BiRead.ReadInt32());//26
-            BiRead.ReadBytes(2);//28
-            BMP.SetBitPerPixel(BiRead.ReadInt16());//30
-            BMP.SetCompression(BiRead.ReadInt32());//34
-            BiRead.Close();
-
-            /*
-             * ДОПИСАТЬ ВЫВОД ДЛЯ BMP СТРУКТУРЫ
-             */ 
-            
+                ConsoleManager.BlueSendToConSole("Имя файла: " + BMP.Name);
+                ConsoleManager.BlueSendToConSole("Размер: " + BMP.Size + " байт");
+                ConsoleManager.BlueSendToConSole("Ширина:  " + BMP.Width + " пикселей");
+                ConsoleManager.BlueSendToConSole("Высота:  " + BMP.Height + " пикселей");
+                ConsoleManager.BlueSendToConSole("Бит на пиксель: " + Math.Pow(2, BMP.BitsPerPixel));
+                string Compression = BMP.Compression == 0 ? "без сжатия" : BMP.Compression == 1 ? "8 bit RLE сжатие" : BMP.Compression == 2 ? "4 bit RLE сжатие" : "Неизвестное сжатие";
+                ConsoleManager.BlueSendToConSole("Cжатие: " + Compression);
+            }
+            catch(Exception e)
+            {
+                ConsoleManager.RedSendToConsole("SetStructForBMPFileAndShowIt\r\n" + e.Message);
+            }
         }      
     }
     class ConsoleManager
@@ -372,17 +385,40 @@ namespace Labs
             Console.WriteLine(text);
             WhiteFontConsole();
         }
+        public void BlueSendToConSole(string text)
+        {
+            BlueFontConsole();
+            Console.WriteLine(text);
+            WhiteFontConsole();
+        }
         public void SpecifiedColorSendToConsole(string text,ConsoleColor c1)
         {
             Console.ForegroundColor = c1;
             Console.WriteLine(text);
             WhiteFontConsole();
         }
+        
         private void RedFontConsole() => Console.ForegroundColor = ConsoleColor.Red;
         private void WhiteFontConsole() => Console.ForegroundColor = ConsoleColor.White;
         private void GreenFontConsole() => Console.ForegroundColor = ConsoleColor.Green;
+        private void BlueFontConsole() => Console.ForegroundColor = ConsoleColor.Blue;
     }
+    public struct StuctForBMPFile
+    {
+        public string Name;
+        public int Size;
+        public int Width;
+        public int Height;
+        public short BitsPerPixel;
+        public int Compression;
 
+        public void SetName(string Name) => this.Name = Name;
+        public void SetSize(int Size) => this.Size = Size;
+        public void SetWidth(int Width) => this.Width = Width;
+        public void SetHeight(int Height) => this.Height = Height;
+        public void SetBitPerPixel(short BitsPerPixel) => this.BitsPerPixel = BitsPerPixel;
+        public void SetCompression(int Compression) => this.Compression = Compression;
+    }
 
     class Lab6Manager
     {
@@ -392,7 +428,10 @@ namespace Labs
         public string FilePathName = @"..\..\Files";
         public string DirectoryName = @"Lab6_Temp";
         public string FileName = @"Lab.dat";
-
+        public void Ex2()
+        {
+            LibraryFileLab6 FileLab = new LibraryFileLab6();
+        }
         public void Ex3()
         {
             LibraryFileLab6 FileLab = new LibraryFileLab6(FileInName, FileOutName, FilePathName);
@@ -416,28 +455,16 @@ namespace Labs
         public void Ex5()
         {
             LibraryFileLab6 FileLab = new LibraryFileLab6();
-           // FileLab.SetFileNameForLabDotDat(FileName);
-            FileLab.SetStructForBMPFile("test3.bmp");
+            if (FileName == ".")
+                foreach(string files in Directory.GetFiles(FilePathName))
+                    Console.WriteLine(Path.GetFileName(files));
+            else
+            FileLab.SetStructForBMPFileAndShowIt(FileName);
             
 
         }
     }
 
-    public struct StuctForBMPFile
-    {
-        public string Name;
-        public int Size;
-        public int Width;
-        public int Height;
-        public short BitsPerPixel;
-        public int Compression;
-
-        public void SetName(string Name) => this.Name = Name;
-        public void SetSize(int Size) => this.Size = Size;
-        public void SetWidth(int Width) => this.Width = Width;
-        public void SetHeight(int Height) => this.Height = Height;
-        public void SetBitPerPixel(short BitsPerPixel) => this.BitsPerPixel = BitsPerPixel;
-        public void SetCompression(int Compression) => this.Compression = Compression;
-    }
+    
 
 }
