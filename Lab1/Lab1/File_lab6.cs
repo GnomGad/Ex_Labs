@@ -105,9 +105,6 @@ namespace Labs
         }
 
 
-
-
-
         
         private static void ReadAndSetTvShowsFilePlaylist()
         {
