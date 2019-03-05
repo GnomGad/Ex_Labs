@@ -12,8 +12,12 @@ namespace Labs
         //public static void test() => Labs.File_lab6.Ex_1();
         public static void test()
         {
+            //int[] k = { 5, 2, 9, 1, 6 };
 
+           // Lab7Manager kek = new Lab7Manager();
 
+            // kek.Ex1();
+            //kek.SelectionSort(k, Int32.Parse(Console.ReadLine()), Int32.Parse(Console.ReadLine()));
             LabManager6();
 
 
