@@ -106,7 +106,7 @@ namespace Labs
 
 
         
-        private static void ReadAndSetTvShowsFilePlaylist()
+        protected static void ReadAndSetTvShowsFilePlaylist()
         {
             
             StreamReader ReadPlayList = new StreamReader(FILES_PATH_FOR_PLAYLIST);
