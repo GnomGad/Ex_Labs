@@ -12,13 +12,10 @@ namespace Labs
         //public static void test() => Labs.File_lab6.Ex_1();
         public static void test()
         {
-            int[] k = { 5, 2, 9, 1, 6 };
 
-            Lab7Manager Lab7Managers = new Lab7Manager();
 
-            Lab7Managers.Ex1();
 
-            
+            LabManager7();
 
 
         }
@@ -44,7 +41,7 @@ namespace Labs
             Ex2F.FileInName = "InputFile.txt";
             Ex2F.Ex2();
         }
-        static  void Ex3()// работает
+        static void Ex3()// работает
         {
             Lab6Manager Ex3F = new Lab6Manager();
             Console.WriteLine("Считать текстовый файл, сформировать новый файл, в котором удалить все цифры. Вывести на консоль количество удалений.");
@@ -63,9 +60,25 @@ namespace Labs
         {
             Lab6Manager Ex5F = new Lab6Manager();
             Console.WriteLine("Перенесите файл в папку и введите её название ( . для получения информации)");
-            Ex5F.FileName  = Console.ReadLine();
+            Ex5F.FileName = Console.ReadLine();
             Ex5F.Ex5();
         }
+
+        public static void LabManager7()
+        {
+            Ex2Lab7();
+        }
+        static void Ex1Lab7()//работает
+        {
+        Lab7Manager Lab7Managers = new Lab7Manager();
+        Lab7Managers.Ex1();
+        }
+        static void Ex2Lab7()
+        {
+            Lab7Manager Lab7Managers = new Lab7Manager();
+            Lab7Managers.Ex2();
+        }
+
     }
 
 }
