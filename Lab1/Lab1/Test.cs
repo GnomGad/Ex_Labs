@@ -17,8 +17,8 @@ namespace Labs
 
             LabManager7();
 
-
         }
+        
         public static void LabManager6()//работает
         {
             char k = 'j';
@@ -64,16 +64,18 @@ namespace Labs
             Ex5F.Ex5();
         }
 
+
         public static void LabManager7()
         {
-            Ex2Lab7();
+            Ex1Lab7();
+           // Ex2Lab7();
         }
         static void Ex1Lab7()//работает
         {
         Lab7Manager Lab7Managers = new Lab7Manager();
         Lab7Managers.Ex1();
         }
-        static void Ex2Lab7()
+        static void Ex2Lab7()//работает
         {
             Lab7Manager Lab7Managers = new Lab7Manager();
             Lab7Managers.Ex2();

@@ -48,7 +48,7 @@ namespace Labs
 
         
     }
-   public enum FillType
+    public enum FillType
     {
         INCREMENT,
         DECREMENT,
