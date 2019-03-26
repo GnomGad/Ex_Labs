@@ -9,7 +9,7 @@ namespace Labs
 
     class FileLabLibrary8 : Search
     {
-        //0.5
+        //0.6
         public void SearchManager(int element)
         {
             char key = 'h';
@@ -352,6 +352,33 @@ namespace Labs
         }
         public void BMSearch(SearchString str)
         {
+            string text = str.Text;
+            string pattern = str.SubText;
+            int n = text.Length;
+            int m = pattern.Length;
+
+            if (m > n) position = -1;
+
+            int[] badShift = BadCharactersTable(pattern);
+            int[] goodSuffix = GoodSuffixTable(pattern);
+
+            int offset = 0;
+
+            while (offset <= n - m)
+            {
+                int i;
+                for (i = m - 1; i >= 0 && pattern[i] == text[i + offset]; i--) ;
+
+                if (i < 0)
+                {
+                    position = offset;
+                    return;
+                }// Match found
+
+                offset += Math.Max(i - badShift[(int)text[offset + i]], goodSuffix[i]);
+            }
+
+            position = -1;
 
         }
         int[] computePrefixFunction(string s)
@@ -376,6 +403,71 @@ namespace Labs
             }
             return pi;
 
+        }
+        int[] BadCharactersTable(string pattern)
+        {
+            int m = pattern.Length;
+
+            int[] badShift = new int[256];
+
+            for (int i = 0; i < 256; i++)
+            {
+                badShift[i] = m;
+            }
+
+            for (int i = 0; i < m - 1; i++)
+            {
+                badShift[(int)pattern[i]] = m - 1 - i;
+            }
+
+            return badShift;
+        }
+        int[] GoodSuffixTable(string pattern)
+        {
+            int m = pattern.Length;
+
+            int[] suffixes = Suffixes(pattern);
+
+            int[] goodSuffixes = new int[m];
+
+            for (int i = 0; i < m; i++)
+                goodSuffixes[i] = m;
+
+            for (int i = m - 1; i >= 0; i--)
+                if (suffixes[i] == i + 1)
+                    for (int j = 0; j < m - i - 1; j++)
+                        if (goodSuffixes[j] == m)
+                            goodSuffixes[j] = m - i - 1;
+
+            for (int i = 0; i < m - 2; i++)
+            {
+                goodSuffixes[m - 1 - suffixes[i]] = m - i - 1;
+            }
+
+            return goodSuffixes;
+        }
+        int[] Suffixes(string pattern)
+        {
+            int m = pattern.Length;
+            int[] suffixes = new int[m];
+            suffixes[m - 1] = m;
+
+            int g = m - 1, f = 0;
+
+            for (int i = m - 2; i >= 0; --i)
+            {
+                if (i > g && suffixes[i + m - 1 - f] < i - g)
+                    suffixes[i] = suffixes[i + m - 1 - f];
+                else if (i < g)
+                    g = i;
+                f = i;
+
+                while (g >= 0 && pattern[g] == pattern[g + m - 1 - f]) g--;
+
+                suffixes[i] = f - g;
+            }
+
+            return suffixes;
         }
 
     }
