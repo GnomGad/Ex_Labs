@@ -105,11 +105,13 @@ namespace Labs
         }
         static void Ex2Lab8()
         {
-            SearchString SS = new SearchString;
-            SS.Text = "I there! Hello World";
+            SearchString SS = new SearchString();
+            SS.Text = "Hello World";
             SS.SubText = "Hell";
             FileLabLibrary8 Fl8 = new FileLabLibrary8();
             Fl8.InitializationSearchString(SS);
+            Fl8.SearchManager(SS);
+            Console.WriteLine(Fl8.SearchString.Text[0]);
         }
     }
 

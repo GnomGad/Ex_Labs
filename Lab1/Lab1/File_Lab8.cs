@@ -9,7 +9,7 @@ namespace Labs
 
     class FileLabLibrary8 : Search
     {
-        //0.2
+        //0.3
         public void SearchManager(int element)
         {
             char key = 'h';
@@ -297,15 +297,30 @@ namespace Labs
             searchText.SubText = Str.SubText;
         }
 
-        public void SimpleSearch(SearchString searchString)
+        public void SimpleSearch(SearchString str)
+        {
+            position = -1;
+             
+            for(int i = 0;i<str.Text.Length;i++)
+            {
+                if(str.Text[i] == str.SubText[0])
+                {
+                    for(int K = 0;K<str.SubText.Length;K++)
+                    {
+                        if(K==str.SubText.Length-1)
+                        {
+                            position = i;
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+        public void KMPSearch(SearchString str)
         {
 
         }
-        public void KMPSearch(SearchString searchString)
-        {
-
-        }
-        public void BMSearch(SearchString searchString)
+        public void BMSearch(SearchString str)
         {
 
         }
