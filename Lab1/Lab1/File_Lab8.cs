@@ -9,7 +9,7 @@ namespace Labs
 
     class FileLabLibrary8 : Search
     {
-        //0.3
+        //0.4
         public void SearchManager(int element)
         {
             char key = 'h';
@@ -300,33 +300,83 @@ namespace Labs
         public void SimpleSearch(SearchString str)
         {
             position = -1;
-             
+            long itoe = 0;
             for(int i = 0;i<str.Text.Length;i++)
             {
                 if(str.Text[i] == str.SubText[0])
                 {
-                    for(int K = 0;K<str.SubText.Length;K++)
+                    for(int K = 0;K<str.SubText.Length && str.SubText[K]==str.Text[K+i];K++)
                     {
-                        if(K==str.SubText.Length-1)
-                        {
-                            position = i;
-                            return;
-                        }
+                        itoe++;
+
                     }
+                    if(itoe == str.SubText.Length)
+                    {
+                        position = i;
+                        return;
+                    }
+                    itoe = 0;
                 }
             }
         }
         public void KMPSearch(SearchString str)
         {
+            string text = str.SubText;
+            string pattern = str.Text;
+            int n = text.Length;
+            int m = pattern.Length;
+
+            int[] prefix = computePrefixFunction(pattern);
+
+            int j = 0;
+
+            for (int i = 1; i <= n; i++)
+            {
+                while (j > 0 && pattern[j] != text[i - 1])
+                {
+                    j = prefix[j - 1];
+                }
+                if (pattern[j] == text[i - 1])
+                {
+                    j++;
+                }
+                if (j == m)
+                {
+                    position = i - m;	 // Найдено в позиции i - m 
+                }
+            }
+            position = -1;		 // Не найдено
 
         }
         public void BMSearch(SearchString str)
         {
 
         }
+        int[] computePrefixFunction(string s)
+        {
+            int m = s.Length;
+
+            int[] pi = new int[m];
+            int j = 0;
+            pi[0] = 0;
+
+            for (int i = 1; i < m; i++)
+            {
+                while (j > 0 && s[j] != s[i])
+                {
+                    j = pi[j];
+                }
+                if (s[j] == s[i])
+                {
+                    j++;
+                }
+                pi[i] = j;
+            }
+            return pi;
+        }
 
     }
-     struct SearchString
+    struct SearchString
     {
         public string Text;
         public string SubText;
