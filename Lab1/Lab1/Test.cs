@@ -13,10 +13,9 @@ namespace Labs
         public static void test()
         {
 
-            // Lab7Manager sort = new Lab7Manager();
-            // sort.ManagerSort(100000, 100000, 0, SortName.INSERTIONSORT);
-            int[] ar ={ 2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59};
-            Console.WriteLine(ar.Length);
+             //Lab7Manager sort = new Lab7Manager();
+            // sort.ManagerSort(10, 100, 0, SortName.INSERTIONSORT);
+            
             LabManager8();
 
         }
@@ -75,7 +74,6 @@ namespace Labs
         static void Ex1Lab7()//работает
         {
         Lab7Manager Lab7Managers = new Lab7Manager();
-        
         Lab7Managers.Ex1();
         }
         static void Ex2Lab7()//работает
@@ -94,8 +92,12 @@ namespace Labs
            
 
             Fl8.ReadBinaryFile();
-            for (int i = 0; i < 10; i++)
-            Fl8.SearchManager((int)Math.Pow(i,3));
+            foreach(int i in Fl8.ArrayInt)
+            {
+                Console.Write("{0}  ", i);
+            }
+            Console.WriteLine("         "+Fl8.ArrayInt[8]);
+            Fl8.SearchManager(Fl8.ArrayInt[8]);
             
             
         }

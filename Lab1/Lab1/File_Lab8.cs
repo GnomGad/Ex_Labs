@@ -12,19 +12,74 @@ namespace Labs
         
         public void SearchManager(int element)
         {
-            Console.WriteLine("Linear");
-            SetStart();
-            LinearSearch(arrayint, element);
-            SetEnd();
-            SetInterval();
-            WriteInConsoleInfo();
-            Console.WriteLine("InterpolationSearch");
-            SetStart();
-            InterpolationSearch(arrayint, element);
-            SetEnd();
-            SetInterval();
-            WriteInConsoleInfo();
+            char key = 'h';
+            while(key!='0')
+            {
+                Console.WriteLine("1 - Линейный поиск\r\n2 - Бинарный поиск\r\n3 - Интерполяционный поиск \r\n4 - КМП поиск\r\n5 - БМ поиск\r\n0-выход");
+                key = Console.ReadKey().KeyChar;
+                Console.WriteLine();
+                switch (key)
+                {
+                    case '0':
+                        break;
+                    case '1':
+                        СhoiceSearch(SearchType.LINEAR, element);
+                        break;
+                    case '2':
+                        СhoiceSearch(SearchType.BINARY, element);
+                        break;
+                    case '3':
+                        СhoiceSearch(SearchType.INTERPOLATION, element);
+                        break;
+                    case '4':
+                        СhoiceSearch(SearchType.KMP, element);
+                        break;
+                    case '5':
+                        СhoiceSearch(SearchType.BM, element);
+                        break;
+                    default:
+                        Console.WriteLine("Неверный симмвол");
+                        break;
+                }
+            }
 
+
+        }
+        public void СhoiceSearch(SearchType Search,int element)
+        {
+            switch(Search)
+            {
+                case SearchType.LINEAR:
+                    Console.WriteLine("Линейка");
+                    SetStart();
+                    LinearSearch(arrayint, element);
+                    SetEnd();
+                    SetInterval();
+                    WriteInConsoleInfo();
+                    break;
+                case SearchType.BINARY:
+                    Console.WriteLine("Бинарка");
+                    SetStart();
+                    BinarySearch(arrayint, element);
+                    SetEnd();
+                    SetInterval();
+                    WriteInConsoleInfo();
+                    break;
+                case SearchType.INTERPOLATION:
+                    Console.WriteLine("Интерполяционный");
+                    SetStart();
+                    InterpolationSearch(arrayint, element);
+                    SetEnd();
+                    SetInterval();
+                    WriteInConsoleInfo();
+                    break;
+                case SearchType.KMP:
+                    break;
+                case SearchType.BM:
+                    break;
+                default:
+                    break;
+            }
         }
 
     }
@@ -118,7 +173,7 @@ namespace Labs
             }
         }
         /// <summary>
-        /// ЧИНИ 
+        /// ЩА ПОЧИНЮ 
         /// </summary>
         /// <param name="array"></param>
         /// <param name="element"></param>
@@ -183,5 +238,14 @@ namespace Labs
             consoleManager.GreenSendToConSole("Массив был инициализирован");
         }
 
+    }
+
+    enum SearchType
+    {
+        LINEAR,
+        BINARY,
+        INTERPOLATION,
+        KMP,
+        BM
     }
 }
