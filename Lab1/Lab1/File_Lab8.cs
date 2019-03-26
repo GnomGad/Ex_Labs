@@ -9,7 +9,7 @@ namespace Labs
 
     class FileLabLibrary8 : Search
     {
-        //0.4
+        //0.5
         public void SearchManager(int element)
         {
             char key = 'h';
@@ -226,7 +226,7 @@ namespace Labs
             }
         }
         /// <summary>
-        /// КОЕ КАК НО РАБОТАЕТ 
+        /// пойдет
         /// </summary>
         /// <param name="array"></param>
         /// <param name="element"></param>
@@ -321,8 +321,9 @@ namespace Labs
         }
         public void KMPSearch(SearchString str)
         {
-            string text = str.SubText;
-            string pattern = str.Text;
+            position = -1;
+            string pattern = str.SubText;
+            string text = str.Text;
             int n = text.Length;
             int m = pattern.Length;
 
@@ -342,7 +343,8 @@ namespace Labs
                 }
                 if (j == m)
                 {
-                    position = i - m;	 // Найдено в позиции i - m 
+                    position = i - m;
+                    return;// Найдено в позиции i - m 
                 }
             }
             position = -1;		 // Не найдено
@@ -373,6 +375,7 @@ namespace Labs
                 pi[i] = j;
             }
             return pi;
+
         }
 
     }
