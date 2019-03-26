@@ -19,12 +19,20 @@ namespace Labs
         void InterpolationSearch(int[] array,int element);
         
     }
+    interface ISearchString
+    {
+        SearchString SearchString { get; }
+        void InitializationSearchString(SearchString SearchString);
+        void SimpleSearch(SearchString searchString);
+        void KMPSearch(SearchString searchString);
+        void BMSearch(SearchString searchString);
+    }
     /// <summary>
     /// Интерфейс для массива
     /// </summary>
     interface IArray 
     {
-        int Position { get;  }
+        long Position { get;  }
         int[] ArrayInt { get; set; }
         void InitializationArray(int[] array);
 
@@ -38,6 +46,9 @@ namespace Labs
         string PathFile{ get; }
         void ReadBinaryFile();
     }
+    /// <summary>
+    /// интерфейс для времени
+    /// </summary>
     interface ITime
     {
         DateTime Start { get;  }

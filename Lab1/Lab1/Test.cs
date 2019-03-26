@@ -13,8 +13,8 @@ namespace Labs
         public static void test()
         {
 
-             //Lab7Manager sort = new Lab7Manager();
-            // sort.ManagerSort(10, 100, 0, SortName.INSERTIONSORT);
+            // Lab7Manager sort = new Lab7Manager();
+            // sort.ManagerSort(10000, 100000, 0, SortName.INSERTIONSORT);
             
             LabManager8();
 
@@ -84,7 +84,8 @@ namespace Labs
 
         public static void LabManager8()
         {
-            Ex1Lab8();
+            //Ex1Lab8();
+            Ex2Lab8();
         }
         static void Ex1Lab8()
         {
@@ -92,14 +93,23 @@ namespace Labs
            
 
             Fl8.ReadBinaryFile();
+            /*
             foreach(int i in Fl8.ArrayInt)
             {
                 Console.Write("{0}  ", i);
             }
-            Console.WriteLine("         "+Fl8.ArrayInt[8]);
-            Fl8.SearchManager(Fl8.ArrayInt[8]);
+            */
+            Console.WriteLine("Введи число");
+            Fl8.SearchManager(int.Parse(Console.ReadLine()));
             
-            
+        }
+        static void Ex2Lab8()
+        {
+            SearchString SS = new SearchString;
+            SS.Text = "I there! Hello World";
+            SS.SubText = "Hell";
+            FileLabLibrary8 Fl8 = new FileLabLibrary8();
+            Fl8.InitializationSearchString(SS);
         }
     }
 

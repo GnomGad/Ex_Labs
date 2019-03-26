@@ -9,13 +9,13 @@ namespace Labs
 
     class FileLabLibrary8 : Search
     {
-        
+        //0.2
         public void SearchManager(int element)
         {
             char key = 'h';
             while(key!='0')
             {
-                Console.WriteLine("1 - Линейный поиск\r\n2 - Бинарный поиск\r\n3 - Интерполяционный поиск \r\n4 - КМП поиск\r\n5 - БМ поиск\r\n0-выход");
+                Console.WriteLine("1 - Линейный поиск\r\n2 - Бинарный поиск\r\n3 - Интерполяционный поиск\r\n0-выход");
                 key = Console.ReadKey().KeyChar;
                 Console.WriteLine();
                 switch (key)
@@ -31,11 +31,34 @@ namespace Labs
                     case '3':
                         СhoiceSearch(SearchType.INTERPOLATION, element);
                         break;
-                    case '4':
-                        СhoiceSearch(SearchType.KMP, element);
+                    default:
+                        Console.WriteLine("Неверный симмвол");
                         break;
-                    case '5':
-                        СhoiceSearch(SearchType.BM, element);
+                }
+            }
+
+
+        }
+        public void SearchManager(SearchString text)
+        {
+            char key = 'h';
+            while (key != '0')
+            {
+                Console.WriteLine("1 - простой поиск\r\n2 - КМП поиск\r\n3 - БМ поиск\r\n0-выход");
+                key = Console.ReadKey().KeyChar;
+                Console.WriteLine();
+                switch (key)
+                {
+                    case '0':
+                        break;
+                    case '1':
+                        СhoiceSearch(SearchType.SIMPLE, text);
+                        break;
+                    case '2':
+                        СhoiceSearch(SearchType.KMP, text);
+                        break;
+                    case '3':
+                        СhoiceSearch(SearchType.BM, text);
                         break;
                     default:
                         Console.WriteLine("Неверный симмвол");
@@ -73,9 +96,37 @@ namespace Labs
                     SetInterval();
                     WriteInConsoleInfo();
                     break;
+                default:
+                    break;
+            }
+        }
+        public void СhoiceSearch(SearchType Search, SearchString text)
+        {
+            switch (Search)
+            {
+                case SearchType.SIMPLE:
+                    Console.WriteLine("простой");
+                    SetStart();
+                    SimpleSearch(text);
+                    SetEnd();
+                    SetInterval();
+                    WriteInConsoleInfo();
+                    break;
                 case SearchType.KMP:
+                    Console.WriteLine("КМП");
+                    SetStart();
+                    KMPSearch(text);
+                    SetEnd();
+                    SetInterval();
+                    WriteInConsoleInfo();
                     break;
                 case SearchType.BM:
+                    Console.WriteLine("БМ");
+                    SetStart();
+                    BMSearch(text);
+                    SetEnd();
+                    SetInterval();
+                    WriteInConsoleInfo();
                     break;
                 default:
                     break;
@@ -83,16 +134,17 @@ namespace Labs
         }
 
     }
-    class Search : ISearch , IArray, IReadFile, ITime
+    class Search : ISearch , IArray, IReadFile, ITime, ISearchString
     {
         protected ConsoleManager consoleManager = new ConsoleManager();
 
-        protected int position;
+        protected long position;
         protected int[] arrayint = { };
         protected string pathFile = @"..\..\Files\sorted.dat";
         protected DateTime start;
         protected DateTime end;
         protected TimeSpan interval;
+        protected SearchString searchText;
 
         public int[] ArrayInt
         {
@@ -110,7 +162,7 @@ namespace Labs
                 else consoleManager.RedSendToConsole("Длина массива равна 0");
             }
         }
-        public int Position
+        public long Position
         {
             get
             {
@@ -128,6 +180,7 @@ namespace Labs
         public DateTime Start { get { return start; } }
         public DateTime End { get {return end; } }
         public TimeSpan Interval { get { return interval; } }
+        public SearchString SearchString { get { return searchText; } }
 
         public void SetStart() => start = DateTime.Now;
         public void SetEnd() => end = DateTime.Now;
@@ -173,19 +226,19 @@ namespace Labs
             }
         }
         /// <summary>
-        /// ЩА ПОЧИНЮ 
+        /// КОЕ КАК НО РАБОТАЕТ 
         /// </summary>
         /// <param name="array"></param>
         /// <param name="element"></param>
         public void InterpolationSearch(int[] array, int element)
         {
             position = -1;
-            long right = ArrayInt.Length-1;
+            long right = ArrayInt.Length - 1;
             long left = 0;
             {
                 while (right >= left)
                 {
-                    long mid = left + (((element-array[left])*(right-left))/(array[right]-array[left]));
+                    long mid = left + (((element - array[left]) * (right - left)) / (array[right] - array[left]));
 
                     if (array[mid] < element)
                         left = mid + 1;
@@ -196,7 +249,7 @@ namespace Labs
                         position = (int)mid;
                         break;
                     }
-                    
+
                 }
             }
         }
@@ -238,14 +291,38 @@ namespace Labs
             consoleManager.GreenSendToConSole("Массив был инициализирован");
         }
 
-    }
+        public void InitializationSearchString(SearchString Str)
+        {
+            searchText.Text = Str.Text;
+            searchText.SubText = Str.SubText;
+        }
 
+        public void SimpleSearch(SearchString searchString)
+        {
+
+        }
+        public void KMPSearch(SearchString searchString)
+        {
+
+        }
+        public void BMSearch(SearchString searchString)
+        {
+
+        }
+
+    }
+     struct SearchString
+    {
+        public string Text;
+        public string SubText;
+    }
     enum SearchType
     {
         LINEAR,
         BINARY,
         INTERPOLATION,
         KMP,
-        BM
+        BM,
+        SIMPLE
     }
 }
