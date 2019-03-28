@@ -15,9 +15,15 @@ namespace Labs
 
             // Lab7Manager sort = new Lab7Manager();
             // sort.ManagerSort(10000, 100000, 0, SortName.INSERTIONSORT);
-            
-            LabManager8();
 
+            //  LabManager8();
+            Search ss = new Search();
+            int[] kok = { 1, 2, 5, 6, 8, 11, 22, 23, 25 };
+            foreach (int i in kok)
+            {
+                ss.BinarySearch(kok, i);
+                Console.WriteLine(ss.Position);
+            }
         }
         
         public static void LabManager6()//работает
@@ -106,8 +112,8 @@ namespace Labs
         static void Ex2Lab8()
         {
             SearchString SS = new SearchString();
-            SS.Text = "asasaaaaBLu12ars";
-            SS.SubText = "BLu";
+            SS.Text = "sukosuka";
+            SS.SubText = "suka";
             FileLabLibrary8 Fl8 = new FileLabLibrary8();
             Fl8.InitializationSearchString(SS);
             Fl8.SearchManager(SS);

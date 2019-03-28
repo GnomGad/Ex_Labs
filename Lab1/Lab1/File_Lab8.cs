@@ -204,26 +204,44 @@ namespace Labs
             }
             
         }
-        public void BinarySearch(int[] array,int element)
+        public void BinarySearch(int[] a,int elem)
         {
             position = -1;
 
-            int right = array.Length;
-            int left = 0;
-            while (Math.Abs(right-left)!=1)
-            {
-                int mid = (right+left)/2;
+            //int right = array.Length-1;
+            //int left = 0;
+            //while (right>=left)
+            //{
+            //    int mid = (right+left)/2;
                 
-                if (array[mid] == element)
+            //    if (array[mid] == element)
+            //    {
+            //        position = mid;
+            //        break;
+            //    }
+            //    if (array[mid] < element)
+            //        right = mid - 1;
+            //    else
+            //        left = mid +1 ;
+            //}
+
+            int l = 0, r = a.Length - 1;
+            while (r >= l)
+            {
+                int mid = (l + r) / 2;
+
+                if (a[mid] == elem)
                 {
-                    position = mid;
-                    break;
+                 position =   mid;
                 }
-                if (array[mid] < element)
-                    right = mid;
+
+                if (a[mid] > elem)
+                    r = mid - 1;
                 else
-                    left = mid;
+                    l = mid + 1;
             }
+
+
         }
         /// <summary>
         /// пойдет
