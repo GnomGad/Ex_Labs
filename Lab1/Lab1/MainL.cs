@@ -38,7 +38,7 @@ namespace Labs
             int sum_space = fullstring.Length / 80;
             int full_s = fullstring.Length;
 
-            for (int i = 0,d = 1; i < full_s; i++)
+            for (int i = 0; i < full_s; i++)
             { 
                 Sexit += fullstring[i];
             }

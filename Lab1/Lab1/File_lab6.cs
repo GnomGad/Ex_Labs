@@ -127,7 +127,7 @@ namespace Labs
                     string[] ReturnArrayForTests = ReturValueForTvShows(tmp);
                         SetTvShows(ReturnArrayForTests);
                 }
-                catch (NullReferenceException e)
+                catch (NullReferenceException)
                 {
                     Console.WriteLine("строка номер {0} проигнорирована", CountForLines);
                     Console.WriteLine(tmp);
@@ -188,7 +188,7 @@ namespace Labs
                     else
                         return ArrayValue;
                 }
-                catch (FormatException e)
+                catch (FormatException)
                 {
                     Console.WriteLine("Ошибка: строка номер {0} проигнорирована ", CountForLines);
                     return null;

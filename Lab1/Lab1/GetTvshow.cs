@@ -59,9 +59,9 @@ public struct GetTvshow
     public void check_for_tyoe_non_set_type(char value, out string er)
     {
         er = "good";
-        if (value == 'A' || value == 'А') ;
-        else if (value == 'T' || value == 'Т') ;
-        else if (value == 'I' || value == 'И') ;
+        if (value == 'A' || value == 'А') er = "good"; 
+        else if (value == 'T' || value == 'Т') er = "good"; 
+        else if (value == 'I' || value == 'И') er = "good"; 
         else er = "error";
     }
 }

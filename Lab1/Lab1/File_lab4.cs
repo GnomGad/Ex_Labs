@@ -81,7 +81,10 @@ namespace Labs
                         if (i + sleep < str_s.Length)// проверка, что бы не улетать за границы массива
                         {//собственно, если после конца слова будут идти еще такие символы, то мы их должны посчитать
                             // что бы потом, их даже не использовать
-                            if (str_s[i + sleep] == ' ' || str_s[i + sleep] == ',' || str_s[i + sleep] == '.' || str_s[i + sleep] == '-');
+                            if (str_s[i + sleep] == ' ' || str_s[i + sleep] == ',' || str_s[i + sleep] == '.' || str_s[i + sleep] == '-')
+                            {
+
+                            }
                             else break;
                         }
                         else break;// выход если улетели
@@ -139,7 +142,10 @@ namespace Labs
                         if (i + sleep < str_s.Length)// проверка, что бы не улетать за границы массива
                         {//собственно, если после конца слова будут идти еще такие символы, то мы их должны посчитать
                             // что бы потом, их даже не использовать
-                            if (str_s[i + sleep] == ' ' || str_s[i + sleep] == ',' || str_s[i + sleep] == '.' || str_s[i + sleep] == '-') ;
+                            if (str_s[i + sleep] == ' ' || str_s[i + sleep] == ',' || str_s[i + sleep] == '.' || str_s[i + sleep] == '-')
+                            {
+
+                            }
                             else break;
                         }
                         else break;// выход если улетели
@@ -180,7 +186,7 @@ namespace Labs
             Console.WriteLine("Второй способ");
            
             
-            int n = 0;
+            
 
              array2_str = str_s.Split(char_any);
              array2_str_new =  str_s.Split(char_any_cybol_for_word);
@@ -355,7 +361,7 @@ namespace Labs
         }
         public static void Ex_6()
         {
-            string s_new_regex_match = "";
+            
             string str_s = Console.ReadLine();
             string part_reg = @"\s+";
             string target = "";
@@ -584,7 +590,10 @@ namespace Labs
                         if (i + sleep < str_s.Length)// проверка, что бы не улетать за границы массива
                         {//собственно, если после конца слова будут идти еще такие символы, то мы их должны посчитать
                             // что бы потом, их даже не использовать
-                            if (str_s[i + sleep] == ' ' || str_s[i + sleep] == ',' || str_s[i + sleep] == '.' || str_s[i + sleep] == '-') ;
+                            if (str_s[i + sleep] == ' ' || str_s[i + sleep] == ',' || str_s[i + sleep] == '.' || str_s[i + sleep] == '-')
+                            {
+
+                            }
                             else break;
                         }
                         else break;// выход если улетели
@@ -638,7 +647,6 @@ namespace Labs
                     for (int j = 0; j < big_cymbols.Length; j++)
                         temp = temp.Replace(big_cymbols[j].ToString(), "\"_\"");
                 }
-                else temp = temp;
                 new_array_str[i] = temp;
             }
 
