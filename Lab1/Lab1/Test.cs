@@ -12,18 +12,9 @@ namespace Labs
         //public static void test() => Labs.File_lab6.Ex_1();
         public static void test()
         {
+            LabManager9();
 
-            // Lab7Manager sort = new Lab7Manager();
-            // sort.ManagerSort(10000, 100000, 0, SortName.INSERTIONSORT);
 
-            //  LabManager8();
-            Search ss = new Search();
-            int[] kok = { 1, 2, 5, 6, 8, 11, 22, 23, 25 };
-            foreach (int i in kok)
-            {
-                ss.BinarySearch(kok, i);
-                Console.WriteLine(ss.Position);
-            }
         }
         
         public static void LabManager6()//работает
@@ -117,6 +108,27 @@ namespace Labs
             FileLabLibrary8 Fl8 = new FileLabLibrary8();
             Fl8.InitializationSearchString(SS);
             Fl8.SearchManager(SS);
+        }
+
+        public static void LabManager9()
+        {
+            char k = 'j';
+            while (k != 0)
+            {
+                Console.WriteLine("\r\nНомер задания, 0 - выход");
+                k = Console.ReadKey().KeyChar;
+                Console.WriteLine();
+                if (k == '1') Ex1Lab8First();
+                else if (k == '2') Ex2();
+                else if (k == '3') Ex3();
+                else if (k == '4') Ex4();
+                else if (k == '5') Ex5();
+            }
+        }
+        static void Ex1Lab8First()
+        {
+            Lab9Manager lab9Manager = new Lab9Manager();
+            lab9Manager.Ex1F();
         }
     }
 

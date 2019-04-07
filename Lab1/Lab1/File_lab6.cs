@@ -14,19 +14,19 @@ namespace Labs
         //
 
 
-        const string FILES_FULL_PATH = @"D:\Application\Git\Ex_Labs\Lab1\Lab1\Files";
+        public const string FILES_FULL_PATH = @"D:\Application\Git\Ex_Labs\Lab1\Lab1\Files";
         //фулл путь к файлам
-        const string FILES_PATH = @"..\..\Files"; 
+        public const string FILES_PATH = @"..\..\Files";
         // работает прям из Lab1 
-        const string PLAYLIST_DAT = @"\Lab.dat"; 
+        public const string PLAYLIST_DAT = @"\Lab.dat";
         // имя файла 
-        const string FILES_PATH_FOR_PLAYLIST = FILES_PATH + PLAYLIST_DAT; 
+        public const string FILES_PATH_FOR_PLAYLIST = FILES_PATH + PLAYLIST_DAT;
         // путь к файлу playlist.dat
-        const byte MAX_STRING_TABLE = lab5_1.MaxStrinTable; 
+        public const byte MAX_STRING_TABLE = lab5_1.MaxStrinTable;
         // константа макс числа строк таблицы
-        const byte MAX_BUILD_CONST= lab5_1.MaxBuildConst;
+        public const byte MAX_BUILD_CONST= lab5_1.MaxBuildConst;
         // МАКСИМАЛЬНОЕ количесво числа логов
-        private static int CountForLines = 1;
+        public static int CountForLines = 1;
 
         static GetTvshow TvShows = new GetTvshow();
 
@@ -105,8 +105,8 @@ namespace Labs
         }
 
 
-        
-        protected static void ReadAndSetTvShowsFilePlaylist()
+
+        public static void ReadAndSetTvShowsFilePlaylist()
         {
             
             StreamReader ReadPlayList = new StreamReader(FILES_PATH_FOR_PLAYLIST);
@@ -156,7 +156,7 @@ namespace Labs
         }
 
 
-        private static string[] ReturValueForTvShows(string str)// возврат 4 элементов массива
+        public static string[] ReturValueForTvShows(string str)// возврат 4 элементов массива
         {
             char[] chars = { ' ', Convert.ToChar(9) };
             string[] ArrayValue = str.Split('\\');
@@ -202,7 +202,7 @@ namespace Labs
         }
 
 
-        private static void SetTvShows(string[] array) // заполнение в tvshows
+        public static void SetTvShows(string[] array) // заполнение в tvshows
         {
             for (int i = 0; i < MAX_STRING_TABLE; i++)
             {
@@ -223,7 +223,7 @@ namespace Labs
        
         
 
-        private static void GetFromTvShowsAndWriteFilePlaylist()
+        public static void GetFromTvShowsAndWriteFilePlaylist()
         {
             StreamWriter WritePlatList = new StreamWriter(FILES_PATH_FOR_PLAYLIST);
             for (int i = 0; i < MAX_STRING_TABLE; i++)

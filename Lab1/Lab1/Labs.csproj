@@ -63,6 +63,7 @@
     <Compile Include="File_Lab6_3.cs" />
     <Compile Include="File_Lab7.cs" />
     <Compile Include="File_Lab8.cs" />
+    <Compile Include="File_Lab9.cs" />
     <Compile Include="GetTvshow.cs" />
     <Compile Include="Interfaces.cs" />
     <Compile Include="MainL.cs" />
