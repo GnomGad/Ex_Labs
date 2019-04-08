@@ -56,27 +56,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="File_lab2.cs" />
-    <Compile Include="File_lab1.cs" />
-    <Compile Include="File_lab3.cs" />
-    <Compile Include="File_lab4.cs" />
-    <Compile Include="File_lab5.cs" />
-    <Compile Include="File_lab6.cs" />
-    <Compile Include="File_Lab6_3.cs" />
-    <Compile Include="File_Lab7.cs" />
-    <Compile Include="File_Lab8.cs" />
-    <Compile Include="File_Lab9.cs" />
-    <Compile Include="Form.cs">
+    <Compile Include="File_Labs1-8\File_lab2.cs" />
+    <Compile Include="File_Labs1-8\File_lab1.cs" />
+    <Compile Include="File_Labs1-8\File_lab3.cs" />
+    <Compile Include="File_Labs1-8\File_lab4.cs" />
+    <Compile Include="File_Labs1-8\File_lab5.cs" />
+    <Compile Include="File_Labs1-8\File_lab6.cs" />
+    <Compile Include="File_Labs1-8\File_Lab6_3.cs" />
+    <Compile Include="File_Labs1-8\File_Lab7.cs" />
+    <Compile Include="File_Labs1-8\File_Lab8.cs" />
+    <Compile Include="File_Lab9\File_Lab9.cs" />
+    <Compile Include="File_Lab9\Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form.Designer.cs">
+    <Compile Include="File_Lab9\Form.Designer.cs">
       <DependentUpon>Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="GetTvshow.cs" />
-    <Compile Include="Interfaces.cs" />
-    <Compile Include="MainL.cs" />
+    <Compile Include="Other_Files\GetTvshow.cs" />
+    <Compile Include="Other_Files\Interfaces.cs" />
+    <Compile Include="Other_Files\MainL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test.cs" />
+    <Compile Include="Other_Files\Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -89,7 +89,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form.resx">
+    <EmbeddedResource Include="File_Lab9\Form.resx">
       <DependentUpon>Form.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
