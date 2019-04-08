@@ -30,9 +30,9 @@
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -69,12 +69,12 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Название Телепередачи";
             // 
-            // textBox2
+            // textBox1
             // 
-            this.textBox2.Location = new System.Drawing.Point(0, 30);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(473, 31);
-            this.textBox2.TabIndex = 0;
+            this.textBox1.Location = new System.Drawing.Point(0, 38);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(473, 31);
+            this.textBox1.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -88,12 +88,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ведущий";
             // 
-            // textBox1
+            // textBox2
             // 
-            this.textBox1.Location = new System.Drawing.Point(0, 38);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(473, 31);
-            this.textBox1.TabIndex = 0;
+            this.textBox2.Location = new System.Drawing.Point(0, 30);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(473, 31);
+            this.textBox2.TabIndex = 0;
             // 
             // groupBox3
             // 
@@ -117,7 +117,7 @@
             "Очень мало просмотров",
             "Мало просмотров ",
             "Нормально просмотров",
-            "много просмотров",
+            "Много просмотров",
             "Очень много просмотров"});
             this.comboBox1.Location = new System.Drawing.Point(11, 30);
             this.comboBox1.Name = "comboBox1";
