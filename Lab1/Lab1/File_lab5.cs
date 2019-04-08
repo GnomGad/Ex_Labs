@@ -55,7 +55,7 @@ namespace Labs
 
         }
 
-       public static void build()// построение
+       public  static void build()// построение
         {
             for (int i = 0; i < MaxStrinTable; i++)
             {

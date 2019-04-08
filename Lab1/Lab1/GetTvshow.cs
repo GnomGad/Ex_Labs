@@ -11,6 +11,14 @@ public struct GetTvshow
     public char Type;
     public int n;
 
+    public GetTvshow(string NameTV, string NameArtist, ValueOfTV Value, char Type, int n)
+    {
+        this.NameTV = NameTV;
+        this.NameArtist = NameArtist;
+        this.Value = Value;
+        this.Type = Type;
+        this.n = n;
+    }
     public void ShowTheme()
     {
         Console.WriteLine(new string('-',77));
@@ -24,7 +32,7 @@ public struct GetTvshow
         Console.WriteLine(new string('-', 77));
         Console.WriteLine("| {0,-29}| {1,-19} | {2,-7} | {3,-5} | {4,-3}|", NameTV, NameArtist, (int)Value, Type,n);
     }
-    
+
     public void ShowStatement()
     {
         Console.WriteLine(new string('-', 77));
@@ -68,10 +76,16 @@ public struct GetTvshow
 
 public struct LogActions
 {
-   public string Telepered;
+    public string Telepered;
     ForLogAction Action;// действие адд делит упдейт
     DateTime Time;
    
+    public LogActions(string Telepered, ForLogAction Action,DateTime Time)
+    {
+       this.Telepered = Telepered;
+        this.Action = Action;
+        this.Time = Time;
+    }
     /// <summary>
     ///  Тип действия и время
     /// </summary>

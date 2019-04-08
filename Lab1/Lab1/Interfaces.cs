@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Labs
+namespace Labs.Interfaces
 {
     interface Interfaces
     {
@@ -59,6 +59,62 @@ namespace Labs
         void SetEnd();
         void SetInterval();
         void WriteInConsoleInfo();
+    }
+    /// <summary>
+    /// Шоб не завтыкать с тем, что мне нужно
+    /// </summary>
+    interface IMenu
+    {
+        /// <summary>
+        /// Логика кейсов
+        /// </summary>
+        void Main();
+        /// <summary>
+        /// Волшебный метод инита стартовых значений в лист
+        /// </summary>
+        void Initialize();
+        /// <summary>
+        /// Показать меню
+        /// </summary>
+        void Show();
+        /// <summary>
+        /// Добавить элемент
+        /// </summary>
+        void Add();
+        /// <summary>
+        /// Удалить элемент
+        /// </summary>
+        void Delete();
+        /// <summary>
+        /// Обновление элемента
+        /// </summary>
+        void Update();
+        /// <summary>
+        /// Поиск элемента
+        /// </summary>
+        void Search();
+        /// <summary>
+        /// Показать лог
+        /// </summary>
+        void Log();
+    }
+    /// <summary>
+    /// Доболнительный интерфейс  к логу
+    /// что бы не засирать логику интерфейса ,menu
+    /// </summary>
+    interface IMenuLog
+    {
+        /// <summary>
+        /// Для особых действий, что бы их отметить
+        /// </summary>
+        /// <param name="txet"></param>
+        /// <param name="act"></param>
+        /// <param name="dt"></param>
+        void BuildLog(string txet, ForLogAction act, DateTime dt);
+        /// <summary>
+        /// Для действий,которые не важные, но важен переход времени
+        /// </summary>
+        void BuildLog();
     }
     
 }
