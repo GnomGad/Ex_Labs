@@ -13,8 +13,6 @@ namespace Labs
         public static void test()
         {
             LabManager9();
-
-
         }
         
         public static void LabManager6()//работает
@@ -113,22 +111,33 @@ namespace Labs
         public static void LabManager9()
         {
             char k = 'j';
-            while (k != 0)
+            while (k != '0')
             {
                 Console.WriteLine("\r\nНомер задания, 0 - выход");
                 k = Console.ReadKey().KeyChar;
                 Console.WriteLine();
-                if (k == '1') Ex1Lab8First();
+                if (k == '1') Ex1Lab9();
                 else if (k == '2') Ex2();
                 else if (k == '3') Ex3();
                 else if (k == '4') Ex4();
                 else if (k == '5') Ex5();
             }
         }
-        static void Ex1Lab8First()
+        static void Ex1Lab9()
         {
             Lab9Manager lab9Manager = new Lab9Manager();
-            lab9Manager.Ex1F();
+            char k = 'j';
+            while (k != '0')
+            {
+                Console.WriteLine("\r\n1 - первая часть  2 - вторая часть, 0 - выход");
+                k = Console.ReadKey().KeyChar;
+                Console.WriteLine();
+                if (k == '1') lab9Manager.Ex1F();
+                else if (k == '2') lab9Manager.Ex1S();
+
+            }
+            
+            
         }
     }
 
