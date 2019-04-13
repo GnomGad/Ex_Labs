@@ -120,7 +120,7 @@ namespace Labs
                 else if (k == '2') Ex2Lab9();
                 else if (k == '3') Ex3Lab9();
                 else if (k == '4') Ex4Lab9();
-                else if (k == '5') Ex5();
+                else if (k == '5') Ex5Lab9();
             }
         }
         static void Ex1Lab9()
@@ -160,6 +160,11 @@ namespace Labs
                 
         }
         static void Ex4Lab9()
+        {
+            Lab9Manager lab9Manager = new Lab9Manager();
+            lab9Manager.Ex4();
+        }
+        static void Ex5Lab9()
         {
 
         }
