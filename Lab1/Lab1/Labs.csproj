@@ -79,6 +79,7 @@
     <Compile Include="Other_Files\MainL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Other_Files\Test.cs" />
+    <Compile Include="File_Lab9\File.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

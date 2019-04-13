@@ -6,9 +6,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Threading;
 
-using Labs.AddForm;
-using Labs.Interfaces;
-using Labs.Collections;
+using CSharp_Shell;
 
 namespace Labs
 {
@@ -29,6 +27,11 @@ namespace Labs
             TrachContentTwo trachContentTwo = new TrachContentTwo();
             trachContentTwo.Main();
             
+        }
+
+        public void Ex2(string text)
+        {
+            CSharp_Shell.Test test = new CSharp_Shell.Test(text);
         }
     }
 

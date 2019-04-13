@@ -6,12 +6,12 @@ using System.Collections.Generic;
 namespace CSharp_Shell
 {
 
-    public static class Program 
+    public static class Program1 
     {
-        
-        public static void Main() 
+        public static string kek = "((5+3)(5+14+24))";
+        public static void Main1() 
         {
-           string kek = "((5+3)(5+14+24))";
+           
            Test test = new Test(kek);
         }
     }
