@@ -6,7 +6,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Threading;
 
-using CSharp_Shell;
+using Labs.Game;
 
 namespace Labs
 {
@@ -32,6 +32,26 @@ namespace Labs
         public void Ex2(string text)
         {
             CSharp_Shell.Test test = new CSharp_Shell.Test(text);
+        }
+
+        public void Ex3()
+        {
+            try
+            {
+                Console.WriteLine("Сколько игроков? 5<= N <=10");
+                int n = Int32.Parse(Console.ReadLine());
+                if (n < 5 || n > 10)
+                    throw new Exception("Надурить меня хочешь?");
+                Console.WriteLine("Текст считалочки");
+                LoopGame Game = new LoopGame(n, Console.ReadLine());
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
+            
+            
         }
     }
 

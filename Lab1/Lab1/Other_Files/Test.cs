@@ -113,13 +113,13 @@ namespace Labs
             char k = 'j';
             while (k != '0')
             {
-                Console.WriteLine("\r\nНомер задания\r\n1 - первае задание\r\n2 - второе задание, 0 - выход");
+                Console.WriteLine("\r\nНомер задания\r\n1,  2,  3,  4,   0 - выход");
                 k = Console.ReadKey().KeyChar;
                 Console.WriteLine();
                 if (k == '1') Ex1Lab9();
                 else if (k == '2') Ex2Lab9();
-                else if (k == '3') Ex3();
-                else if (k == '4') Ex4();
+                else if (k == '3') Ex3Lab9();
+                else if (k == '4') Ex4Lab9();
                 else if (k == '5') Ex5();
             }
         }
@@ -136,7 +136,6 @@ namespace Labs
                 else if (k == '2') lab9Manager.Ex1S();
             } 
         }
-
         static void Ex2Lab9()
         {
             Console.WriteLine("\r\nВведите цифровое выражение");
@@ -154,6 +153,17 @@ namespace Labs
                 Lab9Manager lab9Manager = new Lab9Manager();
             lab9Manager.Ex2(text);
         }
+        static void Ex3Lab9()
+        {
+            Lab9Manager lab9Manager = new Lab9Manager();
+            lab9Manager.Ex3();
+                
+        }
+        static void Ex4Lab9()
+        {
+
+        }
+
     }
 
 }

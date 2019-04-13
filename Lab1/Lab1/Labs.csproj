@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="File_Lab9\DoubleLinkedList1.cs" />
     <Compile Include="File_Lab9\Ex1.cs" />
+    <Compile Include="File_Lab9\LoopGame.cs" />
     <Compile Include="File_Labs1-8\File_lab2.cs" />
     <Compile Include="File_Labs1-8\File_lab1.cs" />
     <Compile Include="File_Labs1-8\File_lab3.cs" />
