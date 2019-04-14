@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 
@@ -20,7 +21,7 @@ namespace Labs.Collections
         public DoubleLinkedNode<T> Next { get; set; }
     }
 
-    public class DoubleLinkedList<T>
+    public class DoubleLinkedList<T> : IEnumerable<T>
     {
         DoubleLinkedNode<T> Head;
         DoubleLinkedNode<T> Tail;
@@ -160,7 +161,34 @@ namespace Labs.Collections
             return count;
         }
 
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable)this).GetEnumerator();
+        }
 
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        {
+            DoubleLinkedNode<T> current = Head;
+            while (current != null)
+            {
+                yield return current.Data;
+                current = current.Next;
+            }
+        }
+
+        public bool Contains(T data)
+        {
+            DoubleLinkedNode<T> current = Head;
+            while (current != null)
+            {
+                if (current.Data.Equals(data))
+                    return true;
+                current = current.Next;
+            }
+            return false;
+        }
 
     }
+
+
 }

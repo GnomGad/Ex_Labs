@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Text;
 using System.IO;
 
+
 namespace Labs
 {
     class Test
@@ -113,7 +114,7 @@ namespace Labs
             char k = 'j';
             while (k != '0')
             {
-                Console.WriteLine("\r\nНомер задания\r\n1,  2,  3,  4,   0 - выход");
+                Console.WriteLine("\r\nНомер задания\r\n1,  2,  3,  4, 5, 6, 0 - выход");
                 k = Console.ReadKey().KeyChar;
                 Console.WriteLine();
                 if (k == '1') Ex1Lab9();
@@ -121,6 +122,7 @@ namespace Labs
                 else if (k == '3') Ex3Lab9();
                 else if (k == '4') Ex4Lab9();
                 else if (k == '5') Ex5Lab9();
+                else if (k == '6') Ex6Lab9();
             }
         }
         static void Ex1Lab9()
@@ -166,7 +168,25 @@ namespace Labs
         }
         static void Ex5Lab9()
         {
-
+            Lab9Manager lab9Manager = new Lab9Manager();
+            lab9Manager.Ex5();
+        }
+        static void Ex6Lab9()
+        {
+            ContList<string> contList = new ContList<string>();
+            Lab9Manager lab9Manager = new Lab9Manager();
+            char k = 'j';
+            while (k != '0')
+            {
+                Console.WriteLine("\r\n1 - первая часть  2 - вторая часть, 0 - выход");
+                k = Console.ReadKey().KeyChar;
+                Console.WriteLine();
+                if (k == '1') lab9Manager.Ex6(new string[] { "bob", "good", "kok" }, 
+                                              new string[] { "kok", "good", "bob", "k" });
+                else if (k == '2') contList.Compare(new List<string> { "bob", "good", "kok"  }, 
+                                                    new List<string> { "kok", "good", "bob", "k" });
+            }
+            
         }
 
     }
