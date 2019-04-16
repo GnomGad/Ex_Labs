@@ -20,7 +20,8 @@ namespace Labs
             treeTable.SetThirdTeams();
             treeTable.SetThirdPeriod();
             treeTable.Final();
-            
+
+            treeTable.PreOrderTraversal();
         }
 
         public void MessageTeams()
@@ -73,25 +74,42 @@ namespace Labs
             this.Country2 =  c2;
         }
 
-        public void FinishTheMatch(byte b1,byte b2)
+        public void FinishTheMatch()
         {
-            Score1 = b1;
-            Score2 = b2;
-            if (b1 == b2)
+            //Score1 = b1;
+            // Score2 = b2;
+            // if (b1 == b2)
+            // {
+            //     Score1 =(byte)( Score1 + 1);
+            //  }
+            
+            while(Score1 == Score2)
             {
-                Score1 =(byte)( Score1 + 1);
+                Score1 = Random();
+                Score2 = Random();
             }
+
             IsGameOver = true;
         }
 
         public string CountryWinner()
         {
-            if (Score1 > Score2)
+            
+            if (Score1> Score2)
                 return Country1;
             else
                 return Country2;
         }
-
+        byte Random()
+        {
+            Random r = new Random();
+            int c1 = r.Next(0, 22) < 7 ? 1 :
+                r.Next(0, 22) < 11 ? 2 :
+                r.Next(0, 33) < 11 ? 3 :
+                r.Next(0, 44) < 11 ? 4 :
+                r.Next(0, 66) < 19 ? 5 : 6;
+            return(byte) c1;
+        }
         public string ReturnResult()
         {
             string retr = Country1 + " - " + Country2 + " : " + Score1.ToString() + " - " + Score2.ToString();
@@ -185,17 +203,17 @@ namespace Labs
             Random r1 = new Random();
             Random r2 = new Random();
             
-            Root.Left.Left.Left.FinishTheMatch((byte)r1.Next(0,10), (byte)r2.Next(0,10));//6 in 4 in 2
-            Root.Left.Left.Right.FinishTheMatch((byte)r1.Next(0, 10), (byte)r2.Next(0, 10));//7 in 4 in 2
+            Root.Left.Left.Left.FinishTheMatch();//6 in 4 in 2
+            Root.Left.Left.Right.FinishTheMatch();//7 in 4 in 2
 
-            Root.Left.Right.Left.FinishTheMatch((byte)r1.Next(0, 10), (byte)r2.Next(0, 10)); //8 in 5 in 2
-            Root.Left.Right.Right.FinishTheMatch((byte)r1.Next(0, 10), (byte)r2.Next(0, 10)); //9 in 5 in 2
+            Root.Left.Right.Left.FinishTheMatch(); //8 in 5 in 2
+            Root.Left.Right.Right.FinishTheMatch(); //9 in 5 in 2
 
-            Root.Right.Left.Left.FinishTheMatch((byte)r1.Next(0, 10), (byte)r2.Next(0, 10));// 12 in 10 in 3
-            Root.Right.Left.Right.FinishTheMatch((byte)r1.Next(0, 10), (byte)r2.Next(0, 10)); // 13 in 10 in 3
+            Root.Right.Left.Left.FinishTheMatch();// 12 in 10 in 3
+            Root.Right.Left.Right.FinishTheMatch(); // 13 in 10 in 3
 
-            Root.Right.Right.Left.FinishTheMatch((byte)r1.Next(0, 10), (byte)r2.Next(0, 10)); // 14 in 11 in 3
-            Root.Right.Right.Right.FinishTheMatch((byte)r1.Next(0, 10), (byte)r2.Next(0, 10)); // 15 in 11 in 3
+            Root.Right.Right.Left.FinishTheMatch(); // 14 in 11 in 3
+            Root.Right.Right.Right.FinishTheMatch(); // 15 in 11 in 3
         }
 
         public void SetSecondTeams()
@@ -213,11 +231,11 @@ namespace Labs
             Random r1 = new Random();
             Random r2 = new Random();
 
-            Root.Left.Left.FinishTheMatch((byte)r1.Next(0, 10), (byte)r2.Next(0, 10));// 4 in 2
-            Root.Left.Right.FinishTheMatch((byte)r1.Next(0, 10), (byte)r2.Next(0, 10)); // 5 in 2
+            Root.Left.Left.FinishTheMatch();// 4 in 2
+            Root.Left.Right.FinishTheMatch(); // 5 in 2
 
-            Root.Right.Left.FinishTheMatch((byte)r1.Next(0, 10), (byte)r2.Next(0, 10)); // 10 in 3
-            Root.Right.Right.FinishTheMatch((byte)r1.Next(0, 10), (byte)r2.Next(0, 10)); // 11 in 3
+            Root.Right.Left.FinishTheMatch(); // 10 in 3
+            Root.Right.Right.FinishTheMatch(); // 11 in 3
         }
 
         public void SetThirdTeams()
@@ -230,8 +248,8 @@ namespace Labs
         {
             Random r1 = new Random();
             Random r2 = new Random();
-            Root.Left.FinishTheMatch((byte)r1.Next(0, 10), (byte)r2.Next(0, 10));//2
-            Root.Right.FinishTheMatch((byte)r1.Next(0, 10), (byte)r2.Next(0, 10));//3
+            Root.Left.FinishTheMatch();//2
+            Root.Right.FinishTheMatch();//3
         }
 
         public void Final()
@@ -239,10 +257,31 @@ namespace Labs
             Random r1 = new Random();
             Random r2 = new Random();
             Root.SetCountry(Root.Left.CountryWinner(), Root.Right.CountryWinner());
-            Root.FinishTheMatch((byte)r1.Next(0, 10), (byte)r2.Next(0, 10));
+            Root.FinishTheMatch();
         }
 
- 
+        public void PreOrderTraversal()
+        {
+            PreOrder(Root);
+        }
+
+        public void PreOrder(TreeNode node)
+        {
+            if (node != null)
+            {
+                if (node.Value == 1)
+                    Console.Write(node.ReturnResult() + "\r\n");
+                else if (node.Value == 3 || node.Value == 2)
+                    Console.Write("\t" + node.ReturnResult() + "\r\n");
+                else if (node.Value == 4 || node.Value == 5 || node.Value == 10 || node.Value == 11)
+                    Console.Write("\t\t" + node.ReturnResult() + "\r\n");
+                else 
+                    Console.Write("\t\t\t" + node.ReturnResult() + "\r\n");
+                PreOrder(node.Left);
+                PreOrder(node.Right);
+            }
+        }
+
 
 
     }
