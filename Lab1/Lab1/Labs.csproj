@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{DDB557DE-657E-4791-9833-3B6C63D5FF2A}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Lab1</RootNamespace>
+    <RootNamespace>Labs</RootNamespace>
     <AssemblyName>Lab1</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -56,6 +56,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="File_Lab10\File_Lab10.cs" />
+    <Compile Include="File_Lab10\HeapSort.cs" />
+    <Compile Include="File_Lab10\MergeSort.cs" />
+    <Compile Include="File_Lab10\QuickSort.cs" />
+    <Compile Include="File_Lab10\Sort.cs" />
     <Compile Include="File_Lab9\DoubleLinkedList1.cs" />
     <Compile Include="File_Lab9\Ex1.cs" />
     <Compile Include="File_Lab9\LoopGame.cs" />

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Text;
 using System.IO;
-
+using Labs10 = Labs.File_Lab10.ManagerLab10;
 
 namespace Labs
 {
@@ -13,7 +13,7 @@ namespace Labs
         //public static void test() => Labs.File_lab6.Ex_1();
         public static void test()
         {
-            LabManager9();
+            LabManager10();
         }
         
         public static void LabManager6()//работает
@@ -189,6 +189,11 @@ namespace Labs
             
         }
 
+        public static void LabManager10()
+        {
+            Labs10 managerLab10 = new Labs10();
+            managerLab10.main();
+        }
     }
 
 }

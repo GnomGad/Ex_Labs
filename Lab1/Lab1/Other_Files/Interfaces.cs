@@ -116,5 +116,13 @@ namespace Labs.Interfaces
         /// </summary>
         void BuildLog();
     }
+
+    interface ISorts<T>
+    {
+
+        int[] a { get; set; }
+        void Sort(int l, int r);     
+    }
+    
     
 }
