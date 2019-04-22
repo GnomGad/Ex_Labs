@@ -119,8 +119,15 @@ namespace Labs.Interfaces
 
     interface ISorts<T>
     {
-
+        /// <summary>
+        /// Массив для сортировки, его же давать в конструкторе и его же вернуть в сорте
+        /// </summary>
         int[] a { get; set; }
+        /// <summary>
+        /// Сортировка, вызывать что бы сортануть a
+        /// </summary>
+        /// <param name="l"></param>
+        /// <param name="r"></param>
         void Sort(int l, int r);     
     }
     

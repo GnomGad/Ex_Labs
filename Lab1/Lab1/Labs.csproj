@@ -57,9 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="File_Lab10\File_Lab10.cs" />
-    <Compile Include="File_Lab10\HeapSort.cs" />
-    <Compile Include="File_Lab10\MergeSort.cs" />
-    <Compile Include="File_Lab10\QuickSort.cs" />
+    <Compile Include="File_Lab10\Sortings\HeapSort.cs" />
+    <Compile Include="File_Lab10\Sortings\MergeSort.cs" />
+    <Compile Include="File_Lab10\Sortings\QuickSort.cs" />
     <Compile Include="File_Lab10\Sort.cs" />
     <Compile Include="File_Lab9\DoubleLinkedList1.cs" />
     <Compile Include="File_Lab9\Ex1.cs" />

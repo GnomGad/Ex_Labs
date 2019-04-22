@@ -5,7 +5,7 @@ using System.Text;
 
 using Sorting = Labs.Interfaces.ISorts<int>;
 
-namespace Labs.File_Lab10
+namespace Labs.File_Lab10.Sortings
 {
     /// <summary>
     /// Реализация сортировки слиянием

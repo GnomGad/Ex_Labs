@@ -28,7 +28,7 @@ namespace Labs.File_Lab10
         public void Ex1()
         {
             Sorts k = new Sorts();
-            k.Sort();
+            k.StartSort();
         }
     }
 }
