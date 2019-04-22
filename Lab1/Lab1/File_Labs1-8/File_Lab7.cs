@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using Labs.File_Lab10.Sortings;
+using Labs.Interfaces;
 
 namespace Labs
 {
@@ -60,9 +62,13 @@ namespace Labs
         INSERTIONSORT,
         BUBBLESORT,
         SHAKERSORT,
-        SHELLSORT
+        SHELLSORT,
+        MERGESORT,
+        QUICKSORT,
+        HEAPSORT
     }
-    class Sort
+
+    public partial class Sort
     {
         /*
          * каждую функцию выполнить 3 раза
@@ -87,6 +93,7 @@ namespace Labs
         public DateTime End;
         public TimeSpan Interval;
 
+        ISorts<int> MySorts;
 
         /* Конструкторы класса, инициализация массива
          */
@@ -230,6 +237,36 @@ namespace Labs
                     ShellSort(0, arrayLength - 1);
                     SetEnd();
                     SetInterval();
+                    break;
+                case SortName.MERGESORT:
+                    MySorts = new MergeSort(array);
+                    ConsoleManager.GreenSendToConSole("Сортировка Слиянием");
+                    SetNullForCompareAndTransposition();
+                    SetStart();
+                    MySorts.Sort(0, arrayLength - 1);
+                    SetEnd();
+                    SetInterval();
+                    array = MySorts.a;
+                    break;
+                case SortName.QUICKSORT:
+                    MySorts = new QuickSort(array);
+                    ConsoleManager.GreenSendToConSole("Быстрая сортировка");
+                    SetNullForCompareAndTransposition();
+                    SetStart();
+                    MySorts.Sort(0, arrayLength - 1);
+                    SetEnd();
+                    SetInterval();
+                    array = MySorts.a;
+                    break;
+                case SortName.HEAPSORT:
+                    MySorts = new HeapSorter(array);
+                    ConsoleManager.GreenSendToConSole("Сортировка Кучей");
+                    SetNullForCompareAndTransposition();
+                    SetStart();
+                    MySorts.Sort(0, arrayLength - 1);
+                    SetEnd();
+                    SetInterval();
+                    array = MySorts.a;
                     break;
                 default:
                     break;
@@ -443,7 +480,21 @@ namespace Labs
                         ManagerSort(arrayLength, Max, Min, SortName.SHELLSORT);
                         break;
                     default:
-                        Console.WriteLine("Неверный симмвол");
+                        Console.WriteLine("СПЕЦ РЕЖИМ ДЛЯ 10 ЛАБЫ\r\n 1 - Сортировка слиянием 2 - Сортировка Быстрая, 3 - Сортировка Кучей ");
+                        switch (Console.ReadKey().KeyChar)
+                        {
+                            case '1':
+                                ManagerSort(arrayLength, Max, Min, SortName.MERGESORT);
+                                break;
+                            case '2':
+                                ManagerSort(arrayLength, Max, Min, SortName.QUICKSORT);
+                                break;
+                            case '3':
+                                ManagerSort(arrayLength, Max, Min, SortName.HEAPSORT);
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                 }
             }

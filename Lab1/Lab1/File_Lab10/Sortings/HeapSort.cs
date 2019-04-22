@@ -19,7 +19,7 @@ namespace Labs.File_Lab10.Sortings
             a = b;
             b = tmp;
         }
-
+        /*
         private void Heapify(int[] a, int i, int N)
         {
             while (2 * i + 1 < N)
@@ -40,9 +40,6 @@ namespace Labs.File_Lab10.Sortings
             }
         }
 
-        /// <summary>
-        /// In-place heapsort
-        /// </summary>
         public void Sort( int l, int r)
         {
             int N = r - l + 1;
@@ -60,9 +57,46 @@ namespace Labs.File_Lab10.Sortings
                 Heapify(a, l, --N);
             }
         }
+        */
+        void heapify(int[] a, int n, int i)
+        {
+            // Find largest among root, left child and right child
+            int largest = i;
+            int l = 2 * i + 1;
+            int r = 2 * i + 2;
 
-       
-        
+            if (l < n && a[l] > a[largest])
+                largest = l;
+
+            if (r < n && a[r] > a[largest])
+                largest = r;
+
+            // Swap and continue heapifying if root is not largest
+            if (largest != i)
+            {
+                Swap(ref a[i], ref a[largest]);
+                heapify(a, n, largest);
+            }
+        }
+
+        // main function to do heap sort
+        public void Sort(int l, int r)
+        {
+            int n = a.Length;
+            // Build max heap
+            for (int i = n / 2 - 1; i >= 0; i--)
+                heapify(a, n, i);
+                
+            // Heap sort
+            for (int i = n - 1; i >= 0; i--)
+            {
+                Swap(ref a[0], ref a[i]);
+
+                // Heapify root element to get highest element at root again
+                heapify(a, i, 0);
+            }
+        }
+
     }
     
 }

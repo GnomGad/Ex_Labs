@@ -18,6 +18,7 @@ namespace Labs.File_Lab10
             {
                 Console.WriteLine("\r\nНомер задания  1,  2,  3,  4,  5,  0 - выход");
                 k = Console.ReadKey().KeyChar;
+                Console.WriteLine();
                 if (k == '1') Ex1();
                 else if (k == '2') Ex1();
                 else if (k == '3') Ex1();
@@ -27,8 +28,10 @@ namespace Labs.File_Lab10
         }
         public void Ex1()
         {
-            Sorts k = new Sorts();
-            k.StartSort();
+            Lab7Manager k1 = new Lab7Manager();
+            //k.Ex2();
+            Sorts k = new Sorts(1000);
+             k.StartSort();
         }
     }
 }
