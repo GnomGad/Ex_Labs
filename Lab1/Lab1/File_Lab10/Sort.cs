@@ -8,7 +8,8 @@ using Labs.File_Lab10.Sortings;
 namespace Labs.File_Lab10
 {
     /// <summary>
-    /// Здесь ничего нет, смотреть в 7 лабу
+    /// Здесь только тесты 
+    /// смотреть в 7 лабу
     /// </summary>
     public class Sorts 
     {
