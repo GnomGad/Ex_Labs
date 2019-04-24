@@ -46,14 +46,13 @@ namespace Labs.File_Lab10
             char k = 'j';
             while (k != 0)
             {
-                Console.WriteLine("\r\nНомер задания  1,  2,  3,  4,  5,  0 - выход");
+                Console.WriteLine("\r\nНомер задания  1,  2,  3,  4,  0 - выход");
                 k = Console.ReadKey().KeyChar;
                 Console.WriteLine();
                 if (k == '1') Ex1();
                 else if (k == '2') Ex2();
                 else if (k == '3') Ex3();
-                else if (k == '4') Ex1();
-                else if (k == '5') Ex1();
+                else if (k == '4') Ex4();
             }
         }
         public void Ex1()
@@ -76,6 +75,12 @@ namespace Labs.File_Lab10
         {
             Graphs.Graphs graphs = new Graphs.Graphs();
             graphs.Start();
+        }
+
+        public void Ex4()
+        {
+            MinPathGame game = new MinPathGame();
+            game.Start();
         }
     }
 }
