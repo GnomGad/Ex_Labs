@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Labs.File_Lab10.Sortings;
+using Labs.File_Lab10.Graphs;
 namespace Labs.File_Lab10
 {
     class File_Lab10
@@ -73,7 +74,8 @@ namespace Labs.File_Lab10
 
         public void Ex3()
         {
-
+            Graphs.Graphs graphs = new Graphs.Graphs();
+            graphs.Start();
         }
     }
 }

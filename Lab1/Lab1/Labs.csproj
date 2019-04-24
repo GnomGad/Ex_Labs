@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="File_Lab10\File_Lab10.cs" />
+    <Compile Include="File_Lab10\Graphs\Graph_Ex3.cs" />
     <Compile Include="File_Lab10\Sortings\CountingSort.cs" />
     <Compile Include="File_Lab10\Sortings\HeapSort.cs" />
     <Compile Include="File_Lab10\Sortings\MergeSort.cs" />
