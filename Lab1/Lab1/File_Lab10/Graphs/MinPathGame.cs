@@ -53,8 +53,8 @@ namespace Labs.File_Lab10.Graphs
                         Cities[i, j] = -1;
                     else
                     {
-                        if (rand.Next(0, 100) > 20)
-                            Cities[i, j] = rand.Next(1, 50);
+                        if (rand.Next(0, 100) > 55)
+                            Cities[i, j] = rand.Next(40, 100);
                         else
                             Cities[i, j] = -1;
                     }
@@ -121,7 +121,7 @@ namespace Labs.File_Lab10.Graphs
                     if (i != k)
                     {
                         int Norm = ShortestPath(i, k);
-                        if(Norm<=200)
+                        if(Norm<=200 && Norm >=0)
                         Console.WriteLine($"Путь от {i + 1} и до {k + 1} длина {Norm}");
                     }
                         
